@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1 - JavaScript Changing Style</title>
+    <link rel="stylesheet" href="../../Style/myStyle.css">
+</head>
+<body>
+    <h1>Changing styles with JavaScript</h1>
+    <br>
+    <p id="demo">JavaScript can change the style of an HTML element.</p>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("demo");
+            x.style.fontSize = "25px";
+            x.style.color = "#E70025"
+        }
+    </script>
+    <button type="button" onclick="myFunction()">Click me!</button>
+</body>
+</html>

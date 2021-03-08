@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1 - Switch Statement</title>
+    <link rel="stylesheet" href="../../Style/myStyle.css">
+</head>
+<body>
+    <h1>Switch Statement</h1>
+    <br>
+    <p>Please put your two numbers below</p>
+    <p>Number 1: <input id="numb1" type="number"><p>
+    <p>Number 2: <input id="numb2" type="number"></p>
+    <p><button type="button" onclick="myAction('plus')">+</button>
+        <button type="button" onclick="myAction('minus')">-</button>
+        <button type="button" onclick="myAction('multiply')">*</button>
+        <button type="button" onclick="myAction('divide')">/</button>
+    </p>
+    <p>
+        Result: <span id="result"></span>
+    </p>
+        
+    <script>
+        function myAction(act) {
+            var x, y, z;
+            //Get the value of the input field with id="numb1"
+            x = Number(document.getElementById("numb1").value);
+            //Get the value of the input field with id="numb2"
+            y = Number(document.getElementById("numb2").value);
+            switch (act) {
+                case 'plus': // +
+                    z = x + y;
+                    break;
+                case 'minus': //-
+                    z = x - y;
+                    break;
+                case 'multiply': // *
+                    z = x * y;
+                    break;
+                case 'divide': // /
+                    if (y!=0) {
+                        z = x / y;
+                    }
+                    else {
+                        z = "You cannot divide by 0";
+                    }
+                    break;
+            }
+            document.getElementById("result").innerHTML = z;
+        }
+        
+    </script>
+
+</body>
+</html>

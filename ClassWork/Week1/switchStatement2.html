@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1 - Switch Statement 2</title>
+    <link rel="stylesheet" href="../../Style/myStyle.css">
+</head>
+<body>
+    <h1>A Fruity Switch Statement</h1>
+    <p>Please enter a fruit:</p>
+    <p>
+        <input id="fruitChoice" type="text">
+    </p>
+    <p>
+        <button type="button" onclick="myFunction()">Confirm</button>
+    </p>
+    <p>
+        Your result:
+    </p>
+    <p id="result"></p>
+    <script>
+        function myFunction() {
+            var fruits, text;
+            fruits = document.getElementById('fruitChoice').value;
+            
+            switch(fruits) {
+                case "Banana":
+                    text = "Bananas are yummy!";
+                    break;
+                case "Orange":
+                    text = "I don't like oranges.";
+                    break;
+                case "Apple":
+                    text = "How you like them apples?"
+                    break;
+                default:
+                    text = "I have never heard of that fruit...";
+            }
+            document.getElementById('result').innerHTML = text;
+        }
+    </script>
+</body>
+</html>

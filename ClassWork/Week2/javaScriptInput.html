@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2 - JavaScript Button</title>
+    <link rel="stylesheet" type="text/css" href="../../Style/myStyle.css">
+</head>
+<body>
+    <h1>JavaScript Input</h1>
+<div>
+    <button type="button" onclick="myAction()">Enter</button>
+    <br>
+<p id = "myDisplay"></p>
+<br>
+<script type="text/javascript">
+    function myAction() {
+        var text;
+        text = "Hello"
+        document.getElementById('myDisplay').innerHTML = text;
+    }
+</script>
+</div>
+
+<div>
+    Name: <input id = "username" type = "text">
+    <br>
+    Age: <input id = "age" type = "number">
+    <br/>
+    <button type = "button" onclick = "myDisplay()">Enter</button>
+    <br>
+
+    <script>
+        function myDisplay() {
+            var myText;
+            var myAge;
+            // get the value of the input field with id = "username"
+            myText = document.getElementById("username").value;
+            // get the value of the input field with the id = 
+            // "age"
+            myAge = document.getElementById("age").value;
+
+            document.getElementById("toDisplay").innerHTML = "Hello " + myText + "Your age is " + myAge; 
+        }
+    </script>
+    <p id="toDisplay"></p>
+</div>
+<div>
+    <select id = "mySelect" size = "1">
+        <option value = "blue">Blue</option>
+        <option value = "red">Red</option>
+    </select>
+    <br>
+    <button onclick = "myCheck()">Check Colour</button>
+    <br>
+    <script>
+        function myCheck() {
+            var x = document.getElementById("mySelect").value;
+            if (x == "red") {
+                document.getElementById("demo").innerHTML = "You chose red"
+            }
+            else {
+                document.getElementById("demo").innerHTML = "You chose blue"
+            }
+        }
+    </script>
+        <p id = "demo"></p>
+</div>
+<div>
+    <input type="radio" name="myColour" checked id="myRed" onclick="myColour()">Red<br>
+    <input type="radio" name="myColour"
+</div>
+</body>
+</html>

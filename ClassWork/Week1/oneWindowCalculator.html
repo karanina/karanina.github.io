@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1 - One Window Calculator</title>
+    <link rel="stylesheet" href="../../Style/myStyle.css">
+</head>
+<body>
+    <h1>One Window Calculator</h1>
+    <br>
+    <p>Please put your two numbers below</p>
+        <p>Number: <input id="numb" type="number"></p>
+        <p><button type="button" onclick="mySum()">Sum</button></p>
+        <p><button type="button" onclick="myClear()">Clear</button></p>
+        <p>Your result: </p>
+        <p id="result" ></p>
+            
+    <script>
+        var mySavedNumber = 0;
+
+        function mySum() {
+            var x, z;
+            z = 0;
+            //Get the value of the input field with id="numb"
+            x = Number(document.getElementById("numb").value);
+
+            if (mySavedNumber != 0) {
+                z = mySavedNumber + x;
+                mySavedNumber = z;
+                document.getElementById('result').innerHTML = z;
+            }
+            else {
+                mySavedNumber = x;
+            }
+        }
+
+        function myClear() {
+            mySavedNumber= 0;
+            document.getElementById('numb').value = '';
+            document.getElementById('result').innerHTML = '';
+        }
+    </script>
+
+</body>
+</html>

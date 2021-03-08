@@ -1,0 +1,73 @@
+body {
+    background: #FFE721;
+    color:#720A97;
+}
+h1 {
+    font-size:50px
+}
+h1, h2 {
+    text-align: center;
+    font-family: sans-serif;
+}
+/*unvisited link */
+a:link {
+    color: #E70025
+}
+/*visited link*/
+a:visited { 
+    color: #720A97;
+}
+/*mouse over link*/
+a:hover {
+    color:#0049D1;
+}
+/*selected link*/
+a:active {
+    color: #73BDBC;
+}
+
+table, tr, th, td {
+    border: 1px solid #07242D;
+    border-collapse: collapse;
+    padding: 5px;
+}
+th {
+    text-align: left;
+}
+.niceMenu ul {
+padding: 25px 0px 0px 0px;
+list-style: none;
+}
+
+.niceMenu ul li {
+    font: bold 18px sans-serif;
+    padding: 15px 0px;
+    background: #E70025;
+    width: 200px;
+    margin: 3px 0px 0px 20px;
+    text-align: center;
+    /*rounds the edges of the border*/
+    border-radius: 10px;
+    color: black;
+    /*gives the pointing finger cursor when it hovers over the link*/
+    cursor: pointer;
+    background: radial-gradient(ellipse, #FFFFFF), #085611;
+    display: inline-block;
+}
+
+.niceMenu ul li:hover {
+    /*this changes the background of the link before the text of the link changes cover on the hover*/
+    background: #0088DC;
+    
+}
+
+.niceMenu ul li a:link, a:visited, a:active {
+ /*no underline on links*/
+    text-decoration: none;
+}
+
+div {
+    background-color: #0088DC;
+    margin: 15px;
+    padding: 15px;
+}

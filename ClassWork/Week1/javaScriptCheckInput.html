@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1 - Checking Input with JavaScript</title>
+    <link rel="stylesheet" href="../../Style/myStyle.css">
+</head>
+<body>
+    <h1>JavaScript can validate input</h1>
+    <br>
+    <!--creates the input field to collect a numerical value-->
+    <h2>Example 1</h2>
+    <p>Enter a number</p>
+    <input id="numb" type="number">
+    <button type="button" onclick="myFunction()">Submit</button>
+    <p id="demo"></p>
+    <script>
+        function myFunction() {
+            var x, text;
+            // Get the value of the input field with the id="numb"
+            x = document.getElementById("numb").value;
+            // if x is greater than 10
+            if (x>10) {
+                text = "Input is greater than 10";
+            }                 
+            else {
+                text = "Input is less than 10";
+            }
+            // .innerHTML changes the content of the html element with the id of "demo" to the value of the "text" variable
+            document.getElementById("demo").innerHTML = text;
+        }
+    </script>
+    <h2>Example 2</h2>
+    <p>Enter a number between 1 and 10</p>
+    <input id="numb2" type="number">
+    <button type="button" onclick="mySecondFunction()">Submit</button>
+    <p id="demo2"></p>
+    <script>
+        function mySecondFunction() {
+            var x, text;
+            x = document.getElementById("numb2").value;
+            // x is less than one or greater than ten
+            if (x < 1 || x > 10) {
+                text = "You have entered an invalid number. Please enter a number between 1 and 10.";
+            }
+            else {
+                text = "Input is correct.";
+            }
+            document.getElementById("demo2").innerHTML = text;
+        }
+    </script>
+</body>
+</html>

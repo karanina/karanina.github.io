@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1 - Sound</title>
+    <link rel="stylesheet" href="../../Style/myStyle.css">
+
+</head>
+    <h1>Sound</h1>
+    <p>Get the Firefly Theme song ring tone <a href="../../Media/FireflyTheme.mp3">here</a> (mp3, 118Kb).</p>
+    
+    <!-- embedded sound play visible-->
+    <!--<embed src="../../Media/DrWhoTheme.wav" width="400px" height="200px" autostart="true" loop="true"></embed>-->
+    
+    <!--hidden sound player control box-->
+   <!-- <embed src="../../Media/DrWhoTheme.wav" width="400px" height="200px" autostart="true" hidden="true"></embed>-->
+
+   <!--This is the new way to do it as html5 won't be supporting embed for much longer. 
+
+    The source tag allows for multiple audio files. The browser will go down the list until it finds one that can be played on the browser.-->
+    <p>Pinky and The Brain Theme</p>
+   <audio controls id="mySound" loop hidden="true" autoplay="true">
+       <source src= "../../Media/PinkyAndTheBrainTheme.mp3" type="audio/mpeg">
+        <source src="../../Media/DrWhoTheme.wav">
+        Your browser does not support audio element
+   </audio>
+   <!--uses the element id to invoke the pause method to stop the audio-->
+   <button type="button" onclick="document.getElementById('mySound').pause();">Stop this sound</button>
+</body>
+</html>
