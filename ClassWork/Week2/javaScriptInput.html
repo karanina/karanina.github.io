@@ -11,9 +11,7 @@
     <h1>JavaScript Input</h1>
 <div>
     <button type="button" onclick="myAction()">Enter</button>
-    <br>
 <p id = "myDisplay"></p>
-<br>
 <script type="text/javascript">
     function myAction() {
         var text;
@@ -29,8 +27,6 @@
     Age: <input id = "age" type = "number">
     <br/>
     <button type = "button" onclick = "myDisplay()">Enter</button>
-    <br>
-
     <script>
         function myDisplay() {
             var myText;
@@ -41,7 +37,7 @@
             // "age"
             myAge = document.getElementById("age").value;
 
-            document.getElementById("toDisplay").innerHTML = "Hello " + myText + "Your age is " + myAge; 
+            document.getElementById("toDisplay").innerHTML = "Hello " + myText + ". Your age is " + myAge + "."; 
         }
     </script>
     <p id="toDisplay"></p>
@@ -53,7 +49,6 @@
     </select>
     <br>
     <button onclick = "myCheck()">Check Colour</button>
-    <br>
     <script>
         function myCheck() {
             var x = document.getElementById("mySelect").value;
@@ -67,9 +62,22 @@
     </script>
         <p id = "demo"></p>
 </div>
-<div>
+<div id="d1">
     <input type="radio" name="myColour" checked id="myRed" onclick="myColour()">Red<br>
-    <input type="radio" name="myColour"
+    <input type="radio" name="myColour" id="myBlue" onclick="myColour()">Blue<br>
+    <br>
+    <script>
+        function myColour() {
+            if (document.getElementById("myRed").checked) {
+                alert ("You chose red.");
+                document.getElementById("d1").style.backgroundColor = "red";
+            }
+            else {
+                alert ("You chose blue.");
+                document.getElementById("d1").style.backgroundColor = "blue";
+            }
+        }
+    </script>
 </div>
 </body>
 </html>
