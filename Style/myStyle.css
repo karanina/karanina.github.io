@@ -11,7 +11,7 @@ h1, h2 {
 }
 /*unvisited link */
 a:link {
-    color: #FFc90e
+    color:#E70025
 }
 /*visited link*/
 a:visited { 
@@ -57,8 +57,10 @@ list-style: none;
 
 .niceMenu ul li:hover {
     /*this changes the background of the link before the text of the link changes cover on the hover*/
-    background: #0088DC;
-    
+    background: #0088DC;    
+}
+.niceMenu a:visited {
+    color: #FFE721;
 }
 
 .niceMenu ul li a:link, a:visited, a:active {
@@ -81,3 +83,11 @@ table, #classWork {
     border-style: none;
 }
 
+iframe {
+    border: none;
+}
+
+#profilePic {
+    float: left;
+    margin-right: 10px;
+}
