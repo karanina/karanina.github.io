@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3 - CSS Animated Banner Ad Step 2</title>
+    <link rel="stylesheet" href="../../Style/myStyle.css">
+    <style>
+        body {
+            font-family: monospace, 'Lucide Console';
+        }
+        #outsideBox {
+            width: 600px;
+            height: 150px;
+            background-color: #0088DC;
+            overflow: hidden;            
+        }
+        #greeting {
+            font-size: 65px;
+            margin-left: 30px;
+            color: #720A97;
+            -webkit-animation-name: greetingMove; /*For Chrome*/
+            -webkit-webkit-animation-duration: 5s; /*For Chrome*/
+            animation-name: greetingMove;
+            animation-duration: 8s;
+        }
+        @keyframes greetingMove {
+            0% {margin-left: -250px; font-size: 65px;}
+            50% {margin-left: 130px; font-size: 90px;}
+            100% {margin-left: 30px; font-size: 65px;}
+        }
+        @-webkit-keyframes greetingMove {
+            0% {margin-left: -250px; font-size: 65px;}
+            50% {margin-left: 130px; font-size: 90px;}
+            100% {margin-left: 30px; font-size: 65px;}
+        }
+        #mainText {
+            font-size: 25px;
+            float: right;
+            color: #720A97;
+            -webkit-animation-name: textMove; /*For Chrome*/
+            -webkit-animation-duration: 5s; /*For Chrome*/
+            -webkit-animation-delay: 2s; /*For Chrome*/
+            animation-name: textMove;
+            animation-duration: 7s;
+            animation-delay: 5s;
+        }
+        @keyframes textMove {
+            0% {font-size: 25px;}
+            50% {font-size: 75px; color: #FFC90E;}
+            100% {font-size: 25px;}    
+        }
+        /*For Chrome*/
+        @-webkit-keyframes textMove {
+            0% {font-size: 25px;}
+            50% {font-size: 75px; color: #FFC90E;}
+            100% {font-size: 25px;}
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Animated Banner Ad - Step 2</h1>
+    <div id="outsideBox">
+        <div id="greeting"><strong>Maria</strong></div>
+        <div id="mainText"><strong>Welcome Home!</strong></div>
+    </div>
+</body>
+</html>
