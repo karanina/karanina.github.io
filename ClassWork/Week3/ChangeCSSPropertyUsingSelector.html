@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3 - Changing a CSS Property Using a Selector</title>
+    <link rel="stylesheet" href="../../Style/myStyle.css">
+</head>
+<body>
+    <h1>Changing a CSS Property Using a Selector</h1>
+    <select id="myFont">
+        <option value="Lucida Grande, Lucida Sans Unicode, Lucida Sans, DejaVu Sans, Verdana">Lucida Grande, Lucida Sans Unicode, Lucida Sans, DejaVu Sans, Verdana</option>
+        <option value="Segoe, Segoe UI, DejaVu Sans, Trebuchet MS, Verdana, 'sans-serif'">Segoe, Segoe UI, DejaVu Sans, Trebuchet MS, Verdana, sans-serif</option>
+    </select>
+    <button type="button" onclick="changeFont()">Change Font Type</button>
+    <br>
+    <br>
+    <div id="myText"><h2>How to learn coding fast?</h2>
+    <div><strong>To assist in your learning - courtesy of the <a href="https://www.codingdojo.com/blog/7-tips-learn-programming-faster">Coding Dojo instructors</a> - here are seven tips to learn programming faster.</strong></div>
+    <div>
+        <ol>
+            <li>Learn by doing.</li>
+            <li>Grasp the fundamentals for long term benefits.</li>
+            <li>Code by hand.</li>
+            <li>Ask for help.</li>
+            <li>Seek out more online resources.</li>
+            <li>Don't just <em>read</em> the sample code.</li>
+            <li>Take breaks when debugging.</li>
+        </ol>
+    </div>
+    </div>
+    <script>
+        function changeFont() {
+            var aText = document.getElementById("myText");
+            var newFont = document.getElementById("myFont").value;
+            aText.style.fontFamily = newFont;
+        }
+    </script>
+</body>
+</html>

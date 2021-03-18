@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3 - Using Multiple Range & Colour Picker Elements</title>
+    <link rel="stylesheet" href="../../Style/myStyle.css">
+</head>
+<body>
+    <h1>Changing CSS Properties Using Multiple Range & Colour Picker Elements</h1>
+    <input type="range" min="200" max="800" id="myWidth">
+    <button type="button" onclick="changeWidth()">Change Div Width</button>
+    <br>
+    <input type="range" min="200" max="800" id="myHeight">
+    <button type="button" onclick="changeHeight()">Change Div Height</button>
+    <br>
+    <label for="BackgroundColor">Background Colour: </label>
+    <input type="color" name="BackgroundColor" id="backgroundColour" onchange="changeBackgroundColour()"> 
+    <br>
+    <label for="FontColor">Font Colour: </label>
+    <input type="color" name="FontColor" id="fontColor" onchange="changeFontColour()">
+    <br>
+    <div id="myLyrics">
+        <h3>Paradise (What About Us) by Within Temptation featuring Tarja</h3>
+        <p>
+            There's no sense, the fire burns<br>
+            When wisdom fails, it changes all<br>
+            The wheel embodies all that keeps on turning<br>
+            Blood red skies, I feel so cold<br>
+            No innocence, we play our roll<br>
+            The wheel embodies all, where are we going?
+        </p>
+        <p>
+            All in all, you'd expect the wise to be wiser, fallen from grace and<br>
+            All and all I guess we should've known better 'cause</p>
+        <p>
+            What about us? Isn't it enough?<br>
+            No, we're not in paradise<br>
+            This is who we are, this is what we've got<br>
+            No, it's not our paradise<br>
+            But it's all we want, and it's all that we're fighting for<br>
+            Though it's not paradise
+        </p>
+        <p>
+            You and us, or I and them<br>
+            There comes a time to take a stand<br>
+            The wheel is watching all, it keeps on burning<br>
+            The venom works, it's like a curse<br>
+            A Trojan horse, when will we learn?<br>
+            The wheel embodies all that keeps…
+        </p>
+    </div>
+    <script>
+        function changeWidth() {
+            var x = document.getElementById("myLyrics");
+            var newWidth = document.getElementById("myWidth").value;
+            x.style.width = newWidth + "px";
+        }
+
+        function changeHeight() {
+            var x = document.getElementById("myLyrics");
+            var newHeight = document.getElementById("myHeight").value;
+            x.style.height = newHeight + "px";
+        }
+
+        function changeBackgroundColour() {
+            var x = document.getElementById("myLyrics");
+            var newBackgroundColour = document.getElementById("backgroundColour").value;
+            x.style.backgroundColor = newBackgroundColour;
+
+        }
+
+        function changeFontColour() {
+            var x = document.getElementById("myLyrics");
+            var newFontColour = document.getElementById("fontColor").value;
+            x.style.color = newFontColour;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3 - Changing CSS Property Using a Range Slider</title>
+    <link rel="stylesheet" href="../../Style/myStyle.css">
+</head>
+<body>
+    <h1>Changing a CSS Property Using a Range Slider and JavaScript</h1>
+    <p>
+        <input type="range" min="10" max="75" id="myRange">
+        <button type="button" onclick="changeTextSize()">Change Text Size</button>
+    </p>
+    <p id="myText">JavaScript can change the style of an HTML element.</p>
+    <script>
+        function changeTextSize() {
+            var aText = document.getElementById("myText");
+            var newSize = document.getElementById("myRange").value;
+            aText.style.fontSize = newSize + "px";
+        }
+    </script>
+</body>
+</html>
