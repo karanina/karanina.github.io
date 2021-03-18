@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Week 3 - CSS Animated Banner Ad Step 1</title>
-    <link rel="stylesheet" href="../../Style/myStyle.css">
+     <!--CSS link removed as it was interferring with the animation-->
+    <!--<link rel="stylesheet" href="../../Style/myStyle.css">-->
     <style>
         body {
             font-family: monospace, 'Lucide Console';
@@ -20,17 +21,17 @@
             font-size: 65px;
             margin-left: 30px;
             color: #720A97;
-            -webkit-animation-name: textMove; /*For Chrome*/
-            -webkit--webkit-animation-duration: 5s; /*For Chrome*/
-            animation-name: textMove;
+            -webkit-animation-name: greetingMove; /*For Chrome*/
+            -webkit-animation-duration: 5s; /*For Chrome*/
+            animation-name: greetingMove;
             animation-duration: 8s;
         }
-        @keyframes textMove {
+        @keyframes greetingMove {
             0% {margin-left: -250px; font-size: 65px;}
             50% {margin-left: 130px; font-size: 90px;}
             100% {margin-left: 30px; font-size: 65px;}
         }
-        @-webkit-keyframes textMove {
+        @-webkit-keyframes greetingMove {
             0% {margin-left: -250px; font-size: 65px;}
             50% {margin-left: 130px; font-size: 90px;}
             100% {margin-left: 30px; font-size: 65px;}
