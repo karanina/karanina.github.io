@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 3 - CSS Animated Banner Ad Step 2</title>
+    <title>Week 3 - CSS Animated Banner Ad Step 3</title>
     <!--CSS link removed as it was interferring with the animation-->
     <!--<link rel="stylesheet" href="../../Style/myStyle.css">-->
     <style>
@@ -16,6 +16,33 @@
             height: 150px;
             background-color: #0088DC;
             overflow: hidden;            
+        }
+        #daisy {
+            /*Visibility hidden*/
+            position: absolute;
+            left: -70px;
+            top: 150px;
+            margin-left: 10px;
+            -webkit-animation-name: moveDaisy;/*For Chrome*/
+            -webkit-animation-duration: 10s;/*For Chrome*/
+            -webkit-animation-delay: 10s;/*For Chrome*/
+            -webkit-animation-iteration-count: 2;/*For Chrome*/
+            animation-name: moveDaisy;
+            animation-duration: 10s;
+            animation-delay: 10s;
+            animation-iteration-count: 2;
+        }
+        @keyframes moveDaisy {
+            0% {margin-left: -70px; transform: rotate(20deg);}
+            10%{margin-left: 30px; transform: rotate(40deg);}
+            50%{margin-left: 380px; transform: rotate(180deg);}
+            90%{margin-left: -10px; transform: rotate(360deg);}
+        }
+        @-webkit-keyframes moveDaisy {
+            0% {margin-left: -70px; transform: rotate(20deg);}
+            10%{margin-left: 30px; transform: rotate(40deg);}
+            50%{margin-left: 380px; transform: rotate(180deg);}
+            90%{margin-left: -10px; transform: rotate(360deg);}
         }
         #mainText {
             font-size: 25px;
@@ -64,8 +91,9 @@
     </style>
 </head>
 <body>
-    <h1>CSS Animated Banner Ad - Step 2</h1>
+    <h1>CSS Animated Banner Ad - Step 3</h1>
     <div id="outsideBox">
+        <div id="daisy"><img src="../../Images/daisy_small.png" alt="daisy"></div>
         <div id="greeting"><strong>Maria</strong></div>
         <div id="mainText"><strong>Welcome Home!</strong></div>
     </div>

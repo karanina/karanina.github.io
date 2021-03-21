@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3 - Using Multiple Range, Color Picker and Selector Elements to change CSS</title>
+    <link rel="stylesheet" type="text/css" href="../../Style/myStyle.css">
+</head>
+<body>
+    <h1>Week 3 - Using Multiple Range, Color Picker and Seclector Elements to change CSS Properties</h1>
+    <br>
+    <input type="range" min=14 max=30 id="myNewFontSize">
+    <button type="button" onclick="changeFontSize()">Change Font Size</button>
+    <br>
+    <label for="myNewFontColor">Choose a new font color: </label>
+    <input type="color" name="myNewFontColor" id="newFontColor" onchange="changeFontColor()">
+    <br>
+    <select id="myFontFamily">
+        <option value="'Times New Roman', serif">Times New Roman, serif</option>
+        <option value="Impact, sans-serif">Impact, sans-serif</option>
+        <option value="Verdana, Geneva, Tahoma, sans-serif">Verdana, Geneva, Tahoma, sans-serif</option>
+        <option value="Arial, sans-serif">Arial, sans-serif</option>
+    </select>
+    <button type="button" onclick="changeFontFamily()">Change Font</button>
+    <br>
+    <select id="myFontWeight">
+        <option value="lighter">Lighter</option>
+        <option value="normal">Normal</option>
+        <option value="bold">Bold</option>
+        <option value="bolder">Bolder</option>
+    </select>
+    <button type="button" onclick="changeFontWeight()">Change Font Weight</button>
+    <div id="myTitle">
+        <h3>The Ring Verse (The Lord of the Rings - J.R.R. Tolkien)</h3>
+        <p id="myVerse">
+            Three Rings for the Elven-kings under the sky,<br>
+            Seven for the Dwarf-lords in their halls of stone,<br>
+            Nine for Mortal Men doomed to die,<br>
+            One for the Dark Lord on his dark throne.<br>
+            In the Land of Mordor where the Shadows lie.<br>
+            One Ring to rule them all, One Ring to find them,<br>
+            One Ring to bring them all, and in the darkness bind them,<br>
+            In the Land of Mordor where the Shadows lie.
+        </p>
+    </div>
+<script>
+    function changeFontSize() {
+        var x = document.getElementById("myTitle");
+        var newFontSize = document.getElementById("myNewFontSize").value;
+        x.style.fontSize = newFontSize + "pt";
+    }
+    function changeFontColor() {
+        var x = document.getElementById("myTitle");
+        var newColor = document.getElementById("newFontColor").value;
+        x.style.color = newColor;
+    }
+    function changeFontFamily(){
+        var x = document.getElementById("myVerse");
+        var newFontFamily = document.getElementById("myFontFamily").value;
+        x.style.fontFamily = newFontFamily;
+    }
+    function changeFontWeight() {
+        var x = document.getElementById("myVerse");
+        var newFontWeight = document.getElementById("myFontWeight").value;
+        x.style.fontWeight = newFontWeight;
+    }
+
+</script>
+</body>
+</html>
