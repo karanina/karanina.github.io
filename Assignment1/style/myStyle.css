@@ -1,0 +1,77 @@
+body {
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+    text-align: center;
+}
+.horizontalMenu ul {
+    list-style-type: none;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    background-color: #05857A;
+    overflow: hidden;
+    border-radius: 15pt;
+}
+.horizontalMenu ul li {
+    float: left;
+    border-right: 1px solid #59D2AC;
+}
+.horizontalMenu ul li:last-child {
+    border-right: none;
+}
+.horizontalMenu ul li a {
+    text-decoration: none;
+    display: block;
+    color: #94DEDB;
+    text-align: center;
+    padding: 14px;
+    width: 100px;
+
+}
+.horizontalMenu li a:hover {
+    background-color: #59D2AC;
+    color: #05597D;
+
+}
+.horizontalMenu li a:active {
+    background-color: #59D2AC;
+    color: #05597D;
+
+}
+.active {
+    background-color: #59D2AC;
+    color: #05597D;
+}
+header {
+    width: 75%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #05597D;
+}
+section {
+    width: 40%;
+    margin-left: 35%;
+    margin-right: 25%;
+}
+#imageSpace {
+    float: left;
+    position: relative;
+    top: -35px;
+    width: 30%;
+
+}
+#verticalBanner {
+    float: right;
+    position: relative;
+    top: -35px;
+    width: 20%;
+    height: 50%;
+    background-color: teal;
+}
+#imagePicture {
+    max-width: 100%  ;
+}
