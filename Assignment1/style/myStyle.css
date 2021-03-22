@@ -45,12 +45,13 @@ h1 {
     background-color: #59D2AC;
     color: #05597D;
 }
-header {
-    width: 75%;
-    height: auto;
+#outsideBox {
+    width: 800px;
+    height: 125px;
     margin-left: auto;
     margin-right: auto;
     background-color: #05597D;
+    overflow: hidden;
 }
 section {
     width: 40%;
@@ -74,4 +75,170 @@ section {
 }
 #imagePicture {
     max-width: 100%  ;
+}
+
+/*CSS for horizontal banner at top of page*/
+#outsideBox {
+    width: 800px;
+    height: 125px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #05597D;
+    overflow: hidden;
+}
+#pihaLandscape {
+    animation-name: pihaBeach;
+    animation-duration: 15s;
+    -webkit-animation-name: pihaBeach; /*For Chrome*/
+    -webkit-animation-duration: 15s; /*For Chrome*/
+    opacity: 0;
+    position: absolute;
+}
+@keyframes pihaBeach {
+    0% {opacity: 1};
+    90% {opacity: 1;}
+    100% {margin-top:-125px; opacity: 0;}    
+}
+@-webkit-keyframes pihaBeach {
+    0% {opacity: 1};
+    90%{opacity: 1;}
+    100% {margin-top:-100px; opacity: 0;}  
+}
+#pihaScript {
+    color:  #05857A;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin-left: 575px;
+    opacity: 0;
+    position: absolute;
+    animation-name: pihaTextChange;
+    animation-duration: 7500ms;
+    animation-iteration-count: 2;
+    -webkit-animation-name: pihaTextChange; /*For Chrome*/
+    -webkit-animation-duration: 7500ms; /*For Chrome*/
+    -webkit-animation-iteration-count: 2;/*For Chrome*/
+}
+@keyframes pihaTextChange {
+    0% { font-size: 20px; color:  #05857A; opacity: 0;}
+    10% {opacity: 1.0;}
+    50% { font-size: 60px; color: #59D2AC; opacity: 1;}
+    90% {opacity: 0;}
+    100% { font-size: 20px; color: #05857A; opacity: 0;}
+}
+@-webkit-keyframes pihaTextChange {
+    0% { font-size: 20px; color:  #05857A; opacity: 0;}
+    10% {opacity: 1.0;}
+    50% { font-size: 60px; color: #59D2AC; opacity: 1;}
+    90% {opacity: 0;}
+    100% { font-size: 20px; color: #05857A; opacity: 0;}
+}
+#wildScript {
+
+    color:  #05857A;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin-left: 600px;
+    opacity: 0;
+    position: absolute;
+    margin-top: 27px;
+    animation-name: wildTextChange;
+    animation-duration: 7500ms;
+    animation-delay: 2500ms;
+    animation-iteration-count: 2;
+    -webkit-animation-name: wildTextChange; /*For Chrome*/
+    -webkit-animation-duration: 7500ms; /*For Chrome*/
+    -webkit-animation-iteration-count: 2;/*For Chrome*/
+    -webkit-animation-delay: 2500ms;/*For Chrome*/
+}
+@keyframes wildTextChange {
+    0% { font-size: 20px; color:  #05857A; opacity: 0;}
+    10% {opacity: 1.0;}
+    50% { font-size: 60px; color: #59D2AC; opacity: 1;}
+    90% {opacity: 0;}
+    100% { font-size: 20px; color: #05857A; opacity: 0;}
+}
+@-webkit-keyframes wildTextChange {
+    0% { font-size: 20px; color:  #05857A; opacity: 0;}
+    10% {opacity: 1.0;}
+    50% { font-size: 60px; color: #59D2AC; opacity: 1;}
+    90% {opacity: 0;}
+    100% { font-size: 20px; color: #05857A; opacity: 0;}
+}
+#beautyScript {
+    color:  #05857A;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin-left: 625px;
+    opacity: 0;
+    position: absolute;
+    margin-top: 54px;
+    animation-name: beautyTextChange;
+    animation-duration: 7500ms;
+    animation-iteration-count: 2;
+    animation-delay: 5000ms;
+    -webkit-animation-name: beautyTextChange; /*For Chrome*/
+    -webkit-animation-duration: 7500ms; /*For Chrome*/
+    -webkit-animation-iteration-count: 2;/*For Chrome*/
+    -webkit-animation-delay: 5000ms;/*For Chrome*/
+}
+@keyframes beautyTextChange {
+    0% { font-size: 20px; color:  #05857A; opacity: 0;}
+    10% {opacity: 1.0;}
+    50% { font-size: 60px; color: #59D2AC; opacity: 1;}
+    90% {opacity: 0;}
+    100% { font-size: 20px; color: #05857A; opacity: 0;}
+}
+@-webkit-keyframes beautyTextChange {
+    0% { font-size: 20px; color:  #05857A; opacity: 0;}
+    10% {opacity: 1.0;}
+    50% { font-size: 60px; color: #59D2AC; opacity: 1;}
+    90% {opacity: 0;}
+    100% { font-size: 20px; color: #05857A; opacity: 0;}
+}
+#pihaSunny {
+    animation-name: sunnySlide;
+    animation-duration: 15s;
+    animation-delay:7500ms;
+    -webkit-animation-name: sunnySlide; /*For Chrome*/
+    -webkit-animation-duration: 15s; /*For Chrome*/
+    -webkit-animation-delay:7500ms ;/*For Chrome*/
+    opacity: 0;
+    position: absolute;
+}
+@keyframes sunnySlide {
+    0% { margin-left:0px; opacity: 1;}
+    100% { margin-left:-550px; opacity: 1;}
+}
+/*For Chrome*/
+@-webkit-keyframes sunnySlide {
+    0% { margin-left:0px; opacity: 1;}
+    100% { margin-left:-550px; opacity: 1;}
+}
+#nameNumber {
+    color:  #59D2AC;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 16px;
+    position: absolute;
+    text-align: center;
+    margin-left: 315px;
+    margin-top: 38px;
+    opacity: 0;
+    animation-name: nameNumberTextChange;
+    animation-duration: 5s;
+    animation-delay: 20s;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: nameNumberTextChange; /*For Chrome*/
+    -webkit-animation-duration: 5s; /*For Chrome*/
+    -webkit-animation-delay: 20s;/*For Chrome*/
+    -webkit-animation-fill-mode: forwards;/*For Chrome*/
+}
+@keyframes nameNumberTextChange {
+    0% { font-size: 16px; color:  #59D2AC; opacity: 1;}
+    50% { font-size: 28px; color:  #94DEDB; opacity: 1;}
+    100% { font-size: 20px; color:  #59D2AC; opacity: 1;}
+}
+@-webkit-keyframes nameNumberTextChange {
+    0% { font-size: 16px; color:  #59D2AC; opacity: 1;}
+    50% { font-size: 28px; color: #94DEDB; opacity: 1;}
+    100% { font-size: 20px; color:  #59D2AC; opacity: 1;}
 }
