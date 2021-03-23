@@ -1,7 +1,7 @@
 body {
     background: #FFE721;
     color:#720A97;
-    font-family:
+    font-family: 'Times New Roman', Times, serif;
 }
 h1 {
     font-size:50px
@@ -12,7 +12,7 @@ h1, h2 {
 }
 /*unvisited link */
 a:link {
-    color:#E70025
+    color:#FFE721;
 }
 /*visited link*/
 a:visited { 
@@ -65,7 +65,7 @@ list-style: none;
 }
 
 .niceMenu ul li a:link, a:visited, a:active {
- /*no underline on links*/
+/*no underline on links*/
     text-decoration: none;
 }
 
