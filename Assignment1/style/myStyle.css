@@ -28,7 +28,7 @@ h1 {
     color: #94DEDB;
     text-align: center;
     padding: 14px;
-    width: 100px;
+    width: 225px;
 
 }
 .horizontalMenu li a:hover {
@@ -96,13 +96,13 @@ section {
 }
 @keyframes pihaBeach {
     0% {opacity: 1};
-    90% {opacity: 1;}
+    75% {opacity: 1;}
     100% {margin-top:-125px; opacity: 0;}    
 }
 @-webkit-keyframes pihaBeach {
     0% {opacity: 1};
-    90%{opacity: 1;}
-    100% {margin-top:-100px; opacity: 0;}  
+    75%{opacity: 1;}
+    100% {margin-top:-125px; opacity: 0;}  
 }
 #pihaScript {
     color:  #05857A;
@@ -121,14 +121,14 @@ section {
 @keyframes pihaTextChange {
     0% { font-size: 20px; color:  #05857A; opacity: 0;}
     10% {opacity: 1.0;}
-    50% { font-size: 60px; color: #59D2AC; opacity: 1;}
+    50% { font-size: 40px; color: #59D2AC; opacity: 1;}
     90% {opacity: 0;}
     100% { font-size: 20px; color: #05857A; opacity: 0;}
 }
 @-webkit-keyframes pihaTextChange {
     0% { font-size: 20px; color:  #05857A; opacity: 0;}
     10% {opacity: 1.0;}
-    50% { font-size: 60px; color: #59D2AC; opacity: 1;}
+    50% { font-size: 40px; color: #59D2AC; opacity: 1;}
     90% {opacity: 0;}
     100% { font-size: 20px; color: #05857A; opacity: 0;}
 }
@@ -140,7 +140,7 @@ section {
     margin-left: 600px;
     opacity: 0;
     position: absolute;
-    margin-top: 27px;
+    margin-top: 38px;
     animation-name: wildTextChange;
     animation-duration: 7500ms;
     animation-delay: 2500ms;
@@ -153,14 +153,14 @@ section {
 @keyframes wildTextChange {
     0% { font-size: 20px; color:  #05857A; opacity: 0;}
     10% {opacity: 1.0;}
-    50% { font-size: 60px; color: #59D2AC; opacity: 1;}
+    50% { font-size: 40px; color: #59D2AC; opacity: 1;}
     90% {opacity: 0;}
     100% { font-size: 20px; color: #05857A; opacity: 0;}
 }
 @-webkit-keyframes wildTextChange {
     0% { font-size: 20px; color:  #05857A; opacity: 0;}
     10% {opacity: 1.0;}
-    50% { font-size: 60px; color: #59D2AC; opacity: 1;}
+    50% { font-size: 40px; color: #59D2AC; opacity: 1;}
     90% {opacity: 0;}
     100% { font-size: 20px; color: #05857A; opacity: 0;}
 }
@@ -171,7 +171,7 @@ section {
     margin-left: 625px;
     opacity: 0;
     position: absolute;
-    margin-top: 54px;
+    margin-top: 76px;
     animation-name: beautyTextChange;
     animation-duration: 7500ms;
     animation-iteration-count: 2;
@@ -184,14 +184,14 @@ section {
 @keyframes beautyTextChange {
     0% { font-size: 20px; color:  #05857A; opacity: 0;}
     10% {opacity: 1.0;}
-    50% { font-size: 60px; color: #59D2AC; opacity: 1;}
+    50% { font-size: 40px; color: #59D2AC; opacity: 1;}
     90% {opacity: 0;}
     100% { font-size: 20px; color: #05857A; opacity: 0;}
 }
 @-webkit-keyframes beautyTextChange {
     0% { font-size: 20px; color:  #05857A; opacity: 0;}
     10% {opacity: 1.0;}
-    50% { font-size: 60px; color: #59D2AC; opacity: 1;}
+    50% { font-size: 40px; color: #59D2AC; opacity: 1;}
     90% {opacity: 0;}
     100% { font-size: 20px; color: #05857A; opacity: 0;}
 }
