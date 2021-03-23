@@ -12,7 +12,7 @@ h1, h2 {
 }
 /*unvisited link */
 a:link {
-    color:#FFE721;
+    color:#E70025;
 }
 /*visited link*/
 a:visited { 
@@ -63,7 +63,9 @@ list-style: none;
 .niceMenu a:visited {
     color: #FFE721;
 }
-
+.niceMenu a:active {
+    color: #FFE721;
+}
 .niceMenu ul li a:link, a:visited, a:active {
 /*no underline on links*/
     text-decoration: none;
