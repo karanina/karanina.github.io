@@ -13,6 +13,6 @@ function bookingBookingDetails () {
     clientCooking = document.getElementById("cooking").value;
     clientClientRecreationEquipment = document.getElementById("recreationEquipment").value;
     if (clientFirstName == "" || clientLastName == "" || clientCheckInDate == "" || clientCheckOutDate == "") {
-        alert("Please fill in all fields.");
+        window.alert("Please fill in all fields.");
     }
 }
