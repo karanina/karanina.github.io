@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 4 - Animation with HTML & JavaScript Step 2</title>
+    <style>
+        /*Outside container - the parent ,div.*/
+        .example_path {
+            position: relative;
+            overflow: hidden;
+            width: 580px;
+            height: 500px;
+            border: 3px solid #0049D1
+        }
+
+        /*Sliding block within the outside container - the child <div>*/
+        .example_path .example_block {
+            position: absolute;
+            background-color: #0088DC;
+            width: 30px;
+            height: 40px;
+            padding-top: 10px;
+            text-align: center;
+            color: #fff;
+            font-size: 10px;
+            white-space: nowrap;
+        }
+    </style>
+    <script type="text/javascript">
+        function move(elem) {
+            var left = 0;
+            var top = 0;
+            var point = 0;
+
+            function doMove() {
+                if (point == 0) {
+                    left++; // updates variable value
+                    top++; // updates variable value
+                    elem.style.left = left + "px"; // updates style property
+                    elem.style.top = top + "px"; // updates style property
+                    if (left > 300) {
+                        point = 1; // creates condition to update point variable value
+                    }
+                }
+                if (point == 1) {
+                    left--; // updates variable value
+                    elem.style.left = left + "px"; // updates style property
+                    if (left < 20) {
+                        clearInterval(id); // clears the timer set with the setInterval() method. The parameter given is the variable name used in the setInterval statement
+                    }
+                }
+            }
+            var id = setInterval(doMove, 10) // Timer Handler that calls the doMove function every 10 milliseconds until the clearInterval() Timer Handler is called in the finish condition.
+        }
+    </script>
+</head>
+<body>
+    <h1>Step 2</h1>
+    <div onclick="move(this.children[0])" class="example_path"><!--"move(this.children[0])" calls the move() function and passes in the parameter of the first nested element within this div, ie this (this <div>), children (it's nested elements), [0] the first nested element (like in a list or array).-->
+    <div style="left:19px; top:301px" class="example_block" id="ltbl"></div>
+
+</body>
+</html>

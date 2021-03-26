@@ -56,19 +56,16 @@ list-style: none;
     display: inline-block;
 }
 
-.niceMenu ul li:hover {
+.niceMenu ul li a:hover {
     /*this changes the background of the link before the text of the link changes cover on the hover*/
     background: #0088DC;    
+    color: #0049D1;
 }
-.niceMenu a:visited {
-    color: #FFE721;
-}
-.niceMenu a:active {
-    color: #FFE721;
-}
+
 .niceMenu ul li a:link, a:visited, a:active {
 /*no underline on links*/
     text-decoration: none;
+    color: #FFE721;
 }
 
 div {

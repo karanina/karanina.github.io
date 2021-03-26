@@ -4,20 +4,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piha Beach Lodges - Booking Step 1</title>
+    <title>Piha Beach Lodges</title>
     <link rel="stylesheet" href="style/myStyle.css">
+    <script src="script/myScript.js"></script>
 </head>
 <body>
-    <h1>Welcome to Piha Beach Lodges</h1>
+    <div id="outsideBox"><a href="http://www.piha.co.nz" target="new">
+        <div id="pihaLandscape"><!--image taken from http://www.piha.co.nz/wp-content/uploads/2010/10/piha-4.jpg--><img src="images/pihaLandscapeBanner.jpg" alt="Wild and Wet Piha"></div>
+        <div id="pihaScript"><em>Piha</em></div>
+        <div id="wildScript"><em>Wild</em></div>
+        <div id="beautyScript"><em>Beauty</em></div>
+        <div id="pihaSunny"><!--taken from https://www.newzealand.com/au/piha/--><img src="images/pihaBushBanner.jpg" alt="Piha on a Sunny Day"></a></div>
+        <div id="nameNumber">Anna McColl <br>Student ID: 1527037</div>
+        </a>
+    </div>
+    <h1>Booking Details</h1>
     <nav class="horizontalMenu">
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="accomodation.html">Accomodation</a></li>
-            <li><a href="amentities.html">Amenities</a></li>
             <li><a class="active" href="booking-step-1.html">Bookings</a></li>
-            <li><a href="contactUs.html">Contact Us</a></li>
-        </ul>
+            <li><a href="pdfs/horizontalStoryboard.pdf">Horizontal Banner Storyboard</a></li>
+            <li><a href="pdfs/verticalStoryboard.pdf">Vertical Banner Storyboard</a></li>
+            <li><a href="pdfs/wireframes.pdf">Wireframes</a></li>
+            </ul>
     </nav>
+    <aside id="bookingVerticalBanner">Vertical Banner Ad</aside>
+    <div class="booking">
+        <h2>Booking Progress</h2>
+        <div class="progressContainer">
+            <div class="progressBar" style="width: 25%;">25%</div>
+        </div>
+        <section> 
+            <table class="bookingTable">
+                <tr>
+                    <td class="leftCol">First Name:</td>
+                    <td class="rightCol"><input type="text" id="firstName"></td>
+                </tr>
+                    <td class="leftCol">Family Name:</td>
+                    <td class="rightCol"><input type="text" id="familyName"></td>
+                <tr>
+                    <td class="leftCol">Check In Date</td>
+                    <td class="rightCol"><input type="date" id="checkInDate"></td>
+                </tr>
+                <tr>
+                    <td class="leftCol">Check Out Date</td>
+                    <td class="rightCol"><input type="date" id="checkOutDate"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Will you need access to cooking facilities?<br>
+                        <input type="radio" name="cooking" checked id="Yes">Yes<br>
+                        <input type="radio" name="cooking" id="No">No
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        Do you want access to the Lodge's recreational equipment? (eg surfboards, body boards, googles, snorkles, flippers, table tennis equipment)<br>
+                        <input type="radio" name="recreationEquipment" checked id="Yes">Yes<br>
+                        <input type="radio" name="recreationEquipment" id="No">No
+                    </td>
+                </tr>
+            </table>
+        </section>
+        <section>
+            <button type="button" style="float: left;"><a href="index.html">Home</a></button>
+            <button type="button" onclick="bookingBookingDetails()" style="float: right;"><a href="booking-step-2.html">Next</a></button>
+        </section>
+            
+
+    </div>
 </body>
 </html>

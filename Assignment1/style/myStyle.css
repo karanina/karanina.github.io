@@ -5,6 +5,9 @@ body {
 h1 {
     text-align: center;
 }
+h2 {
+    text-align: center;
+}
 .horizontalMenu ul {
     list-style-type: none;
     width: fit-content;
@@ -45,13 +48,38 @@ h1 {
     background-color: #59D2AC;
     color: #05597D;
 }
-#outsideBox {
+/*CSS for progress bar*/
+.progressContainer {
     width: 800px;
-    height: 125px;
+    height: 25px;
+
     margin-left: auto;
-    margin-right: auto;
+    margin-right:auto;
+    background-color: lightgrey;
+    border-radius: 15px;
+}
+.progressBar {
+    height: 20px;
+    padding-top: 5px;
     background-color: #05597D;
-    overflow: hidden;
+    text-align: center;
+    color: #94DEDB;
+    border-radius: 15px;
+}
+.booking {
+    float: left;
+    width: 80%;   
+}
+/*CSS for Booking Table*/ 
+.bookingTable, tr, td {
+    padding-top: 25px;
+}
+
+.leftCol {
+text-align: right;
+}
+.rightCol {
+text-align: left;
 }
 section {
     width: 40%;
@@ -65,6 +93,14 @@ section {
     width: 30%;
 
 }
+#bookingVerticalBanner {
+    float: right;
+    position: relative;
+    top: 68px;
+    width: 20%;
+    height: 50%;
+    background-color: teal;
+}
 #verticalBanner {
     float: right;
     position: relative;
@@ -76,7 +112,15 @@ section {
 #imagePicture {
     max-width: 100%  ;
 }
-
+/*CSS for buttons*/
+button {
+    width: 100px;
+    margin-top: 25px;
+}
+button a {
+    text-decoration: none;
+    color: black;
+}
 /*CSS for horizontal banner at top of page*/
 #outsideBox {
     width: 800px;
