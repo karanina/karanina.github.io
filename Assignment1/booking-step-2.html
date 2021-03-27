@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piha Beach Lodges - Booking - Activity Experience</title>
+    <link rel="stylesheet" href="style/myStyle.css">
+    <script src="script/myScript.js"></script>
+</head>
+<body>
+    <div id="outsideBox"><a href="http://www.piha.co.nz" target="new">
+        <div id="pihaLandscape"><!--image taken from http://www.piha.co.nz/wp-content/uploads/2010/10/piha-4.jpg--><img src="images/pihaLandscapeBanner.jpg" alt="Wild and Wet Piha"></div>
+        <div id="pihaScript"><em>Piha</em></div>
+        <div id="wildScript"><em>Wild</em></div>
+        <div id="beautyScript"><em>Beauty</em></div>
+        <div id="pihaSunny"><!--taken from https://www.newzealand.com/au/piha/--><img src="images/pihaBushBanner.jpg" alt="Piha on a Sunny Day"></a></div>
+        <div id="nameNumber">Anna McColl <br>Student ID: 1527037</div>
+        </a>
+    </div>
+    <h1>Activity Experience</h1>
+    <nav class="horizontalMenu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a class="active" href="booking-step-1.html">Bookings</a></li>
+            <li><a href="pdfs/horizontalStoryboard.pdf">Horizontal Banner Storyboard</a></li>
+            <li><a href="pdfs/verticalStoryboard.pdf">Vertical Banner Storyboard</a></li>
+            <li><a href="pdfs/wireframes.pdf">Wireframes</a></li>
+            </ul>
+    </nav>
+    <aside id="bookingVerticalBanner">Vertical Banner Ad</aside>
+    <div class="booking">
+        <h2>Booking Progress</h2>
+        <div class="progressContainer">
+            <div class="progressBar" style="width: 50%;">50%</div>
+        </div>
+        <section> 
+            <table class="bookingTable">
+                <tr>
+                    <td colspan="2" class="rangeQuestion">How experienced are you swimming in the ocean?</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="range" class="ranges" id="swimmingExperience" min="0" max="10"></td>
+                </tr>
+                <tr>
+                    <td class="rangeCaptionLeft">Novice</td>
+                    <td class="rangeCaptionRight">Expert</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="rangeQuestion">How experienced are you at surfing?</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="range" class="ranges" id="surfingExperience" min="0" max="10"></td>
+                </tr>
+                <tr>
+                    <td class="rangeCaptionLeft">Novice</td>
+                    <td class="rangeCaptionRight">Expert</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="selectQuestion">Would you like us to arrange surfing lessons for your party?<br>
+                <br>
+                    <select id="surfingLessons" required><!--Specifies that the user is required to select an option before submitting the form-->
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                    <td colspan="2" class="rangeQuestion">How experienced are you in the bush?</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="range" class="ranges" id="bushExperience" min="0" max="10"></td>
+                </tr>
+                <tr>
+                    <td class="rangeCaptionLeft">Novice</td>
+                    <td class="rangeCaptionRight">Expert</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="selectQuestion">
+                        Would you like us to arrange an information pack of local tracks for your party?<br>
+                        <br>                    
+                        <select id="trackInformation" required>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                            </select>
+                    </tr>
+                </tr>
+            </table>
+        </section>
+        <section>
+            <button type="button" style="float: left;"><a href="booking-step-1.html">Previous</a></button>
+            <button type="button" onclick="bookingActivityExperience()" style="float: right;"><a href="booking-step-3.html">Next</a></button>
+        </section>
+            
+
+    </div>
+</body>
+</html>

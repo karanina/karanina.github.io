@@ -81,6 +81,24 @@ text-align: right;
 .rightCol {
 text-align: left;
 }
+.ranges {
+    width:500px;
+}
+.rangeCaptionLeft {
+    text-align: left;
+    padding-top: 0px;
+}
+.rangeCaptionRight {
+    text-align: right;
+    padding-top: 0px;
+}
+.rangeQuestion {
+    padding-bottom: 0px;
+}
+.selectQuestion {
+    text-align: center;
+}
+
 section {
     width: 40%;
     margin-left: 35%;
