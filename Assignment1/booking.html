@@ -64,8 +64,12 @@
                         <input type="radio" name="recreationEquipment" id="No">No
                     </td>
                 </tr>
+                <tr>
+                    <td><button type="button" class="previousButton" onclick="previousSection('details')">Previous</button></td>
+                    <td><button type="button" class="nextButton" onclick = "nextSection('details')">Next</button></td>
+                </tr>
             </table>
-            <button type="button" onclick = "nextSection('details')">Next</button>
+
         </section>
         <section>
             <table class="bookingTable" id="activityExperience">
@@ -116,7 +120,11 @@
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
                             </select>
-                    </tr>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button type="button" class="previousButton" onclick="previousSection('activities')">Previous</button></td>
+                    <td><button type="button" class="nextButton" onclick = "nextSection('activities')">Next</button></td>
                 </tr>
             </table>
         </section>
@@ -154,6 +162,10 @@
                     <input type="color" id="colourWelcomePack">
                 </td>
             </tr>
+            <tr>
+                <td><button type="button" class="previousButton" onclick="previousSection('numbers')">Previous</button></td>
+                <td><button type="button" class="nextButton" onclick = "nextSection('numbers')">Next</button></td>
+            </tr>
             </table>
         </section>
         <section>
@@ -169,6 +181,10 @@
                 <tr>
                     <td><input type="checkbox" id="conservationAgreement"></td>
                     <td>Do you agree to abide by the Piha Native Conservation Agreement during your stay <i>(please tick box)</i></td>
+                </tr>
+                <tr>
+                    <td><button type="button" class="previousButton" onclick="previousSection('contact')">Previous</button></td>
+                    <td><button type="button" class="nextButton" onclick = "submit()">Submit</button></td>
                 </tr>
             </table>
         </section>
@@ -199,78 +215,114 @@ function bookingBookingDetails() {
     clientCheckOutDate = document.getElementById("checkOutDate").value;
     clientCooking = document.getElementById("cooking").value;
     clientClientRecreationEquipment = document.getElementById("recreationEquipment").value;
-    if (clientFirstName == "" || clientLastName == "" || clientCheckInDate == "" || clientCheckOutDate == "") {
-        alert("Please fill in all fields.");
-    }
-}
-function bookingActivityExperience() {
     clientSwimmingExperience = Number(document.getElementById("swimmingExperience").value);
     clientSurfingExperience = Number(document.getElementById("surfingExperience").value);
     clientSurfingLessons = document.getElementById("surfingLessons").value;
     clientBushExperience = Number(document.getElementById("bushExperience").value);
     clientTrackInformationPack = document.getElementById("trackInformation").value;
-}
-function bookingNumbers() {
     bookingNumberAdults = Number(document.getElementById("numberAdults").value);
     bookingNumberChildren = Number(document.getElementById("numberChildren").value);
     bookingNumberLodges = Number(document.getElementById("numberLodges").value);
     bookingColourWelcomePack = document.getElementById("colorWelcomePack").value;
-}
-function bookingContactAgreement() {
     clientEmail = document.getElementById("bookingEmail").value;
     clientConservationAgreement = document.getElementById("conservationAgreement").value;
 }
+/*loads the next section upon clicking the 'next' button*/
 function nextSection(sectionName) {
     var nextSectionID;
+    var newSectionName
     var currentSectionID;
+    var newProgressValue;
+    var newProgress;
 
     switch (sectionName) {
         case 'details':
             currentSectionID = document.getElementById("bookingDetails");    
             nextSectionID = document.getElementById("activityExperience");
-
+            newSectionName = 'activities';
             break;
         case 'activities':
             currentSectionID = document.getElementById("activityExperience");
             nextSectionID = document.getElementById("bookingNumbers");
+            newSectionName = 'numbers';
             break;
         case 'numbers':
-            currentExperienceID = document.getElementById("bookingNumbers");
+            currentSectionID = document.getElementById("bookingNumbers");
             nextSectionID = document.getElementById("contactDetails");
+            newSectionName = 'contact'
             break;
         case 'contact':
             currentSectionID = document.getElementById("contactDetails");
             nextSectionID = document.getElementById("confirmationSummary");
+            newSectionName('confirmation');
             break;
     }
 
     currentSectionID.style.display = "none";
     nextSectionID.style.display = "initial";
-    updateProgressBar(sectionName);
+    newProgress = document.getElementById("progressBar");
+    newProgressValue = updateProgressBar(newSectionName);
+    newProgress.style.width = newProgressValue;
+    newProgress.innerHTML = newProgressValue;
+}
+/*loads the previous section upon clicking the 'previous' button*/
+function previousSection(sectionName) {
+    var previousSectionID;
+    var currentSectionID;
+    var newSectionName;
 
-/*Updates the progress bar upon clicking the 'next' button*/
-function updateProgressBar(sectionName) {
-    var newValue;
-    var newProgress;
     switch (sectionName) {
         case 'details':
-            newValue = "25%";
+            currentSectionID = document.getElementById("bookingDetails");    
+            previousSectionID = document.getElementById("bookingDetails");
+            newSectionName = "details";
             break;
         case 'activities':
-            newValue = "50%";
+            currentSectionID = document.getElementById("activityExperience");
+            previousSectionID = document.getElementById("bookingDetails");
+            newSectionName = "details";
             break;
         case 'numbers':
-            newValue = "75%";
+            currentSectionID = document.getElementById("bookingNumbers");
+            previousSectionID = document.getElementById("activityExperience");
+            newSectionName = "activities";
             break;
         case 'contact':
+            currentSectionID = document.getElementById("contactDetails");
+            previousSectionID = document.getElementById("bookingNumbers");
+            newSectionName = "numbers";
+            break;
+    }
+
+    currentSectionID.style.display = "none";
+    previousSectionID.style.display = "initial";
+    newProgress = document.getElementById("progressBar");
+    newProgressValue = updateProgressBar(newSectionName);
+    newProgress.style.width = newProgressValue;
+    newProgress.innerHTML = newProgressValue;
+}
+/*Updates the progress bar upon clicking the 'previous' or 'next' buttons*/
+function updateProgressBar(newSectionName) {
+    var newValue;
+    var newProgress;
+    switch (newSectionName) {
+        case 'details':
+            newValue = "0%";
+            break;
+        case 'activities':
+            newValue = "25%";
+            break;
+        case 'numbers':
+            newValue = "50%";
+            break;
+        case 'contact':
+            newValue = "75%";
+            break;
+        case 'confirmationSummary':
             newValue = "100%";
             break;
     }
-    
-    document.getElementById("progressBar").innerText = newValue;
-    newProgress = document.getElementById("progressBar");
-    newProgress.style.width = newValue;
-}
+    return newValue;
 }
     </script>
 </body>

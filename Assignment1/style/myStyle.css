@@ -153,6 +153,12 @@ button a {
     text-decoration: none;
     color: black;
 }
+.previousButton {
+float: left;
+}
+.nextButton {
+float: right;
+}
 /*CSS for horizontal banner at top of page*/
 #outsideBox {
     width: 800px;
