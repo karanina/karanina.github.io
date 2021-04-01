@@ -4,6 +4,17 @@ var clientCheckInDate;
 var clientCheckOutDate;
 var clientCooking;
 var clientRecreationEquipment;
+var clientSwimmingExperience;
+var clientSurfingExperience;
+var clientSurfingLessons;
+var clientBushExperience;
+var clientTrackInformationPack;
+var bookingNumberAdults;
+var bookingNumberChildren;
+var bookingNumberLodges;
+var bookingColourWelcomePack;
+var clientEmail;
+var clientConservationAgreement;
 
 function bookingBookingDetails () {
     clientFirstName = document.getElementById("firstName").value;
@@ -13,6 +24,13 @@ function bookingBookingDetails () {
     clientCooking = document.getElementById("cooking").value;
     clientClientRecreationEquipment = document.getElementById("recreationEquipment").value;
     if (clientFirstName == "" || clientLastName == "" || clientCheckInDate == "" || clientCheckOutDate == "") {
-        window.alert("Please fill in all fields.");
+        alert("Please fill in all fields.");
     }
+function bookingActivityExperience () {
+    clientSwimmingExperience = document.getElementById("swimmingExperience").value;
+    clientSurfingExperience = document.getElementById("surfingExperience").value;
+    clientSurfingLessons = document.getElementById("surfingLessons").value;
+    clientBushExperience = document.getElementById("bushExperience").value;
+    clientTrackInformationPack;
+}
 }

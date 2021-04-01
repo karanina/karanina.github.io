@@ -8,6 +8,7 @@ h1 {
 h2 {
     text-align: center;
 }
+/*CSS for navigation menu*/
 .horizontalMenu ul {
     list-style-type: none;
     width: fit-content;
@@ -49,7 +50,7 @@ h2 {
     color: #05597D;
 }
 /*CSS for progress bar*/
-.progressContainer {
+#progressContainer {
     width: 800px;
     height: 25px;
 
@@ -58,14 +59,16 @@ h2 {
     background-color: lightgrey;
     border-radius: 15px;
 }
-.progressBar {
+#progressBar {
     height: 20px;
     padding-top: 5px;
     background-color: #05597D;
     text-align: center;
     color: #94DEDB;
     border-radius: 15px;
+    width: 0%;
 }
+/*CSS for booking div*/
 .booking {
     float: left;
     width: 80%;   
@@ -73,8 +76,8 @@ h2 {
 /*CSS for Booking Table*/ 
 .bookingTable, tr, td {
     padding-top: 25px;
+    width: 50%;
 }
-
 .leftCol {
 text-align: right;
 }
@@ -82,7 +85,7 @@ text-align: right;
 text-align: left;
 }
 .ranges {
-    width:500px;
+    width: 400px;
 }
 .rangeCaptionLeft {
     text-align: left;
@@ -98,7 +101,18 @@ text-align: left;
 .selectQuestion {
     text-align: center;
 }
-
+#bookingDetails {
+    display: initial;
+}
+#activityExperience {
+    display: none;
+}
+#bookingNumbers {
+    display: none;
+}
+#contactDetails {
+    display: none;
+}
 section {
     width: 40%;
     margin-left: 35%;
@@ -143,10 +157,12 @@ button a {
 #outsideBox {
     width: 800px;
     height: 125px;
+    position: relative;
     margin-left: auto;
     margin-right: auto;
     background-color: #05597D;
     overflow: hidden;
+    z-index: 1;
 }
 #pihaLandscape {
     animation-name: pihaBeach;
@@ -155,16 +171,18 @@ button a {
     -webkit-animation-duration: 15s; /*For Chrome*/
     opacity: 0;
     position: absolute;
+    z-index: -2;
 }
 @keyframes pihaBeach {
     0% {opacity: 1};
     75% {opacity: 1;}
-    100% {margin-top:-125px; opacity: 0;}    
+    100% {margin-top:-125px; opacity: 0;}
 }
 @-webkit-keyframes pihaBeach {
     0% {opacity: 1};
     75%{opacity: 1;}
-    100% {margin-top:-125px; opacity: 0;}  
+    100% {margin-top:-125px; opacity: 0;}
+    
 }
 #pihaScript {
     color:  #05857A;
@@ -266,6 +284,7 @@ button a {
     -webkit-animation-delay:7500ms ;/*For Chrome*/
     opacity: 0;
     position: absolute;
+    z-index: -1;
 }
 @keyframes sunnySlide {
     0% { margin-left:0px; opacity: 1;}
