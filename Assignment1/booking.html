@@ -53,15 +53,15 @@
                 <tr>
                     <td colspan="2">
                         Will you need access to cooking facilities?<br>
-                        <input type="radio" name="cooking" checked id="Yes">Yes<br>
-                        <input type="radio" name="cooking" id="No">No
+                        <input type="radio" name="cooking" value="Yes" checked id="cookingYes">Yes<br>
+                        <input type="radio" name="cooking" value="No" id="cookingNo">No
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         Do you want access to the Lodge's recreational equipment? (eg surfboards, body boards, googles, snorkles, flippers, table tennis equipment)<br>
-                        <input type="radio" name="recreationEquipment" checked id="Yes">Yes<br>
-                        <input type="radio" name="recreationEquipment" id="No">No
+                        <input type="radio" name="recreationEquipment" value="Yes" checked id="recreationEquipmentYes">Yes<br>
+                        <input type="radio" name="recreationEquipment" value="No" id="recreationEquipmentNo">No
                     </td>
                 </tr>
                 <tr>
@@ -188,142 +188,175 @@
                 </tr>
             </table>
         </section>
+        <section id="confirmationSummary">
+
+        </section>
     </div>
     <script>
+        /*Global variables to save inputed data*/
         var clientFirstName;
-var clientFamilyName;
-var clientCheckInDate;
-var clientCheckOutDate;
-var clientCooking;
-var clientRecreationEquipment;
-var clientSwimmingExperience;
-var clientSurfingExperience;
-var clientSurfingLessons;
-var clientBushExperience;
-var clientTrackInformationPack;
-var bookingNumberAdults;
-var bookingNumberChildren;
-var bookingNumberLodges;
-var bookingColourWelcomePack;
-var clientEmail;
-var clientConservationAgreement;
+        var clientFamilyName;
+        var clientCheckInDate;
+        var clientCheckOutDate;
+        var clientCooking;
+        var clientRecreationEquipment;
+        var clientSwimmingExperience;
+        var clientSurfingExperience;
+        var clientSurfingLessons;
+        var clientBushExperience;
+        var clientTrackInformationPack;
+        var bookingNumberAdults;
+        var bookingNumberChildren;
+        var bookingNumberLodges;
+        var bookingColourWelcomePack;
+        var clientEmail;
+        var clientConservationAgreement;
 
-function bookingBookingDetails() {
-    clientFirstName = document.getElementById("firstName").value;
-    clientLastName = document.getElementById("lastName").value;
-    clientCheckInDate = document.getElementById("checkInDate").value;
-    clientCheckOutDate = document.getElementById("checkOutDate").value;
-    clientCooking = document.getElementById("cooking").value;
-    clientClientRecreationEquipment = document.getElementById("recreationEquipment").value;
-    clientSwimmingExperience = Number(document.getElementById("swimmingExperience").value);
-    clientSurfingExperience = Number(document.getElementById("surfingExperience").value);
-    clientSurfingLessons = document.getElementById("surfingLessons").value;
-    clientBushExperience = Number(document.getElementById("bushExperience").value);
-    clientTrackInformationPack = document.getElementById("trackInformation").value;
-    bookingNumberAdults = Number(document.getElementById("numberAdults").value);
-    bookingNumberChildren = Number(document.getElementById("numberChildren").value);
-    bookingNumberLodges = Number(document.getElementById("numberLodges").value);
-    bookingColourWelcomePack = document.getElementById("colorWelcomePack").value;
-    clientEmail = document.getElementById("bookingEmail").value;
-    clientConservationAgreement = document.getElementById("conservationAgreement").value;
-}
-/*loads the next section upon clicking the 'next' button*/
-function nextSection(sectionName) {
-    var nextSectionID;
-    var newSectionName
-    var currentSectionID;
-    var newProgressValue;
-    var newProgress;
+        
+        /*Places all the entered values into the confirmation summary*/
+        function submit() {
+            nextSection('contact');
+            var bookingDetailsSummary = "<table> <caption>Booking Details</caption> <tr><td>First Name:</td><td>" + clientFirstName + "</td></tr><tr><td> Family Name:</td><td>" + clientFamilyName + "</td></tr><tr><td>Check In Date:</td><td>" + clientCheckInDate + "</td></tr><tr><td>Check Out Date:</td><td>" + clientCheckOutDate + "</td></tr><tr><td>Access to cooking facilities:</td><td>" + clientCooking + "</td></tr><tr><td>Access to recreational equipment:</td><td>" + clientRecreationEquipment + "</td></td></table>";
+            
+            var activityExperienceSummary = "<table><caption>Activity Experience</caption> <tr><td>Ocean swimming experience level:</td><td>" + clientSwimmingExperience + "</td></tr><tr><td> Surfing experience level:</td><td>" + clientSurfingExperience + "</td></tr><tr><td>Surf lessons required:</td><td>" + clientSurfingLessons + "</td></tr><tr><td>Bush experience level:</td><td>" + clientBushExperience + "</td></tr><tr><td>Local track information pack:</td><td>" + clientTrackInformationPack + "</td></tr></table>";
 
-    switch (sectionName) {
-        case 'details':
-            currentSectionID = document.getElementById("bookingDetails");    
-            nextSectionID = document.getElementById("activityExperience");
-            newSectionName = 'activities';
-            break;
-        case 'activities':
-            currentSectionID = document.getElementById("activityExperience");
-            nextSectionID = document.getElementById("bookingNumbers");
-            newSectionName = 'numbers';
-            break;
-        case 'numbers':
-            currentSectionID = document.getElementById("bookingNumbers");
-            nextSectionID = document.getElementById("contactDetails");
-            newSectionName = 'contact'
-            break;
-        case 'contact':
-            currentSectionID = document.getElementById("contactDetails");
-            nextSectionID = document.getElementById("confirmationSummary");
-            newSectionName('confirmation');
-            break;
-    }
+            var guestLodgeInformationSummary = "<table><caption>Guest and Lodge Information</caption> <tr><td>Number of adults:</td><td>" + bookingNumberAdults + "</td></tr><tr><td> Number of children:</td><td>" + bookingNumberChildren + "</td></tr><tr><td>Number of lodges:</td><td>" + bookingNumberLodges + "</td></tr><tr><td>Colour of welcome pack:</td><td>" + bookingColourWelcomePack + "</td></tr></table>";
 
-    currentSectionID.style.display = "none";
-    nextSectionID.style.display = "initial";
-    newProgress = document.getElementById("progressBar");
-    newProgressValue = updateProgressBar(newSectionName);
-    newProgress.style.width = newProgressValue;
-    newProgress.innerHTML = newProgressValue;
-}
-/*loads the previous section upon clicking the 'previous' button*/
-function previousSection(sectionName) {
-    var previousSectionID;
-    var currentSectionID;
-    var newSectionName;
+            var contactConservation = "<table><caption>Contact Information and Conservation </caption> <tr><td>Email address:</td><td>" + clientEmail + "</td></tr><tr><td> Agreement to Piha Native Conservation Initiative Agreement:</td><td>" + clientConservationAgreement + "</td></tr></table>";
+            
+            var bookingSummary = "<section> <h2>Confirmation Summary</h2>" + bookingDetailsSummary + activityExperienceSummary + guestLodgeInformationSummary + contactConservation +"</section>";
+            
+            document.getElementById("confirmationSummary").innerHTML = bookingSummary;
 
-    switch (sectionName) {
-        case 'details':
-            currentSectionID = document.getElementById("bookingDetails");    
-            previousSectionID = document.getElementById("bookingDetails");
-            newSectionName = "details";
-            break;
-        case 'activities':
-            currentSectionID = document.getElementById("activityExperience");
-            previousSectionID = document.getElementById("bookingDetails");
-            newSectionName = "details";
-            break;
-        case 'numbers':
-            currentSectionID = document.getElementById("bookingNumbers");
-            previousSectionID = document.getElementById("activityExperience");
-            newSectionName = "activities";
-            break;
-        case 'contact':
-            currentSectionID = document.getElementById("contactDetails");
-            previousSectionID = document.getElementById("bookingNumbers");
-            newSectionName = "numbers";
-            break;
-    }
+        }
+        /*Loads the next section upon clicking the 'next' button*/
+        function nextSection(sectionName) {
+            var nextSectionID;
+            var newSectionName
+            var currentSectionID;
+            var newProgressValue;
+            var newProgress;
 
-    currentSectionID.style.display = "none";
-    previousSectionID.style.display = "initial";
-    newProgress = document.getElementById("progressBar");
-    newProgressValue = updateProgressBar(newSectionName);
-    newProgress.style.width = newProgressValue;
-    newProgress.innerHTML = newProgressValue;
-}
-/*Updates the progress bar upon clicking the 'previous' or 'next' buttons*/
-function updateProgressBar(newSectionName) {
-    var newValue;
-    var newProgress;
-    switch (newSectionName) {
-        case 'details':
-            newValue = "0%";
-            break;
-        case 'activities':
-            newValue = "25%";
-            break;
-        case 'numbers':
-            newValue = "50%";
-            break;
-        case 'contact':
-            newValue = "75%";
-            break;
-        case 'confirmationSummary':
-            newValue = "100%";
-            break;
-    }
-    return newValue;
-}
-    </script>
-</body>
-</html>
+            switch (sectionName) {
+                case 'details':
+                    clientFirstName = document.getElementById("firstName").value;
+                    clientFamilyName = document.getElementById("familyName").value;
+                    clientCheckInDate = document.getElementById("checkInDate").value;
+                    clientCheckOutDate = document.getElementById("checkOutDate").value;
+                    if (document.getElementById("cookingYes").checked) {
+                        clientCooking = document.getElementById("cookingYes").value;
+                    }
+                    else {
+                        clientCooking = document.getElementById("cookingNo").value;   
+                    }
+                    if (document.getElementById("recreationEquipmentYes").checked) {
+                        clientRecreationEquipment = document.getElementById("recreationEquipmentYes").value;
+                    }
+                    else {
+                        clientRecreationEquipment = document.getElementById("recreationEquipmentNo").value;   
+                    }
+                    currentSectionID = document.getElementById("bookingDetails");    
+                    nextSectionID = document.getElementById("activityExperience");
+                    newSectionName = 'activities';
+                    break;
+                case 'activities':
+                    clientSwimmingExperience = document.getElementById("swimmingExperience").value;
+                    clientSurfingExperience = document.getElementById("surfingExperience").value;
+                    clientSurfingLessons = document.getElementById("surfingLessons").value;
+                    clientBushExperience = document.getElementById("bushExperience").value;
+                    clientTrackInformationPack = document.getElementById("trackInformation").value;
+                    currentSectionID = document.getElementById("activityExperience");
+                    nextSectionID = document.getElementById("bookingNumbers");
+                    newSectionName = 'numbers';
+                    break;
+                case 'numbers':
+                    bookingNumberAdults = document.getElementById("numberAdults").value;
+                    bookingNumberChildren = document.getElementById("numberChildren").value;
+                    bookingNumberLodges = document.getElementById("numberLodges").value;
+                    bookingColourWelcomePack = document.getElementById("colourWelcomePack").value;
+                    currentSectionID = document.getElementById("bookingNumbers");
+                    nextSectionID = document.getElementById("contactDetails");
+                    newSectionName = 'contact'
+                    break;
+                case 'contact':
+                    clientEmail = document.getElementById("bookingEmail").value;
+                    if (document.getElementById("conservationAgreement").checked) {
+                        clientConservationAgreement = "Yes";
+                    }
+                    else {
+                        clientConservationAgreement = "No";
+                    }
+                    currentSectionID = document.getElementById("contactDetails");
+                    nextSectionID = document.getElementById("confirmationSummary");
+                    newSectionName = 'confirmation';
+                    break;
+            }
+            currentSectionID.style.display = "none";
+            nextSectionID.style.display = "initial";
+            newProgress = document.getElementById("progressBar");
+            newProgressValue = updateProgressBar(newSectionName);
+            newProgress.style.width = newProgressValue;
+            newProgress.innerHTML = newProgressValue;
+        }
+        /*Loads the previous section upon clicking the 'previous' button*/
+        function previousSection(sectionName) {
+            var previousSectionID;
+            var currentSectionID;
+            var newSectionName;
+
+            switch (sectionName) {
+                case 'details':
+                    currentSectionID = document.getElementById("bookingDetails");    
+                    previousSectionID = document.getElementById("bookingDetails");
+                    newSectionName = "details";
+                    break;
+                case 'activities':
+                    currentSectionID = document.getElementById("activityExperience");
+                    previousSectionID = document.getElementById("bookingDetails");
+                    newSectionName = "details";
+                    break;
+                case 'numbers':
+                    currentSectionID = document.getElementById("bookingNumbers");
+                    previousSectionID = document.getElementById("activityExperience");
+                    newSectionName = "activities";
+                    break;
+                case 'contact':
+                    currentSectionID = document.getElementById("contactDetails");
+                    previousSectionID = document.getElementById("bookingNumbers");
+                    newSectionName = "numbers";
+                    break;
+            }
+
+            currentSectionID.style.display = "none";
+            previousSectionID.style.display = "initial";
+            newProgress = document.getElementById("progressBar");
+            newProgressValue = updateProgressBar(newSectionName);
+            newProgress.style.width = newProgressValue;
+            newProgress.innerHTML = newProgressValue;
+        }
+        /*Updates the progress bar upon clicking the 'previous' or 'next' buttons*/
+        function updateProgressBar(newSectionName) {
+            var newValue;
+            var newProgress;
+            switch (newSectionName) {
+                case 'details':
+                    newValue = "0%";
+                    break;
+                case 'activities':
+                    newValue = "25%";
+                    break;
+                case 'numbers':
+                    newValue = "50%";
+                    break;
+                case 'contact':
+                    newValue = "75%";
+                    break;
+                case 'confirmation':
+                    newValue = "100%";
+                    break;
+            }
+            return newValue;
+        }
+            </script>
+        </body>
+        </html>

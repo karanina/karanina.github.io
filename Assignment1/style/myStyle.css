@@ -73,7 +73,11 @@ h2 {
     float: left;
     width: 80%;   
 }
-/*CSS for Booking Table*/ 
+/*CSS for Booking Table*/
+caption {
+    font-weight: bold;
+    text-align: center;
+} 
 .bookingTable, tr, td {
     padding-top: 25px;
     width: 50%;
