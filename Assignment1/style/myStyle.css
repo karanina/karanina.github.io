@@ -330,18 +330,35 @@ float: right;
     top: -50px;
     height: 400px;
     width: 317px;
+    overflow: hidden;
     background-color: black;
     color: yellow;
     font-family: Arial, Helvetica, sans-serif;
     position: relative;
 }
-/*Visible throughout animation*/
+
 #TarawhitiGisborneLogo {
     position: absolute;
     margin-top: 2px;
     margin-left: 2px;
     z-index: 1;
+    animation-name: tarawhitiGisborneLogoInFadeOut;
+    animation-duration: 18s;
+    -webkit-animation-name: tarawhitiGisborneLogoInFadeOut; /*For Chrome*/
+    -webkit-animation-duration: 18s; /*For Chrome*/ 
 }
+@keyframes tarawhitiGisborneLogoInFadeOut {
+    0% {opacity: 0;}
+    1% {opacity: 1;}
+    99% {opacity: 1;}
+    100% {opacity: 0;}
+}
+@-webkit-keyframes tarawhitiGisborneLogoInFadeOut {
+    0% {opacity: 0;}
+    1% {opacity: 1;}
+    99% {opacity: 1;}
+    100% {opacity: 0;}
+}   
 /*Visible throughout animation*/
 #informationIcon {
     position: absolute;
@@ -590,6 +607,7 @@ float: right;
             100% {opacity: 0;}
         }
     #personBikingText {
+        position: absolute;
         margin-top: -320px;
         animation-name: personBikingTextFadeInFadeOut;
         animation-duration: 2s;
@@ -656,3 +674,142 @@ float: right;
             98% {opacity: 1;}
             100% {opacity: 0;}
         }
+        #wainuiBeachText {
+            position: absolute;
+            margin-top: -320px;
+            animation-name: wainuiBeachTextFadeInFadeOut;
+            animation-duration: 9s;
+            animation-delay: 8500ms;
+            -webkit-animation-name: wainuiBeachTextFadeInFadeOut; /*For Chrome*/
+            -webkit-animation-duration: 9s; /*For Chrome*/ 
+            -webkit-animation-delay: 8500ms; /*For Chrome*/
+        }
+        @keyframes wainuiBeachTextFadeInFadeOut {
+            0% {opacity: 0;}
+            2% {opacity: 1;}
+            98% {opacity: 1;}
+            100% {opacity: 0;}
+        }
+        @-webkit-keyframes wainuiBeachTextFadeInFadeOut {
+            0% {opacity: 0;}
+            2% {opacity: 1;}
+            98% {opacity: 1;}
+            100% {opacity: 0;}
+        }
+        #airNZText {
+            margin-top: -357px;
+            margin-left: 80px;
+            position: absolute;
+            opacity: 0;
+            animation-name: airNZTextFadeInFadeOut;
+            animation-duration: 9s;
+            animation-delay: 8500ms;
+            -webkit-animation-name: airNZTextFadeInFadeOut; /*For Chrome*/
+            -webkit-animation-duration: 9s; /*For Chrome*/ 
+            -webkit-animation-delay: 8500ms; /*For Chrome*/
+        }
+        @keyframes airNZTextFadeInFadeOut {
+            0% {opacity: 0;}
+            2% {opacity: 1;}
+            98% {opacity: 1;}
+            100% {opacity: 0;}
+        }
+        /*For Chrome*/
+        @-webkit-keyframes airNZTextFadeInFadeOut {
+            0% {opacity: 0;}
+            2% {opacity: 1;}
+            98% {opacity: 1;}
+            100% {opacity: 0;}
+        }
+        #findOutMore {
+            position: absolute;
+            margin-left: 83px;
+            margin-top: 0px;
+            opacity: 0;
+            z-index: 1;
+            animation-name: findOutMoreSlide;
+            animation-delay:10s;
+            animation-duration: 9s;
+            -webkit-animation-name: findOutMoreSlide; /*For Chrome*/
+            -webkit-animation-delay:10s; /*For Chrome*/
+            -webkit-animation-duration: 9s; /*For Chrome*/
+        }
+        @keyframes findOutMoreSlide {
+            0% {opacity: 1; margin-top: 0px;}
+            100%{opacity: 1; margin-top: -250px;}
+        }
+        /*For Chrome*/
+        @-webkit-keyframes findOutMoreSlide {
+            0% {opacity: 1; margin-top: 0px;}
+            100%{opacity: 1; margin-top: -250px;}
+        }
+        #starAllianceLogo {
+            position:absolute;
+            margin-top: -30px;
+            margin-left: 60px;
+            opacity: 0;
+            animation-name: starAllianceLogoFadeInFadeOut;
+            animation-duration: 9s;
+            animation-delay: 8500ms;
+            -webkit-animation-name: starAllianceLogoFadeInFadeOut; /*For Chrome*/
+            -webkit-animation-duration: 9s; /*For Chrome*/ 
+            -webkit-animation-delay: 8500ms;
+            }
+            @keyframes starAllianceLogoFadeInFadeOut {
+                0% {opacity: 0;}
+                2% {opacity: 1;}
+                98% {opacity: 1;}
+                100% {opacity: 0;}
+            }
+            @-webkit-keyframes starAllianceLogoFadeInFadeOut {
+                0% {opacity: 0;}
+                2% {opacity: 1;}
+                98% {opacity: 1;}
+                100% {opacity: 0;}
+            }
+#replayIcon {
+    position: absolute;
+    opacity:0;
+    margin-top: -39px;
+    animation-name: replayFadeInFadeOut;
+    animation-delay: 11s;
+    animation-duration: 7s;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: replayFadeIn;
+    -webkit-animation-delay: 11s;
+    -webkit-animation-duration: 7s;
+    -webkit-animation-fill-mode: forwards;
+}
+@keyframes replayFadeIn {
+    0% {opacity: 0;}
+    2% {opacity: 1;}
+    100% {opacity: 1;}
+}
+@-webkit-keyframes replayFadeIn {
+    0% {opacity: 0;}
+    2% {opacity: 1;}
+    100% {opacity: 1;}
+}
+#nameAndNumber {
+    position:absolute;
+    opacity: 0;
+    margin-top: -200px;
+    animation-name: nameAndNumberFadeIn;
+    animation-delay: 18s;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: nameAndNumberFadeIn;
+    -webkit-animation-delay: 18s;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-fill-mode: forwards
+}
+@keyframes nameAndNumberFadeIn {
+    0% {opacity: 0;}
+    5% {opacity: 1;}
+    100% {opacity: 1;}
+}
+@-webkit-keyframes nameAndNumberFadeIn {
+    0% {opacity: 0;}
+    5% {opacity: 1;}
+    100% {opacity: 1;}
+}

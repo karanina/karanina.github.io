@@ -40,9 +40,9 @@
     <aside id="verticalBanner">
         <div id="TarawhitiGisborneLogo"><!-- image taken from https://tairawhitigisborne.co.nz/--><img src="images/tairawhitiGisborneLogo.png" alt="Tarawhiti Gisborne Logo"></div>
 
-        <div id="informationIcon"><!--image taken from https://icons-for-free.com/information+icon-1320183704485068157/--><img src="images/informationIcon.png" alt="Information icon"></div>
+        <div id="informationIcon"><!--image taken from https://icons-for-free.com/information+icon-1320183704485068157/--><img src="images/informationIcon.png" alt="Information icon" onclick="info()"></div>
         
-        <div id="exitIcon"><!--image taken from https://icons-for-free.com/x-1321215629555778185/--><img src="images/exitIcon.png" alt="Exit icon"></div>
+        <div id="exitIcon"><!--image taken from https://icons-for-free.com/x-1321215629555778185/--><img src="images/exitIcon.png" alt="Exit icon" onclick="exit()"></div>
         
         <div id="airNZLogo"><!--image taken from https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Air_New_Zealand.svg/1024px-Air_New_Zealand.svg.png--><img src="images/airNZLogo.png"></div>
         
@@ -65,8 +65,29 @@
         <div class="verticalBannerLocationText" id="personBikingLocationText"><em>Motu Trails</em></div>
 
         <div id="wainuiBeach"><!--https://tairawhitigisborne.co.nz/listings/operator/1424/wainui-beach--><img src="images/wainuiBeach.jpg" alt="Wainui Beach"></div>
-    </aside>
+        <div class="verticalBannerBlurbText" id="wainuiBeachText"><em>See Gisborne in a <br>new light</em></div>
 
+        <div id="airNZText"><img src="images/airNZText.png" alt="Air New Zealand"></div>
+        <div id="findOutMore"><img src="images/findOutMore.png" alt="Find out more"></div>
+        <div id="starAllianceLogo"><!--https://logos-download.com/7590-star-alliance-logo-download.html--><img src="images/starAllianceFullLogo.png" alt="Star Alliance Logo"></div>
+        <div id="replayIcon"><!--image taken from https://icons-for-free.com/replay+24px-131985191980286383/--><img src="images/replaySymbol.png" alt="Replay" onclick="replay()"></div>
+        <div class="verticalBannerBlurbText" id="nameAndNumber"><em>Anna McColl <br>Student ID: 1527037</em></div>
+    </aside>
     </div>
+    <script>
+        function replay()
+        {
+            var verticalBanner;
+            verticalBanner = document.getElementById("verticalBanner");
+        }
+        function info() {
+            alert("This is an advertisement for the Tarawhiti-Gisborne Tourist Authority")
+        }
+        function exit() {
+            var verticalBanner;
+            verticalBanner = document.getElementById("verticalBanner");
+            verticalBanner.style.display = "none";
+        }
+    </script>
 </body>
 </html>
