@@ -364,12 +364,14 @@ float: right;
     position: absolute;
     margin-left: 256px;
     z-index: 1;
+    cursor: pointer;
 }
 /*Visible throughout animation*/
 #exitIcon {
     position: absolute;
     margin-left: 287px;
     z-index: 1;
+    cursor: pointer;
 }
 #airNZLogo {
     position: absolute;
@@ -771,6 +773,7 @@ float: right;
     position: absolute;
     opacity:0;
     margin-top: -39px;
+    cursor: pointer;
     animation-name: replayFadeInFadeOut;
     animation-delay: 11s;
     animation-duration: 7s;

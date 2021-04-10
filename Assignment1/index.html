@@ -37,7 +37,8 @@
                 Welcome to Piha Beach Lodges, luxury accomodation at Auckland's wild and scenic Piha Beach.
             </p>
         </section>
-    <aside id="verticalBanner">
+    <aside id="verticalBannerColumn">
+        <div id="verticalBanner">
         <div id="TarawhitiGisborneLogo"><!-- image taken from https://tairawhitigisborne.co.nz/--><img src="images/tairawhitiGisborneLogo.png" alt="Tarawhiti Gisborne Logo"></div>
 
         <div id="informationIcon"><!--image taken from https://icons-for-free.com/information+icon-1320183704485068157/--><img src="images/informationIcon.png" alt="Information icon" onclick="info()"></div>
@@ -72,16 +73,22 @@
         <div id="starAllianceLogo"><!--https://logos-download.com/7590-star-alliance-logo-download.html--><img src="images/starAllianceFullLogo.png" alt="Star Alliance Logo"></div>
         <div id="replayIcon"><!--image taken from https://icons-for-free.com/replay+24px-131985191980286383/--><img src="images/replaySymbol.png" alt="Replay" onclick="replay()"></div>
         <div class="verticalBannerBlurbText" id="nameAndNumber"><em>Anna McColl <br>Student ID: 1527037</em></div>
+        </div>
     </aside>
     </div>
     <script>
         function replay()
         {
-            var verticalBanner;
-            verticalBanner = document.getElementById("verticalBanner");
+            var parent;
+            var animation;
+            var newAnimation;
+            parent = document.getElementById("verticalBannerColumn")
+            animation = document.getElementById("verticalBanner");
+            newAnimation = animation.cloneNode(true);
+            parent.replaceChild(newAnimation, animation);
         }
         function info() {
-            alert("This is an advertisement for the Tarawhiti-Gisborne Tourist Authority")
+            alert("This is an advertisement for the tourism arm of Trust Tairawhiti, the regional development trust for Te Tairawhiti.")
         }
         function exit() {
             var verticalBanner;
