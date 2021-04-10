@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piha Beach Lodges - Booking - Details</title>
     <link rel="stylesheet" href="style/myStyle.css">
-    <!--<script src="script/myScript.js"></script>-->
+    <script src="script/myScript.js"></script>
 </head>
 <body>
     <div id="outsideBox"><a href="http://www.piha.co.nz" target="new">
@@ -22,20 +22,19 @@
     <nav class="horizontalMenu">
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a class="active" href="booking.html">Bookings</a></li>
+            <li><a class="active" href="booking.html" style="color: #05597D">Bookings</a></li>
             <li><a href="pdfs/horizontalStoryboard.pdf">Horizontal Banner Storyboard</a></li>
             <li><a href="pdfs/verticalStoryboard.pdf">Vertical Banner Storyboard</a></li>
             <li><a href="pdfs/wireframes.pdf">Wireframes</a></li>
             </ul>
     </nav>
-    <aside id="bookingVerticalBanner">Vertical Banner Ad</aside>
-    <div class="booking">
+    <div id="booking">
         <h2>Booking Progress</h2>
         <div id="progressContainer">
             <div id="progressBar"></div>
         </div>
-        <section> 
-            <table class="bookingTable" id="bookingDetails">
+        <section id="bookingDetails"> 
+            <table class="bookingTable">
                 <tr>
                     <td class="leftCol">First Name:</td>
                     <td class="rightCol"><input type="text" id="firstName"></td>
@@ -43,22 +42,22 @@
                     <td class="leftCol">Family Name:</td>
                     <td class="rightCol"><input type="text" id="familyName"></td>
                 <tr>
-                    <td class="leftCol">Check In Date</td>
+                    <td class="leftCol">Check In Date:</td>
                     <td class="rightCol"><input type="date" id="checkInDate"></td>
                 </tr>
                 <tr>
-                    <td class="leftCol">Check Out Date</td>
+                    <td class="leftCol">Check Out Date:</td>
                     <td class="rightCol"><input type="date" id="checkOutDate"></td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="2" class="wholeRow">
                         Will you need access to cooking facilities?<br>
                         <input type="radio" name="cooking" value="Yes" checked id="cookingYes">Yes<br>
                         <input type="radio" name="cooking" value="No" id="cookingNo">No
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="2" class="wholeRow">
                         Do you want access to the Lodge's recreational equipment? (eg surfboards, body boards, googles, snorkles, flippers, table tennis equipment)<br>
                         <input type="radio" name="recreationEquipment" value="Yes" checked id="recreationEquipmentYes">Yes<br>
                         <input type="radio" name="recreationEquipment" value="No" id="recreationEquipmentNo">No
@@ -69,10 +68,9 @@
                     <td><button type="button" class="nextButton" onclick = "nextSection('details')">Next</button></td>
                 </tr>
             </table>
-
         </section>
-        <section>
-            <table class="bookingTable" id="activityExperience">
+        <section id="activityExperience">
+            <table class="bookingTable">
                 <tr>
                     <td colspan="2" class="rangeQuestion">How experienced are you swimming in the ocean?</td>
                 </tr>
@@ -97,8 +95,8 @@
                     <td colspan="2" class="selectQuestion">Would you like us to arrange surfing lessons for your party?<br>
                 <br>
                     <select id="surfingLessons" required><!--Specifies that the user is required to select an option before submitting the form-->
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
                     </select>
                 </td>
             </tr>
@@ -117,8 +115,8 @@
                         Would you like us to arrange an information pack of local tracks for your party?<br>
                         <br>                    
                         <select id="trackInformation" required>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
                             </select>
                     </td>
                 </tr>
@@ -128,18 +126,18 @@
                 </tr>
             </table>
         </section>
-        <section>
-            <table class="bookingTable" id="bookingNumbers">
+        <section id="bookingNumbers">
+            <table class="bookingTable">
                 <tr>
-                    <td>
+                    <td class="longRow">
                         How many adults are in your party?
                     </td>
-                    <td>
+                    <td class="">
                         <input type="number" id="numberAdults">
                     </td>
                 </tr>
                 <tr>
-                <td>
+                <td class="longRow">
                     How many children are in your party?
                 </td>
                 <td>
@@ -147,7 +145,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="longRow">
                     How many lodges would you like to book?
                 </td>
                 <td>
@@ -155,7 +153,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="longRow">
                     Choose a colour for your welcome pack:
                 </td>
                 <td>
@@ -168,19 +166,15 @@
             </tr>
             </table>
         </section>
-        <section>
-            <table class="bookingTable" id="contactDetails">
+        <section class="bookingTable">
+            <table id="contactDetails">
                 <tr>
-                    <td>
-                        Email address:
-                    </td>
-                    <td>
-                        <input type="email" id="bookingEmail">
+                    <td colspan="2" class="wholeRow">
+                        Email address: <input type="email" id="bookingEmail" size="35">
                     </td>
                 </tr>
                 <tr>
-                    <td><input type="checkbox" id="conservationAgreement"></td>
-                    <td>Do you agree to abide by the Piha Native Conservation Agreement during your stay <i>(please tick box)</i></td>
+                    <td colspan="2" class="wholeRow shortRow"><input type="checkbox" id="conservationAgreement"> Do you agree to abide by the Piha Native Conservation Agreement during your stay? <i>(please tick box)</i></td>
                 </tr>
                 <tr>
                     <td><button type="button" class="previousButton" onclick="previousSection('contact')">Previous</button></td>
@@ -188,175 +182,9 @@
                 </tr>
             </table>
         </section>
-        <section id="confirmationSummary">
-
+        <section class="bookingTable" id="confirmationSummary">
         </section>
     </div>
-    <script>
-        /*Global variables to save inputed data*/
-        var clientFirstName;
-        var clientFamilyName;
-        var clientCheckInDate;
-        var clientCheckOutDate;
-        var clientCooking;
-        var clientRecreationEquipment;
-        var clientSwimmingExperience;
-        var clientSurfingExperience;
-        var clientSurfingLessons;
-        var clientBushExperience;
-        var clientTrackInformationPack;
-        var bookingNumberAdults;
-        var bookingNumberChildren;
-        var bookingNumberLodges;
-        var bookingColourWelcomePack;
-        var clientEmail;
-        var clientConservationAgreement;
-
-        
-        /*Places all the entered values into the confirmation summary*/
-        function submit() {
-            nextSection('contact');
-            var bookingDetailsSummary = "<table> <caption>Booking Details</caption> <tr><td>First Name:</td><td>" + clientFirstName + "</td></tr><tr><td> Family Name:</td><td>" + clientFamilyName + "</td></tr><tr><td>Check In Date:</td><td>" + clientCheckInDate + "</td></tr><tr><td>Check Out Date:</td><td>" + clientCheckOutDate + "</td></tr><tr><td>Access to cooking facilities:</td><td>" + clientCooking + "</td></tr><tr><td>Access to recreational equipment:</td><td>" + clientRecreationEquipment + "</td></td></table>";
-            
-            var activityExperienceSummary = "<table><caption>Activity Experience</caption> <tr><td>Ocean swimming experience level:</td><td>" + clientSwimmingExperience + "</td></tr><tr><td> Surfing experience level:</td><td>" + clientSurfingExperience + "</td></tr><tr><td>Surf lessons required:</td><td>" + clientSurfingLessons + "</td></tr><tr><td>Bush experience level:</td><td>" + clientBushExperience + "</td></tr><tr><td>Local track information pack:</td><td>" + clientTrackInformationPack + "</td></tr></table>";
-
-            var guestLodgeInformationSummary = "<table><caption>Guest and Lodge Information</caption> <tr><td>Number of adults:</td><td>" + bookingNumberAdults + "</td></tr><tr><td> Number of children:</td><td>" + bookingNumberChildren + "</td></tr><tr><td>Number of lodges:</td><td>" + bookingNumberLodges + "</td></tr><tr><td>Colour of welcome pack:</td><td>" + bookingColourWelcomePack + "</td></tr></table>";
-
-            var contactConservation = "<table><caption>Contact Information and Conservation </caption> <tr><td>Email address:</td><td>" + clientEmail + "</td></tr><tr><td> Agreement to Piha Native Conservation Initiative Agreement:</td><td>" + clientConservationAgreement + "</td></tr></table>";
-            
-            var bookingSummary = "<section> <h2>Confirmation Summary</h2>" + bookingDetailsSummary + activityExperienceSummary + guestLodgeInformationSummary + contactConservation +"</section>";
-            
-            document.getElementById("confirmationSummary").innerHTML = bookingSummary;
-
-        }
-        /*Loads the next section upon clicking the 'next' button*/
-        function nextSection(sectionName) {
-            var nextSectionID;
-            var newSectionName
-            var currentSectionID;
-            var newProgressValue;
-            var newProgress;
-
-            switch (sectionName) {
-                case 'details':
-                    clientFirstName = document.getElementById("firstName").value;
-                    clientFamilyName = document.getElementById("familyName").value;
-                    clientCheckInDate = document.getElementById("checkInDate").value;
-                    clientCheckOutDate = document.getElementById("checkOutDate").value;
-                    if (document.getElementById("cookingYes").checked) {
-                        clientCooking = document.getElementById("cookingYes").value;
-                    }
-                    else {
-                        clientCooking = document.getElementById("cookingNo").value;   
-                    }
-                    if (document.getElementById("recreationEquipmentYes").checked) {
-                        clientRecreationEquipment = document.getElementById("recreationEquipmentYes").value;
-                    }
-                    else {
-                        clientRecreationEquipment = document.getElementById("recreationEquipmentNo").value;   
-                    }
-                    currentSectionID = document.getElementById("bookingDetails");    
-                    nextSectionID = document.getElementById("activityExperience");
-                    newSectionName = 'activities';
-                    break;
-                case 'activities':
-                    clientSwimmingExperience = document.getElementById("swimmingExperience").value;
-                    clientSurfingExperience = document.getElementById("surfingExperience").value;
-                    clientSurfingLessons = document.getElementById("surfingLessons").value;
-                    clientBushExperience = document.getElementById("bushExperience").value;
-                    clientTrackInformationPack = document.getElementById("trackInformation").value;
-                    currentSectionID = document.getElementById("activityExperience");
-                    nextSectionID = document.getElementById("bookingNumbers");
-                    newSectionName = 'numbers';
-                    break;
-                case 'numbers':
-                    bookingNumberAdults = document.getElementById("numberAdults").value;
-                    bookingNumberChildren = document.getElementById("numberChildren").value;
-                    bookingNumberLodges = document.getElementById("numberLodges").value;
-                    bookingColourWelcomePack = document.getElementById("colourWelcomePack").value;
-                    currentSectionID = document.getElementById("bookingNumbers");
-                    nextSectionID = document.getElementById("contactDetails");
-                    newSectionName = 'contact'
-                    break;
-                case 'contact':
-                    clientEmail = document.getElementById("bookingEmail").value;
-                    if (document.getElementById("conservationAgreement").checked) {
-                        clientConservationAgreement = "Yes";
-                    }
-                    else {
-                        clientConservationAgreement = "No";
-                    }
-                    currentSectionID = document.getElementById("contactDetails");
-                    nextSectionID = document.getElementById("confirmationSummary");
-                    newSectionName = 'confirmation';
-                    break;
-            }
-            currentSectionID.style.display = "none";
-            nextSectionID.style.display = "initial";
-            newProgress = document.getElementById("progressBar");
-            newProgressValue = updateProgressBar(newSectionName);
-            newProgress.style.width = newProgressValue;
-            newProgress.innerHTML = newProgressValue;
-        }
-        /*Loads the previous section upon clicking the 'previous' button*/
-        function previousSection(sectionName) {
-            var previousSectionID;
-            var currentSectionID;
-            var newSectionName;
-
-            switch (sectionName) {
-                case 'details':
-                    currentSectionID = document.getElementById("bookingDetails");    
-                    previousSectionID = document.getElementById("bookingDetails");
-                    newSectionName = "details";
-                    break;
-                case 'activities':
-                    currentSectionID = document.getElementById("activityExperience");
-                    previousSectionID = document.getElementById("bookingDetails");
-                    newSectionName = "details";
-                    break;
-                case 'numbers':
-                    currentSectionID = document.getElementById("bookingNumbers");
-                    previousSectionID = document.getElementById("activityExperience");
-                    newSectionName = "activities";
-                    break;
-                case 'contact':
-                    currentSectionID = document.getElementById("contactDetails");
-                    previousSectionID = document.getElementById("bookingNumbers");
-                    newSectionName = "numbers";
-                    break;
-            }
-
-            currentSectionID.style.display = "none";
-            previousSectionID.style.display = "initial";
-            newProgress = document.getElementById("progressBar");
-            newProgressValue = updateProgressBar(newSectionName);
-            newProgress.style.width = newProgressValue;
-            newProgress.innerHTML = newProgressValue;
-        }
-        /*Updates the progress bar upon clicking the 'previous' or 'next' buttons*/
-        function updateProgressBar(newSectionName) {
-            var newValue;
-            var newProgress;
-            switch (newSectionName) {
-                case 'details':
-                    newValue = "0%";
-                    break;
-                case 'activities':
-                    newValue = "25%";
-                    break;
-                case 'numbers':
-                    newValue = "50%";
-                    break;
-                case 'contact':
-                    newValue = "75%";
-                    break;
-                case 'confirmation':
-                    newValue = "100%";
-                    break;
-            }
-            return newValue;
-        }
-            </script>
+    <aside id="verticalBookingColumn">Vertical Banner Ad</aside>
         </body>
         </html>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piha Beach Lodges</title>
     <link rel="stylesheet" href="style/myStyle.css">
+    <script src="script/myScript.js"></script>
 </head>
 <body>
     <div id="outsideBox"><a href="http://www.piha.co.nz" target="new">
@@ -20,7 +21,7 @@
     <h1>Welcome to Piha Beach Lodges</h1>
     <nav class="horizontalMenu">
         <ul>
-            <li><a class="active" href="index.html">Home</a></li>
+            <li><a class="active" href="index.html" style="color: #05597D;">Home</a></li>
             <li><a href="booking.html">Bookings</a></li>
             <li><a href="pdfs/horizontalStoryboard.pdf">Horizontal Banner Storyboard</a></li>
             <li><a href="pdfs/verticalStoryboard.pdf">Vertical Banner Storyboard</a></li>
@@ -32,14 +33,14 @@
             <!--image taken from https://www.booking.com/hotel/nz/sea-of-green-lookout-piha-holiday-home.html?aid=318615;label=English_New_Zealand_EN_NZ_20053251985-5sPTA9gnUeZM%2AUoCsCAqRgS217274454866%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atidsa-199155574585%3Alp1011036%3Ali%3Adec%3Adm;sid=0b98ac7ecd68db51b07e5e5147410530;dest_id=-1516176;dest_type=city;dist=0;from_beach_non_key_ufi_sr=1;group_adults=2;group_children=0;hapos=5;hpos=5;no_rooms=1;room1=A%2CA;sb_price_type=total;sr_order=popularity;srepoch=1616305570;srpvid=f6f22890a9ef001f;type=total;ucfs=1&#hotelTmpl-->
             <img id="imagePicture" src="images/exterior.jpg" alt="Picture of outside of property">
         </aside>  
-        <section>
+        <section id="welome">
             <p>
                 Welcome to Piha Beach Lodges, luxury accomodation at Auckland's wild and scenic Piha Beach.
             </p>
         </section>
     <aside id="verticalBannerColumn">
         <div id="verticalBanner">
-        <div id="TarawhitiGisborneLogo"><!-- image taken from https://tairawhitigisborne.co.nz/--><img src="images/tairawhitiGisborneLogo.png" alt="Tarawhiti Gisborne Logo"></div>
+        <div id="TairawhitiGisborneLogo"><!-- image taken from https://tairawhitigisborne.co.nz/--><img src="images/tairawhitiGisborneLogo.png" alt="Tairawhiti Gisborne Logo"></div>
 
         <div id="informationIcon"><!--image taken from https://icons-for-free.com/information+icon-1320183704485068157/--><img src="images/informationIcon.png" alt="Information icon" onclick="info()"></div>
         
@@ -76,25 +77,5 @@
         </div>
     </aside>
     </div>
-    <script>
-        function replay()
-        {
-            var parent;
-            var animation;
-            var newAnimation;
-            parent = document.getElementById("verticalBannerColumn")
-            animation = document.getElementById("verticalBanner");
-            newAnimation = animation.cloneNode(true);
-            parent.replaceChild(newAnimation, animation);
-        }
-        function info() {
-            alert("This is an advertisement for the tourism arm of Trust Tairawhiti, the regional development trust for Te Tairawhiti.")
-        }
-        function exit() {
-            var verticalBanner;
-            verticalBanner = document.getElementById("verticalBanner");
-            verticalBanner.style.display = "none";
-        }
-    </script>
 </body>
 </html>
