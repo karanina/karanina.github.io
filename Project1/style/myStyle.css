@@ -215,28 +215,28 @@ h2 {
     font-size: 16px;
     position: absolute;
     text-align: center;
-    margin-left: 315px;
-    margin-top: 38px;
+    margin-left: 330px;
+    margin-top: 45px;
     opacity: 0;
     animation-name: nameNumberTextChange;
     animation-duration: 5s;
     animation-delay: 20s;
-    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
     -webkit-animation-name: nameNumberTextChange; /*For Chrome*/
     -webkit-animation-duration: 5s; /*For Chrome*/
     -webkit-animation-delay: 20s;/*For Chrome*/
-    -webkit-animation-fill-mode: forwards;/*For Chrome*/
+    -webkit-animation-iteration-count: infinite;/*For Chrome*/
 }
 @keyframes nameNumberTextChange {
-    0% {font-size: 16px; color:  #59D2AC; opacity: 1;}
-    50% {font-size: 28px; color:  #94DEDB; opacity: 1;}
-    100% {font-size: 20px; color:  #59D2AC; opacity: 1;}
+    0% {font-size: 16px; color:  #59D2AC; opacity: 1; margin-left: 330px; margin-top: 45px;}
+    50% {font-size: 28px; color:  #94DEDB; opacity: 1; margin-left: 290px; margin-top: 30px;}
+    100% {font-size: 16px; color:  #59D2AC; opacity: 1; margin-left: 330px; margin-top: 45px;}
 }
 /*For Chrome*/
 @-webkit-keyframes nameNumberTextChange {
-    0% {font-size: 16px; color:  #59D2AC; opacity: 1;}
-    50% {font-size: 28px; color: #94DEDB; opacity: 1;}
-    100% {font-size: 20px; color:  #59D2AC; opacity: 1;}
+    0% {font-size: 16px; color:  #59D2AC; opacity: 1; margin-left: 330px; margin-top: 45px;}
+    50% {font-size: 28px; color:  #94DEDB; opacity: 1; margin-left: 290px; margin-top: 30px;}
+    100% {font-size: 16px; color:  #59D2AC; opacity: 1; margin-left: 330px; margin-top: 45px;}
 }
 
 
@@ -245,7 +245,7 @@ h2 {
 /*CSS for the container holding the vertical banner*/
 #verticalBanner {
     float: right;
-    top: -50px;
+    top: -488px;
     height: 400px;
     width: 317px;
     overflow: hidden;
@@ -350,6 +350,7 @@ h2 {
     position: absolute;
     font-size: 30px;
     opacity: 0;
+    width: 100%;
 }
 
 /*CSS for the animation of the text to appear over top of the glamping image*/
@@ -405,7 +406,7 @@ h2 {
     opacity: 0;
     margin-top: -10%;
     margin-left: 10%;
-    font-size: 100%;
+    font-size: 16px;
 }
 
 /*CSS for the animation of glamping location that sits alongside the location icon*/
@@ -775,7 +776,7 @@ h2 {
 #nameAndNumber {
     position:absolute;
     opacity: 0;
-    margin-top: -200px;
+    margin-top: -250px;
     animation-name: nameAndNumberFadeIn;
     animation-delay: 18s;
     animation-duration: 2s;
@@ -801,7 +802,7 @@ h2 {
 #imageSpace {
     float: left;
     position: relative;
-    top: -35px;
+    top: 0px;
     width: 30%;
 }
 #imagePicture {
@@ -810,9 +811,10 @@ h2 {
 
 /*CSS for main section on index page*/
 #welcome {
-    width: 40%;
-    margin-left: 35%;
+    width: 43%;
+    margin-left: 32%;
     margin-right: 25%;
+    white-space: wrap;
 }
 
 /*CSS for booking page*/

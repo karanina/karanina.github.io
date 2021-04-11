@@ -120,13 +120,18 @@ function nextSection(sectionName) {
     newProgress.style.width = newProgressValue;
     newProgress.innerHTML = newProgressValue;
 }
-/*Loads the previous section upon clicking the 'previous' button - except for the details section which has a link back to the index page.*/
+/*Loads the previous section upon clicking the 'previous' button*/
 function previousSection(sectionName) {
     var previousSectionID;
     var currentSectionID;
     var newSectionName;
 
     switch (sectionName) {
+        case 'details':
+            currentSectionID = document.getElementById("bookingDetails");    
+            previousSectionID = document.getElementById("bookingDetails");
+            newSectionName = "details";
+            break;
         case 'activities':
             currentSectionID = document.getElementById("activityExperience");
             previousSectionID = document.getElementById("bookingDetails");
