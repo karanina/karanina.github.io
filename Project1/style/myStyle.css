@@ -242,10 +242,23 @@ h2 {
 
 /*CSS for Vertical Banner*/
 
-/*CSS for the container holding the vertical banner*/
+/*CSS for the container holding the vertical banner on the Index page*/
 #verticalBanner {
     float: right;
     top: -488px;
+    height: 400px;
+    width: 317px;
+    overflow: hidden;
+    background-color: black;
+    color: yellow;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+}
+
+/*CSS for the container holding the vertical banner on the Booking page*/
+#verticalBannerBooking {
+    float: right;
+    top: 25px;
     height: 400px;
     width: 317px;
     overflow: hidden;
@@ -260,24 +273,27 @@ h2 {
     position: absolute;
     margin-top: 2px;
     margin-left: 2px;
+    opacity: 0;
     z-index: 1;
     animation-name: tairawhitiGisborneLogoInFadeOut;
-    animation-duration: 18s;
+    animation-duration: 20s;
+    animation-fill-mode: forwards;
     -webkit-animation-name: tairawhitiGisborneLogoInFadeOut; /*For Chrome*/
-    -webkit-animation-duration: 18s; /*For Chrome*/ 
+    -webkit-animation-duration: 20s; /*For Chrome*/ 
+    -webkit-animation-fill-mode: forwards;
 }
 @keyframes tairawhitiGisborneLogoInFadeOut {
     0% {opacity: 0;}
-    1% {opacity: 1;}
-    99% {opacity: 1;}
-    100% {opacity: 0;}
+    2.5% {opacity: 1;}
+    97.5% {opacity: 1;}
+    100% {opacity: 1;}
 }
 /*For Chrome*/
 @-webkit-keyframes tairawhitiGisborneLogoInFadeOut {
     0% {opacity: 0;}
-    1% {opacity: 1;}
-    99% {opacity: 1;}
-    100% {opacity: 0;}
+    2.5% {opacity: 1;}
+    97.5% {opacity: 1;}
+    100% {opacity: 1;}
 }   
 
 /*(i) information icon button, visible throughout vertical banner animation*/
@@ -332,15 +348,15 @@ h2 {
 }
 @keyframes glampingFadeInOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    25% {opacity: 1;}
+    75% {opacity: 1;}
     100% {opacity: 0;}
 }
 /*For Chrome*/
 @-webkit-keyframes glampingFadeInOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    25% {opacity: 1;}
+    75% {opacity: 1;}
     100% {opacity: 0;}
 }
 
@@ -357,45 +373,50 @@ h2 {
 #glampingText {
     margin-top: -250px;
     animation-name: glampingTextFadeInOut;
-    animation-duration: 3s;
+    animation-duration: 2500ms;
     -webkit-animation-name: glampingTextFadeInOut; /*For Chrome*/
-    -webkit-animation-duration: 3s; /*For Chrome*/ 
+    -webkit-animation-duration: 2500ms; /*For Chrome*/ 
 }
 @keyframes glampingTextFadeInOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    20% {opacity: 1;}
+    80% {opacity: 1;}
     100% {opacity: 0;}
 }
 /*For Chrome*/
 @-webkit-keyframes glampingTextFadeInOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    20% {opacity: 1;}
+    80% {opacity: 1;}
     100% {opacity: 0;}
 }
 
-/*CSS for the 1st location pointer icon, which is separate because it has a different duration than the following two iterations*/
+/*CSS for location pointer icon*/
 #locationIcon {
     position: absolute;
     margin-top: -12%;
     opacity: 0;
+    z-index: 1;
     animation-name: locationIconFadeInOut;
-    animation-duration: 2s;
+    animation-duration: 3s;
+    animation-iteration-count: 3;
     -webkit-animation-name: locationIconFadeInOut; /*For Chrome*/
-    -webkit-animation-duration: 2s; /*For Chrome*/ 
+    -webkit-animation-duration: 3s; /*For Chrome*/ 
+    -webkit-animation-iteration-count: 3; /*For Chrome*/
 }
 @keyframes locationIconFadeInOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    20% {opacity: 1;}
+    50% {opacity: 1;}
+    70% {opacity: 0;}
     100% {opacity: 0;}
 }
 /*For Chrome*/
 @-webkit-keyframes locationIconFadeInOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    20% {opacity: 1;}
+    50% {opacity: 1;}
+    70% {opacity: 0;}
     100% {opacity: 0;}
 }
 
@@ -418,15 +439,15 @@ h2 {
 }
 @keyframes glampingLocationTextFadeInOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    25% {opacity: 1;}
+    75% {opacity: 1;}
     100% {opacity: 0;}
 }
 /*For Chrome*/
 @-webkit-keyframes glampingLocationTextFadeInOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    25% {opacity: 1;}
+    75% {opacity: 1;}
     100% {opacity: 0;}
 }
 
@@ -439,22 +460,22 @@ h2 {
     opacity: 0;
     animation-name: rereFallsFadeInFadeOut;
     animation-duration: 2s;
-    animation-delay: 3500ms;
+    animation-delay: 3s;
     -webkit-animation-name: rereFallsFadeInFadeOut; /*For Chrome*/
     -webkit-animation-duration: 2s; /*For Chrome*/ 
-    -webkit-animation-delay: 3500ms; /*For Chrome*/
+    -webkit-animation-delay: 3s; /*For Chrome*/
 }
 @keyframes rereFallsFadeInFadeOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    25% {opacity: 1;}
+    75% {opacity: 1;}
     100% {opacity: 0;}
 }
 /*For Chrome*/
 @-webkit-keyframes rereFallsFadeInFadeOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    25% {opacity: 1;}
+    75% {opacity: 1;}
     100% {opacity: 0;}
 }
 
@@ -462,54 +483,23 @@ h2 {
 #waterfallText {
     margin-top: -250px;
     animation-name: waterfallTextFadeInOut;
-    animation-duration: 2s;
-    animation-delay: 3500ms;
+    animation-duration: 2500ms;
+    animation-delay: 2500ms;
     -webkit-animation-name: waterfallTextFadeInOut; /*For Chrome*/
-    -webkit-animation-duration: 2s; /*For Chrome*/
-    -webkit-animation-delay: 3500ms; /*For Chrome*/
+    -webkit-animation-duration: 2500ms; /*For Chrome*/
+    -webkit-animation-delay: 2500ms; /*For Chrome*/
 }
 @keyframes waterfallTextFadeInOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    20% {opacity: 1;}
+    80% {opacity: 1;}
     100% {opacity: 0;}
 }
 /*For Chrome*/
 @-webkit-keyframes waterfallTextFadeInOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
-    100% {opacity: 0;}
-}
-
-/*CSS for the 2nd location pointer icon, which is separate because it has a different duration than the previous iteration*/
-#locationIcon2 {
-    position: absolute;
-    margin-top: -12%;
-    opacity: 0;
-    z-index: 1;
-    animation-name: location2IconFadeInOut;
-    animation-duration: 2500ms;
-    animation-delay: 3500ms;
-    animation-iteration-count: 2;
-    -webkit-animation-name: location2IconFadeInOut; /*For Chrome*/
-    -webkit-animation-duration: 2500ms; /*For Chrome*/
-    -webkit-animation-delay: 3500ms; /*For Chrome*/
-    -webkit-animation-iteration-count: 2; /*For Chrome*/
-}
-@keyframes location2IconFadeInOut {
-    0% {opacity: 0;}
-    8% {opacity: 1;}
-    72% {opacity: 1;}
-    80% {opacity: 0;}
-    100% {opacity: 0;}
-}
-/*For Chrome*/
-@-webkit-keyframes location2IconFadeInOut {
-    0% {opacity: 0;}
-    8% {opacity: 1;}
-    72% {opacity: 1;}
-    80% {opacity: 0;}
+    20% {opacity: 1;}
+    80% {opacity: 1;}
     100% {opacity: 0;}
 }
 
@@ -518,22 +508,22 @@ h2 {
     opacity: 0;
     animation-name: waterfallLocationTextFadeInFadeOut;
     animation-duration: 2s;
-    animation-delay: 3500ms;
+    animation-delay: 3s;
     -webkit-animation-name: waterfallLocationTextFadeInFadeOut; /*For Chrome*/
     -webkit-animation-duration: 2s; /*For Chrome*/ 
-    -webkit-animation-delay: 3500ms; /*For Chrome*/
+    -webkit-animation-delay: 3s; /*For Chrome*/
 }
 @keyframes waterfallLocationTextFadeInFadeOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    25% {opacity: 1;}
+    75% {opacity: 1;}
     100% {opacity: 0;}
 }
 /*For Chrome*/
 @-webkit-keyframes waterfallLocationTextFadeInFadeOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    25% {opacity: 1;}
+    75% {opacity: 1;}
     100% {opacity: 0;}
 }
 
@@ -553,15 +543,15 @@ h2 {
 }
 @keyframes personBikingFadeInFadeOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    25% {opacity: 1;}
+    75% {opacity: 1;}
     100% {opacity: 0;}
 }
 /*For Chrome*/
 @-webkit-keyframes personBikingFadeInFadeOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    25% {opacity: 1;}
+    75% {opacity: 1;}
     100% {opacity: 0;}
 }
 
@@ -570,23 +560,23 @@ h2 {
     position: absolute;
     margin-top: -320px;
     animation-name: personBikingTextFadeInFadeOut;
-    animation-duration: 2s;
-    animation-delay: 6s;
+    animation-duration: 2500ms;
+    animation-delay: 5500ms;
     -webkit-animation-name: personBikingTextFadeInFadeOut; /*For Chrome*/
-    -webkit-animation-duration: 2s; /*For Chrome*/ 
-    -webkit-animation-delay: 6s; /*For Chrome*/
+    -webkit-animation-duration: 2500ms; /*For Chrome*/ 
+    -webkit-animation-delay: 5500ms; /*For Chrome*/
 }
 @keyframes personBikingTextFadeInFadeOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    20% {opacity: 1;}
+    80% {opacity: 1;}
     100% {opacity: 0;}
 }
 /*For Chrome*/
 @-webkit-keyframes personBikingTextFadeInFadeOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    20% {opacity: 1;}
+    80% {opacity: 1;}
     100% {opacity: 0;}
 }
 
@@ -602,15 +592,15 @@ h2 {
 }
 @keyframes personBikingLocationTextFadeInFadeOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    25% {opacity: 1;}
+    75% {opacity: 1;}
     100% {opacity: 0;}
 }
 /*For Chrome*/
 @-webkit-keyframes personBikingLocationTextFadeInFadeOut {
     0% {opacity: 0;}
-    10% {opacity: 1;}
-    90% {opacity: 1;}
+    25% {opacity: 1;}
+    75% {opacity: 1;}
     100% {opacity: 0;}
 }
 
@@ -622,23 +612,23 @@ h2 {
     height: 400px;
     opacity: 0;
     animation-name: wainuiBeachFadeInFadeOut;
-    animation-duration: 9s;
+    animation-duration: 9500ms;
     animation-delay: 8500ms;
     -webkit-animation-name: wainuiBeachFadeInFadeOut; /*For Chrome*/
-    -webkit-animation-duration: 9s; /*For Chrome*/ 
+    -webkit-animation-duration: 9500ms; /*For Chrome*/ 
     -webkit-animation-delay: 8500ms; /*For Chrome*/
 }
 @keyframes wainuiBeachFadeInFadeOut {
     0% {opacity: 0;}
-    2% {opacity: 1;}
-    98% {opacity: 1;}
+    5% {opacity: 1;}
+    95% {opacity: 1;}
     100% {opacity: 0;}
 }
 /*For Chrome*/        
 @-webkit-keyframes wainuiBeachFadeInFadeOut {
     0% {opacity: 0;}
-    2% {opacity: 1;}
-    98% {opacity: 1;}
+    5% {opacity: 1;}
+    95% {opacity: 1;}
     100% {opacity: 0;}
 }
 
@@ -647,23 +637,23 @@ h2 {
     position: absolute;
     margin-top: -320px;
     animation-name: wainuiBeachTextFadeInFadeOut;
-    animation-duration: 9s;
+    animation-duration: 9500ms;
     animation-delay: 8500ms;
     -webkit-animation-name: wainuiBeachTextFadeInFadeOut; /*For Chrome*/
-    -webkit-animation-duration: 9s; /*For Chrome*/ 
+    -webkit-animation-duration: 9500ms; /*For Chrome*/ 
     -webkit-animation-delay: 8500ms; /*For Chrome*/
 }
 @keyframes wainuiBeachTextFadeInFadeOut {
     0% {opacity: 0;}
-    2% {opacity: 1;}
-    98% {opacity: 1;}
+    5% {opacity: 1;}
+    95% {opacity: 1;}
     100% {opacity: 0;}
 }
 /*For Chrome*/
 @-webkit-keyframes wainuiBeachTextFadeInFadeOut {
     0% {opacity: 0;}
-    2% {opacity: 1;}
-    98% {opacity: 1;}
+    5% {opacity: 1;}
+    95% {opacity: 1;}
     100% {opacity: 0;}
 }
 
@@ -674,23 +664,23 @@ h2 {
     position: absolute;
     opacity: 0;
     animation-name: airNZTextFadeInFadeOut;
-    animation-duration: 9s;
+    animation-duration: 9500ms;
     animation-delay: 8500ms;
     -webkit-animation-name: airNZTextFadeInFadeOut; /*For Chrome*/
-    -webkit-animation-duration: 9s; /*For Chrome*/ 
+    -webkit-animation-duration: 9500ms; /*For Chrome*/ 
     -webkit-animation-delay: 8500ms; /*For Chrome*/
 }
 @keyframes airNZTextFadeInFadeOut {
     0% {opacity: 0;}
-    2% {opacity: 1;}
-    98% {opacity: 1;}
+    5% {opacity: 1;}
+    95% {opacity: 1;}
     100% {opacity: 0;}
 }
 /*For Chrome*/
 @-webkit-keyframes airNZTextFadeInFadeOut {
     0% {opacity: 0;}
-    2% {opacity: 1;}
-    98% {opacity: 1;}
+    5% {opacity: 1;}
+    95% {opacity: 1;}
     100% {opacity: 0;}
 }
 
@@ -702,20 +692,24 @@ h2 {
     opacity: 0;
     z-index: 1;
     animation-name: findOutMoreSlide;
-    animation-delay:10s;
-    animation-duration: 9s;
+    animation-delay:8500ms;
+    animation-duration: 9500ms;
     -webkit-animation-name: findOutMoreSlide; /*For Chrome*/
-    -webkit-animation-delay:10s; /*For Chrome*/
-    -webkit-animation-duration: 9s; /*For Chrome*/
+    -webkit-animation-delay:8500ms; /*For Chrome*/
+    -webkit-animation-duration: 9500ms; /*For Chrome*/
 }
 @keyframes findOutMoreSlide {
     0% {opacity: 1; margin-top: 0px;}
-    100%{opacity: 1; margin-top: -250px;}
+    5% {opacity: 1; margin-top: -250px;}
+    95% {opacity: 1; margin-top: -250px;}
+    100%{opacity: 0; margin-top: -250px;}
 }
 /*For Chrome*/
 @-webkit-keyframes findOutMoreSlide {
     0% {opacity: 1; margin-top: 0px;}
-    100%{opacity: 1; margin-top: -250px;}
+    5% {opacity: 1; margin-top: -250px;}
+    95% {opacity: 1; margin-top: -250px;}
+    100%{opacity: 0; margin-top: -250px;}
 }
 
 /*CSS for Star Alliance blurb and logo*/
@@ -725,23 +719,23 @@ h2 {
     margin-left: 60px;
     opacity: 0;
     animation-name: starAllianceLogoFadeInFadeOut;
-    animation-duration: 9s;
+    animation-duration: 9500ms;
     animation-delay: 8500ms;
     -webkit-animation-name: starAllianceLogoFadeInFadeOut; /*For Chrome*/
-    -webkit-animation-duration: 9s; /*For Chrome*/ 
+    -webkit-animation-duration: 9500ms; /*For Chrome*/ 
     -webkit-animation-delay: 8500ms; /*For Chrome*/
 }
 @keyframes starAllianceLogoFadeInFadeOut {
     0% {opacity: 0;}
-    2% {opacity: 1;}
-    98% {opacity: 1;}
+    5% {opacity: 1;}
+    95% {opacity: 1;}
     100% {opacity: 0;}
 }
 /*For Chrome*/
 @-webkit-keyframes starAllianceLogoFadeInFadeOut {
     0% {opacity: 0;}
-    2% {opacity: 1;}
-    98% {opacity: 1;}
+    5% {opacity: 1;}
+    95% {opacity: 1;}
     100% {opacity: 0;}
 }
 
@@ -752,23 +746,23 @@ h2 {
     margin-top: -39px;
     cursor: pointer;
     animation-name: replayFadeInFadeOut;
-    animation-delay: 11s;
-    animation-duration: 7s;
+    animation-delay: 10s;
+    animation-duration: 8s;
     animation-fill-mode: forwards;
     -webkit-animation-name: replayFadeIn; /*For Chrome*/
-    -webkit-animation-delay: 11s; /*For Chrome*/
-    -webkit-animation-duration: 7s; /*For Chrome*/
+    -webkit-animation-delay: 10s; /*For Chrome*/
+    -webkit-animation-duration: 8s; /*For Chrome*/
     -webkit-animation-fill-mode: forwards; /*For Chrome*/
 }
 @keyframes replayFadeIn {
     0% {opacity: 0;}
-    2% {opacity: 1;}
+    6% {opacity: 1;}
     100% {opacity: 1;}
 }
 /*For Chrome*/
 @-webkit-keyframes replayFadeIn {
     0% {opacity: 0;}
-    2% {opacity: 1;}
+    6% {opacity: 1;}
     100% {opacity: 1;}
 }
 
@@ -788,13 +782,13 @@ h2 {
 }
 @keyframes nameAndNumberFadeIn {
     0% {opacity: 0;}
-    5% {opacity: 1;}
+    25% {opacity: 1;}
     100% {opacity: 1;}
 }
 /*For Chrome*/
 @-webkit-keyframes nameAndNumberFadeIn {
     0% {opacity: 0;}
-    5% {opacity: 1;}
+    25% {opacity: 1;}
     100% {opacity: 1;}
 }
 

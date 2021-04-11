@@ -63,11 +63,6 @@ function nextSection(sectionName) {
             clientFamilyName = document.getElementById("familyName").value;
             clientCheckInDate = document.getElementById("checkInDate").value;
             clientCheckOutDate = document.getElementById("checkOutDate").value;
-            /*if (clientFirstName.value == null || clientFamilyName.value == null || clientCheckInDate.value == null || clientCheckOutDate.value == null) {
-                alert("You have left fields in this form blank. Please complete them.");
-                nextSectionID = currentSectionID;
-                newSectionName = "details";
-            }*/
             if (document.getElementById("cookingYes").checked) {
                 clientCooking = document.getElementById("cookingYes").value;
             }
