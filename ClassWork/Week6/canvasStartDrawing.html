@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas - Start Drawing</title>
+    <style>
+        body {
+            background-color: #eeeeee;
+        }
+        #outer {
+            margin-left: 40px;
+            margin-top: 40px;
+        }
+        #myCanvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>  
+    <div id="outer">
+        <canvas id="myCanvas" width="400" height="400">
+            Your browser doesn't support the canvas! Try another browser.
+        </canvas>
+    </div>
+    <script>
+        var c = document.getElementById("myCanvas"); // find the canvas element
+        var ctx = c.getContext("2d"); // allows us to access the properties and methods for drawing in 2D
+        
+        // creates line 1
+        ctx.beginPath(); // says that we're going to create a new path 
+        ctx.moveTo(0,0); // defines the x,y co-ordinates of where we will start the line
+        ctx.lineTo(300, 150); // defines the x, y co-ordinates of where we will end the line
+        ctx.lineWidth = 10; // sets the line width (in pixels)
+        ctx.strokeStyle = "#FF0000"; // sets the color, gradient, or pattern used for strokes
+        ctx.stroke(); // draws the line
+
+        //creates line 2
+        ctx.lineTo (0, 350); // because we have not said that we're creating a new path, this starts at the previous lineTo co-ordinates
+        ctx.stroke();
+        
+        // creates rectangle 1
+        ctx.beginPath(); // we're running beginPath again as we're going to change some of the properties. If we didn't, all the previous properties would change as well.
+        ctx.rect(20, 20, 150, 100) // create a rectangle starting at x co-ord 20pixels, y co-ord 20 pixels, and 150 pixels wide, 100 pixels high
+        ctx.lineWidth = 8;
+        ctx.strokeStyle = "blue";
+        ctx.stroke();
+
+        // creates rectangle 2
+        ctx.beginPath();
+        //ctx.rect(130, 130, 250, 200);
+        ctx.lineWidth = 8;
+        ctx.strokeStyle="#FF00FF";
+        ctx.strokeRect(130, 130, 250, 200); // alternate way to draw a rectangle
+        ctx.stroke();
+
+        // creates a circle
+        ctx.beginPath();
+        ctx.lineWidth = 9;
+        ctx.strokeStyle = "green";
+        ctx.arc(260, 260, 50, 0, 2*Math.PI); // creates a circle, x co-ord, y-co-ord, radius, angle where the drawing should start (at 3 o'clock), angle where the drawing should end (back at 3 o'clock), optional boolean value for whether the line should go clockwise (true) or anti-clockwise (false) - not needed here)
+        ctx.stroke();
+    </script>
+</body>
+</html>

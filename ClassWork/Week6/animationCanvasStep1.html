@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 6 - Animation on Canvas</title>
+</head>
+<body onload="init()">
+    <canvas id="myCanvas" width="400px" height="400px">
+    </canvas>
+
+    <script>
+        var context;
+        var x=10;
+        var y=10;
+        var dx=20;
+        var dy=20;
+        var myMove;
+
+        function init() {
+            context = myCanvas.getContext("2d"); // allows us access to the properties and methods for drawing in 2D on the myCanvas canvas
+            myMove = setInterval(draw, 110); // calls the draw function every 110 milliseconds
+        }
+        function draw() {
+            context.clearRect(0,0,400,400); //clears the specified area within the given rectangle at the beginning of each draw cycle
+            context.beginPath();
+            context.fillStyle="#FF00FF";
+            context.arc(x, y, 10, 0, 2*Math.PI, true);
+            context.closePath(); // creates a path from the current point back to the starting point
+            context.fill(); // fills the current path with the specified fill style - default black
+            x+=dx;
+            //y+-dy;
+            if (x > 300) {clearInterval(myMove)}; // cancels the setInterval timer on the variable myMove
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 6 - Gradient Animation</title>
+    <style>
+        body {
+            background-color: #eeeeee;
+        }
+        #outer { 
+            margin-left: 40px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body onload="init()">
+    <div id="outer">
+        <canvas id="canvas1" width="400px" height="400px">
+            Your browser doesn't support the canvas. Try another browser.
+        </canvas>
+    </div>
+    <script>
+        var myCanvas = document.getElementById("canvas1")
+        var ctx = myCanvas.getContext('2d');
+        var c1 = 0.25;
+        var c2 = 0.5;
+        var c3 = 0.75;
+        var dc1 = 0.05;
+        var dc2 = 0.05;
+        var dc3 = 0.05;
+        var myMove;
+
+        function init() {
+
+            myMove = setInterval(draw, 220);
+        }
+
+        function draw() {
+            var myGradient1=ctx.createLinearGradient(0, 0, 400, 400); // creates a linear gradient with starting x, y points, finishing x, y points.
+            myGradient1.addColorStop(0, "#bc6d4c"); // stop (a position between 0 and 1 where the color will change) & color (the color it will change to).
+            myGradient1.addColorStop(c1, "#7e0f12");
+            myGradient1.addColorStop(c2, "#b71a3b");
+            myGradient1.addColorStop(c3, "#6a7045");
+            myGradient1.addColorStop(1, "#313c33");
+            ctx.fillStyle = myGradient1; // sets the fillStyle for the area to the Gradient style detailed above
+            ctx.fillRect(0, 0, 200, 200); // draws the shape (a square from x,y co-ord to x,y co-ord) and fills it with the fillstyle
+
+            var myGradient2 = ctx.createLinearGradient(400, 0, 0, 400);
+            myGradient2.addColorStop(0, "#bc6d4c");
+            myGradient2.addColorStop(c1, "#7e0f12");
+            myGradient2.addColorStop(c2, "#b71a3b");
+            myGradient2.addColorStop(c3, "#6a7045");
+            myGradient2.addColorStop(1, "#313c33");
+            ctx.fillStyle = myGradient2;
+            ctx.fillRect(200, 0, 200, 200);
+
+            var myGradient3 = ctx.createLinearGradient(0, 400, 400, 0);
+            myGradient3.addColorStop(0, "#bc6d4c");
+            myGradient3.addColorStop(c1, "#7e0f12");
+            myGradient3.addColorStop(c2, "#b71a3b");
+            myGradient3.addColorStop(c3, "#6a7045");
+            myGradient3.addColorStop(1, "#313c33");
+            ctx.fillStyle = myGradient3;
+            ctx.fillRect(0, 200, 200, 200);
+
+            var myGradient4 = ctx.createLinearGradient(400, 400, 0, 0);
+            myGradient4.addColorStop(0, "#bc6d4c");
+            myGradient4.addColorStop(c1, "#7e0f12");
+            myGradient4.addColorStop(c2, "#b71a3b");
+            myGradient4.addColorStop(c3, "#6a7045");
+            myGradient4.addColorStop(1, "#313c33");
+            ctx.fillStyle = myGradient4;
+            ctx.fillRect(200, 200, 200, 200);
+            c1 = c1 + dc1; // changes the c values for each redraw
+            c2 = c2 + dc2;
+            c3 = c3 + dc3;
+
+            if (c3 > 0.94) { // sets outer boundary for dc values
+                dc1 = -dc1;
+                dc2 = -dc2;
+                dc3 = -dc3;
+            }
+            if (c3 < 0.74) { // sets inner boundary for dc values (reverses the direction)
+                dc1 = -dc1;
+                dc2 = -dc2;
+                dc3 = -dc3;
+            }
+        }
+    </script>
+</body>
+</html>

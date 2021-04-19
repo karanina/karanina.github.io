@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 6 - Draw Spiral</title>
+</head>
+<body = onload="init()">
+    <canvas id="myCanvas" width="400px" height="400px">
+        Your browser doesn't support canvas. Try another browser.
+    </canvas>
+    <script>
+        var ctx;
+        var x = 200;
+        var y = 200;
+        var dx = 40;
+        var dc = 0.05;
+        var c1 = 0.0;
+        var c2 = 0.05*Math.PI;
+        var rad = 10;
+        var drad = 0.2;
+        var col = "#6e93d6";
+        var s = 1;
+        var myMove;
+
+        ctx = myCanvas.getContext("2d");
+
+        function init() {
+            myMove = setInterval(draw, 20);
+        }
+
+        function draw() {
+            // ctx.clearRect(0, 0, 400, 400);
+            ctx.beginPath();
+            // Draws a circle of radius = rad at the co-ordinates x & y on the canvas.
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = col;
+            ctx.arc(x, y, rad, c1, c2, false);
+            ctx.stroke();
+            rad = rad + drad; // updates the radius to get wider
+            c1 = c1 + dc; // updates the start of the arc position
+            c2 = c2 + dc; // updates the end of the arc position
+            if (rad > 100) {
+                clearInterval(myMove); // when to stop drawing
+            }
+
+        }
+    </script>
+</body>
+</html>
