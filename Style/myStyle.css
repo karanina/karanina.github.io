@@ -62,7 +62,7 @@ list-style: none;
     color: #0049D1;
 }
 
-.niceMenu ul li a:link, a:visited, a:active {
+.niceMenu ul li a:link, .niceMenu ul li a:visited, .niceMenu ul li a:active {
 /*no underline on links*/
     text-decoration: none;
     color: #FFE721;
@@ -74,13 +74,15 @@ div {
     padding: 15px;
 }
 
-#weekly {
+.weekly {
     height: 200px;
     width: 200px;
     padding: 10px;
 }
-table, #classWork {
+table, .classWork {
     border-style: none;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 iframe {
