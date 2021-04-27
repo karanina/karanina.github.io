@@ -75,7 +75,7 @@
                 var plus = document.createElement("button");
                 var plName = "pl" + i;
                 plus.setAttribute("type","button"); 
-                plus.setAttribute("name", plName);
+                plus.setAttribute("name", i);
                 plus.setAttribute("id", plName);
                 plus.setAttribute("value", 1);
                 plus.setAttribute('onclick', 'myChange(this.value, this.name)');
@@ -103,7 +103,7 @@
                 var minus = document.createElement("button")
                 var miName = "mi" + i;
                 minus.setAttribute("type", "button");
-                minus.setAttribute("name", miName);
+                minus.setAttribute("name", i);
                 minus.setAttribute("id", miName);
                 minus.setAttribute("value", -1);
                 minus.setAttribute("onclick", "myChange(this.value, this.name)");
@@ -129,7 +129,8 @@
 
         
 
-        function myChange(val, mathName) {
+        function myChange(val, nam) {
+            var qn = "q" + nam
             var quantity = Number(document.getElementById(qn).value) + val;
             Number(document.getElementById(qn).value) = quantity;
         }
