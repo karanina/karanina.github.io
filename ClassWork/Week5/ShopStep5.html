@@ -121,7 +121,7 @@
                 var subTotal = 0;
                 var stCell = "st" + nam;
                 var prValue = "pr" + nam;
-                subTotal = qty * Number(document.getElementById(prValue).value);
+                subTotal = Number(qty) * Number(document.getElementById(prValue).value);
                 
                 document.getElementById(stCell).innerHTML = "$" + subTotal;
         }
