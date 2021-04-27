@@ -134,8 +134,8 @@
             if (quantity <= 0) {
                 quantity = 0;
             }
-            document.getElementById(qn).value = quantity;
-            document.getElementById(qn).innerHTML = this.value;
+            document.getElementById(qn).value = Number(quantity);
+            document.getElementById(qn).innerHTML = quantity;
             mySubtotal(quantity, nam);
         }
     </script>
