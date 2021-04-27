@@ -60,15 +60,18 @@
                 var cell6 = row.insertCell(5);
                 var cell7 = row.insertCell(6);
 
+                cell1.innerHTML = products[i].productName;
+
+                cell2.innerHTML = "$" + products[i].price; 
                 var priceName = "pr" + i;
                 cell2.setAttribute("id", priceName);
-                var cellName = 'plus'+ i;
 
-                cell4.setAttribute("name", cellName); 
-                cell1.innerHTML = products[i].productName; 
-                cell2.innerHTML = "$" + products[i].price; 
                 cell3.innerHTML = '<img src="../../Images/Shop/' + products[i].image + '" />';
 
+                var cellName4 = 'plus'+ i;
+                cell4.setAttribute("name", cellName4); 
+
+                // creates plus button
                 var plus = document.createElement("button");
                 var plName = "pl" + i;
                 plus.setAttribute("type","button"); 
@@ -79,7 +82,7 @@
                 plus.innerHTML = "+";
                 cell4.appendChild(plus);
                 
-                // creates the cell for quantity
+
                 var cellName5 = "ss" + i;
                 cell5.setAttribute("name", cellName5);
                 
@@ -91,33 +94,34 @@
                 quantityInput.setAttribute("id", qName);
                 quantityInput.setAttribute("value", 0);
                 quantityInput.setAttribute("style", "width: 35px;");
+                quantityInput.setAttribute("onchange", "mySubtotal(this.value, this.name)");
                 cell5.appendChild(quantityInput);
 
                 var cellName6 = "minus" + i;
                 cell6.setAttribute("name", cellName6);
-
+ 
+                // creates minus button
                 var minus = document.createElement("button")
                 var miName = "mi" + i;
                 minus.setAttribute("type", "button");
                 minus.setAttribute("name", miName);
                 minus.setAttribute("id", miName);
-                minus.setAttribute("value", 1);
+                minus.setAttribute("value", -1);
+                minus.setAttribute("onclick", "myChange(this.value, this.name)");
                 minus.innerHTML = "-";
                 cell6.appendChild(minus);
 
                 var cellName7 = "st" + i;
                 cell7.setAttribute("name", cellName7);
-                cell7.setAttribute("onclick", mySubtotal("this.price, this.value"))
+                cell7.innerHTML = ""
             }
         }
 
-        function mySubtotal(pr, val) {
+        function mySubtotal(val, na) {
         
             for (var i = 0; i < products.length; i++) {
                 var subTotal = 0;
-                var qRequired = "q" + i;
-                var prCell = "pr" + i;
-                var stCell = "st" + i
+                
                 if (Number(document.getElementById(qRequired).value > 0)) {
                     subTotal = Number(document.getElementById(qRequired).value * Number(document.getElementById(prCell).value));
                 }
@@ -147,12 +151,8 @@
         }
 
         function myChange(val, qn) {
-            if (document.getElementById('ch' + qn).checked) {
-                document.getElementById('q' + qn).value = 1;
-            }
-            else {
-                document.getElementById('q' + qn).value = 0;
-            }
+            var quantity = Number(document.getElementById(qn).value) + val;
+            document.getElementById(qn).innerHTML = quantity;
         }
     </script>
 </head>
