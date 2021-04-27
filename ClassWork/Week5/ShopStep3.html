@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 5 - Shop Step 1</title>
+    <title>Week 5 - Shop Step 4</title>
     <link rel="stylesheet" type="text/css" href="../../Style/myStyle.css">
     <script>
         function product(productName, price, image) {
@@ -31,7 +31,9 @@
                 var cell2 = row.insertCell(1);
                 var cell3 = row.insertCell(2);
                 var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
                 var cellName = 's'+ i;
+
                 // Unique name for the cell where we have the checkbox
                 cell4.setAttribute("name", cellName); 
                 // gets the product name from index i in the products array of objects.
@@ -44,7 +46,7 @@
                 var checkbox = document.createElement("input");
 
                 // this will become the input id for the checkbox
-                var cname = "ch" + i
+                var cname = "ch" + i;
                 
                 // sets the variable checkbox (which has created an html element of "input" with an attribute of "type" and the value of "type" being "checkbox").
                 checkbox.setAttribute("type","checkbox"); 
@@ -61,32 +63,60 @@
                 // input element is set to not be checked.
                 checkbox.checked = false;
                 
+                // gives the element an onclick attribute, which passes in the "myChange" function with the parameters for the checkbox's value and name.
+                checkbox.setAttribute('onclick', 'myChange(this.value, this.name)');
+
                 // puts the input variable inside cell4
                 cell4.appendChild(checkbox);
+                
+                // creates the cell for quantity
+                var cellName5 = "ss" + i;
+                cell5.setAttribute("name", cellName5);
+                
+                // creates the input parameters for taking in the quantity
+                var quantityInput = document.createElement("input");
+                var qName = "q" + i;
+                quantityInput.setAttribute("type", "number");
+                quantityInput.setAttribute("name", qName);
+                quantityInput.setAttribute("id", qName);
+                quantityInput.setAttribute("value", 0);
+                quantityInput.setAttribute("style", "width: 35px;");
+                cell5.appendChild(quantityInput);
             }
         }
         function calculate_cost() {
             var result = "";
             var ncheckbox = "";
+            var qInput = "";
             var total = 0;
 
             for (var i = 0; i < products.length; i++) {
                 // creates the string to use as the id for each item
                 ncheckbox = "ch" + i;
+                qInput = "q" + i;
                 var x = document.getElementById(ncheckbox);
                 
                 // ie if the product has been selected
                 if (document.getElementById(ncheckbox).checked) {
                     // converts the value to a number and adds it to the total
-                    total = total + Number(document.getElementById(ncheckbox).value)
+                    total = total + Number(document.getElementById(ncheckbox).value) * Number(document.getElementById(qInput).value);
                 }
             }
             document.getElementById('calcost').innerHTML = "Total to pay = $" + total;
         }
+
+        function myChange(val, qn) {
+            if (document.getElementById('ch' + qn).checked) {
+                document.getElementById('q' + qn).value = 1;
+            }
+            else {
+                document.getElementById('q' + qn).value = 0;
+            }
+        }
     </script>
 </head>
 <body>
-    <h1>Shop Step 1</h1>
+    <h1>Shop Step 4/h1>
     <button type="button" onclick="show_products()">Display all products</button>
     <table style="border:1; margin-left: 0px;" id="dispProduct"></table>
     <button type="button" onclick="calculate_cost()">Calculate total</button>
