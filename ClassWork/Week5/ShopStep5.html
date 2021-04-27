@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Week 5 - Shop Step 4</title>
+    <title>Week 5 - Shop Step 5</title>
     <link rel="stylesheet" type="text/css" href="../../Style/myStyle.css">
     <script>
         function product(productName, price, image) {
@@ -57,42 +57,27 @@
                 var cell3 = row.insertCell(2);
                 var cell4 = row.insertCell(3);
                 var cell5 = row.insertCell(4);
-                var cellName = 's'+ i;
+                var cell6 = row.insertCell(5);
+                var cell7 = row.insertCell(6);
 
-                // Unique name for the cell where we have the checkbox
+                var priceName = "pr" + i;
+                cell2.setAttribute("id", priceName);
+                var cellName = 'plus'+ i;
+
                 cell4.setAttribute("name", cellName); 
-                // gets the product name from index i in the products array of objects.
                 cell1.innerHTML = products[i].productName; 
-                // gets the product price from index i in the products array of objects.
                 cell2.innerHTML = "$" + products[i].price; 
-                // creates the html code to insert an image and appends the source address with the product image from index i in the products array of objects
                 cell3.innerHTML = '<img src="../../Images/Shop/' + products[i].image + '" />';
 
-                var checkbox = document.createElement("input");
-
-                // this will become the input id for the checkbox
-                var cname = "ch" + i;
-                
-                // sets the variable checkbox (which has created an html element of "input" with an attribute of "type" and the value of "type" being "checkbox").
-                checkbox.setAttribute("type","checkbox"); 
-                
-                // gives the input html element an attribute of "name" and gives it a unique name of the variable "i"
-                checkbox.setAttribute("name", i);
-                
-                // gives the input html element an attribute of "id" and gives it a unique id of the variable "cname"
-                checkbox.setAttribute("id", cname);
-                
-                // gives the input html element an attribute of "value" and gives it the value from the product product price at index i in the products array of objects
-                checkbox.setAttribute("value", products[i].price);
-                
-                // input element is set to not be checked.
-                checkbox.checked = false;
-                
-                // gives the element an onclick attribute, which passes in the "myChange" function with the parameters for the checkbox's value and name.
-                checkbox.setAttribute('onclick', 'myChange(this.value, this.name)');
-
-                // puts the input variable inside cell4
-                cell4.appendChild(checkbox);
+                var plus = document.createElement("button");
+                var plName = "pl" + i;
+                plus.setAttribute("type","button"); 
+                plus.setAttribute("name", i);
+                plus.setAttribute("id", plName);
+                plus.setAttribute("value", 1);
+                plus.setAttribute('onclick', 'myChange(this.value, this.name)');
+                plus.innerHTML = "+";
+                cell4.appendChild(plus);
                 
                 // creates the cell for quantity
                 var cellName5 = "ss" + i;
@@ -107,7 +92,38 @@
                 quantityInput.setAttribute("value", 0);
                 quantityInput.setAttribute("style", "width: 35px;");
                 cell5.appendChild(quantityInput);
+
+                var cellName6 = "minus" + i;
+                cell6.setAttribute("name", cellName6);
+
+                var minus = document.createElement("button")
+                var miName = "mi" + i;
+                minus.setAttribute("type", "button");
+                minus.setAttribute("name", miName);
+                minus.setAttribute("id", miName);
+                minus.setAttribute("value", 1);
+                document.getElementById(miName).innerHTML = "-";
+                cell6.appendChild(minus);
+
+                var cellName7 = "total" + i;
+                cell7.setAttribute("name", cellName7);
+                cell7.setAttribute("onclick", mySubtotal("this.price, this.value"))
             }
+        }
+
+        function mySubtotal(pr, val) {
+        
+            for (var i = 0; i < products.length; i++) {
+                var subTotal = 0;
+                var qRequired = "q" + i;
+                var prCell = "pr" + i;
+                var stCell = "st" + i
+                if (Number(document.getElementById(qRequired).value > 0)) {
+                    subTotal = Number(document.getElementById(qRequired).value * Number(document.getElementById(prCell).value));
+                }
+                document.getElementById(stCell).innerHTML = "$" + subTotal;
+            }
+
         }
         function calculate_cost() {
             var result = "";
@@ -141,7 +157,7 @@
     </script>
 </head>
 <body>
-    <h1>Shop Step 4</h1>
+    <h1>Shop Step 5</h1>
     <button type="button" onclick="show_products()">Display all products</button>
     <table style="border:1; margin-left: 0px;" id="dispProduct"></table>
     <button type="button" onclick="calculate_cost()">Calculate total</button>
