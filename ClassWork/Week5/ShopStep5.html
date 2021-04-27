@@ -131,7 +131,7 @@
 
         function myChange(val, nam) {
             var qn = "q" + nam
-            var quantity = Number(document.getElementById(qn).value) + val;
+            var quantity = Number(document.getElementById(qn).value) + Number(val);
             document.getElementById(qn).value = quantity;
             document.getElementById(qn).innerHTML = this.value;
         }
