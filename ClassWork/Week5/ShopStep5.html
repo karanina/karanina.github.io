@@ -111,20 +111,19 @@
                 cell6.appendChild(minus);
 
                 var cellName7 = "st" + i;
-                cell7.setAttribute("name", cellName7);
+                cell7.setAttribute("id", cellName7);
                 cell7.innerHTML = ""
             }
         }
 
-        function mySubtotal(val, qn) {
+        function mySubtotal(qty, nam) {
         
-            for (var i = 0; i < products.length; i++) {
                 var subTotal = 0;
-                var stCell = "st" + i;
-
+                var stCell = "st" + nam;
+                var prValue = "pr" + nam;
+                subTotal = qty * Number(document.getElementById(prValue).value);
                 
                 document.getElementById(stCell).innerHTML = "$" + subTotal;
-            }
         }
 
         
@@ -132,8 +131,12 @@
         function myChange(val, nam) {
             var qn = "q" + nam
             var quantity = Number(document.getElementById(qn).value) + Number(val);
+            if (quantity <= 0) {
+                quantity = 0;
+            }
             document.getElementById(qn).value = quantity;
             document.getElementById(qn).innerHTML = this.value;
+            mySubtotal(quantity, nam);
         }
     </script>
 </head>
