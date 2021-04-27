@@ -75,7 +75,7 @@
                 var plus = document.createElement("button");
                 var plName = "pl" + i;
                 plus.setAttribute("type","button"); 
-                plus.setAttribute("name", i);
+                plus.setAttribute("name", plName);
                 plus.setAttribute("id", plName);
                 plus.setAttribute("value", 1);
                 plus.setAttribute('onclick', 'myChange(this.value, this.name)');
@@ -94,7 +94,6 @@
                 quantityInput.setAttribute("id", qName);
                 quantityInput.setAttribute("value", 0);
                 quantityInput.setAttribute("style", "width: 35px;");
-                quantityInput.setAttribute("onchange", "mySubtotal(this.value, this.name)");
                 cell5.appendChild(quantityInput);
 
                 var cellName6 = "minus" + i;
@@ -117,40 +116,20 @@
             }
         }
 
-        function mySubtotal(val, na) {
+        function mySubtotal(val, qn) {
         
             for (var i = 0; i < products.length; i++) {
                 var subTotal = 0;
+                var stCell = "st" + i;
+
                 
-                if (Number(document.getElementById(qRequired).value > 0)) {
-                    subTotal = Number(document.getElementById(qRequired).value * Number(document.getElementById(prCell).value));
-                }
                 document.getElementById(stCell).innerHTML = "$" + subTotal;
             }
-
-        }
-        function calculate_cost() {
-            var result = "";
-            var ncheckbox = "";
-            var qInput = "";
-            var total = 0;
-
-            for (var i = 0; i < products.length; i++) {
-                // creates the string to use as the id for each item
-                ncheckbox = "ch" + i;
-                qInput = "q" + i;
-                var x = document.getElementById(ncheckbox);
-                
-                // ie if the product has been selected
-                if (document.getElementById(ncheckbox).checked) {
-                    // converts the value to a number and adds it to the total
-                    total = total + Number(document.getElementById(ncheckbox).value) * Number(document.getElementById(qInput).value);
-                }
-            }
-            document.getElementById('calcost').innerHTML = "Total to pay = $" + total;
         }
 
-        function myChange(val, qn) {
+        
+
+        function myChange(val, mathName) {
             var quantity = Number(document.getElementById(qn).value) + val;
             Number(document.getElementById(qn).value) = quantity;
         }
