@@ -152,7 +152,7 @@
 
         function myChange(val, qn) {
             var quantity = Number(document.getElementById(qn).value) + val;
-            document.getElementById(qn).innerHTML = quantity;
+            Number(document.getElementById(qn).value) = quantity;
         }
     </script>
 </head>
