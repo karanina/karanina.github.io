@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 7 - Collision Detection</title>
+</head>
+<body>
+    <p>Press TAB to begin, Use arrow keys to move</p>
+    <span id = "dummy"></span>
+    <section style="border-style: solid; border-width: 2px; width: 500px;">
+        <canvas id="myCanvas" width="500" height="400" tabindex="0" >Canvas tag not supported
+        </canvas>
+    </section>
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        canvas.addEventListener('keydown', doKeyDown, true);
+        cxt = canvas.getContext("2d");
+
+        var x = 100;
+        var y = 100;
+        cxt.fillStyle="black";
+        drawRec(x,y);
+            
+        var x1 = 50;
+        var y1 = 50;
+        var x2 = 100;
+        var y2 = 200;
+        var x3 = 200;
+        var y3 = 100;
+        var w = 50;
+        var h = 30;
+        var score = 0;
+
+        cxt.fillStyle="#FF00FF";
+        cxt.fillRect(x1, y1, 30, 30);
+        cxt.fillRect(x2, y2, 30, 30);
+        cxt.fillRect(x3, y3, 30, 30);
+        
+        var box1 = [x1, y1, 30, 30];
+        var box2 = [x2, y2, 30, 30];
+        var box3 = [x3, y3, 30, 30];
+        
+        // another way to declare an array
+        // var boxes = [box1, box2, box];
+
+        var boxes = []; // declare an array
+        boxes.push(box1); // adds element to the array
+        boxes.push(box2);
+        boxes.push(box3);
+
+        function doKeyDown(e){
+            switch(event.keyCode) {
+                case 37: { // Left Arrow						
+                    updateCanvas();
+                    x = x - 10;
+                    drawRec(x,y);
+                    break;
+                }
+                case 38: { // Up Arrow						
+                    updateCanvas();
+                    y = y - 10;
+                    drawRec(x,y);
+                    break;
+                }
+                case 39: { // Right Arrow						
+                    updateCanvas();
+                    x = x + 10;
+                    drawRec(x,y);
+                    break;
+                }
+                case 40: { // Down Arrow						
+                    updateCanvas();
+                    y = y + 10;
+                    drawRec(x,y);
+                    break;
+                }
+            }
+            check(x, y, w, h); // checks if the black rectangle touches any of the pink squares
+        }
+            
+        function drawRec(x,y) {	
+            cxt.fillStyle="black";		
+            cxt.fillRect(x, y, 50, 30);	
+        }
+        
+        function updateCanvas() {			
+            // clear canvas
+            cxt.clearRect(0,0, canvas.width,canvas.height);
+            cxt.fillStyle="#FF00FF";
+            // cxt.fillRect(x1, y1, 30, 30);
+            // cxt.fillRect(x2, y2, 30, 30);
+            // cxt.fillRect(x3, y3, 30, 30);
+
+            // check if we should generate a new rectangle to start move
+            if (Math.random() < 0.09) {
+                nx = -10;
+                ny = Math.floor(Math.random() * canvas.height);
+                boxes.push(nx, ny, 30, 30);
+            }
+            //for (i = 0; i < boxes.length; i++) {
+            //    var nx = boxes[i][0];
+            //    var ny = boxes[i][1];
+            //    var nw = boxes[i][2];
+            //    var nh = boxes[i][3];
+            //    cxt.fillRect(nx, ny, nw, nh);
+            //}
+            writeScore(score);
+        }
+
+        function check(x, y, w, h) {
+            for (i = 0; i < boxes.length; i++) {
+                var x1 = boxes[i][0];
+                var y1 = boxes[i][1];
+                var w1 = boxes[i][2];
+                var h1 = boxes[i][3];
+                if (intersects(x, y, w, h, x1, y1, w1, h1)) {
+                    // alert (" x=" + x1 + " y=" + y1 + " w=" + w1 + " h=" + h1);
+                    playSound('../../../Audio/beep-1.mp3')
+                    score += 1;
+                    boxes.splice(i, 1); // removes box at array index i
+                    // splice removes (or adds) the array item at the first reference, and the number of array items after the comma
+                }
+            }
+        }
+
+        // returns true if there is any overlap
+        // params: x, y, w, h of two rectangles
+        function intersects(x1, y1, w1, h1, x2, y2, w2, h2) {
+            w2 += x2;
+            w1 += x1;
+            if (x2 > w1 || x1 > w2) { 
+                return false;
+            }
+            h2 += y2;
+            h1 += y1;
+            if (y2 > h1 || y1 > h2) {
+                return false;
+            }
+            return true;
+        }
+
+        function playSound(soundFile) {
+            document.getElementById("dummy").innerHTML = "<embed src = \"" + soundFile + "\" hidden = \"true\" autostart = \"true\" loop = \"false\" />";
+        }
+
+        function writeScore(score) {
+            // transparent black text
+            cxt.font = '24px "Arial"';
+            cxt.fillStyle = "rgba(0, 0, 0, 0.9)";
+            cxt.fillText = ("Score: " + score, 0, 30);
+        }
+    </script>
+</body>
+</html>
