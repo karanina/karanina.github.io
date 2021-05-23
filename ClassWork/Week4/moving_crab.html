@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style>
+.mybackground {
+	position: relative;
+    overflow: hidden;
+    height: 600px;    
+    background-image: url(../../Images/under-water.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.mybackground .crab {
+	        position: absolute;
+            background-image:url(../../Images/crab.gif);
+            background-repeat: no-repeat;
+            width: 100px;
+            height: 100px;
+            padding-top: 10px;
+            background-size: contain;
+}
+.myButton
+{
+	background-color:#69ACE2;
+	width: 90px;
+	height: 30px;
+	border:5px solid blue;
+
+}	
+</style>
+<script type="text/javascript">
+
+function move(){
+
+    var elem = document.getElementById("mycrab");
+    var left = 0;
+    var top = 0;
+
+	function moveCrab(elem)
+	{
+        left += 2;
+        top += 2;
+	  
+        elem.style.left = left + "px";
+        elem.style.top = top + "px";
+        
+        if (left == 1000) {
+            clearInterval(id);
+        }
+	}
+
+var id = setInterval(moveCrab,30);
+}
+
+
+</script>
+<meta charset="utf-8">
+</head>
+<body>
+<div class="mybackground">
+<div class="myButton" id="start" onclick="javascript:move();">Move Crab</div><br />
+ <div style="left: 658px; top: 300px;" class="crab" id="mycrab" ></div>
+</div>
+ 
+
+
+</body></html>

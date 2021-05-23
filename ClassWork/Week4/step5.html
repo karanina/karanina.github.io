@@ -35,34 +35,41 @@
             var left = 0;
             var top = 0;
             var point = 0;
+            var snd = new Audio('../../Media/swan_lake.mp3');
+            snd.load();
 
             function doMove() {
-                if (point == 0) {
-                    left++; // updates variable value
-                    top++; // updates variable value
-                    elem.style.left = left + "px"; // updates style property
-                    elem.style.top = top + "px"; // updates style property
-                    if (left > 300) {
-                        point = 1; // creates condition to update point variable value
+                snd.play();
+                switch (point) {
+                    case 0:
+                        left++; // updates variable value
+                        top++; // updates variable value
+                        elem.style.left = left + "px"; // updates style property
+                        elem.style.top = top + "px"; // updates style property
+                        if (left > 300) {
+                            point = 1; // creates condition to update point variable value
+                        }
+                        break;
+                    
+                    case 1:
+                        left--; // updates variable value
+                        elem.style.left = left + "px"; // updates style property
+                        if (left < 20) {
+                            point = 2; // creates condition to update point variable value
+                        }
+                        break;
+                    
+                    case 2:
+                        left++; // updates variable value
+                        top = top + 0.4 // updates variable value
+                        elem.style.left = left + "px" // updates style property
+                        elem.style.top = top + "px" // updates style property
+                        if (top > 480) {
+                            clearInterval(id)// clears the timer set with the setInterval() method. The parameter given is the variable name used in the setInterval statement
+                            snd.pause();
                     }
-                }
-                if (point == 1) {
-                    left--; // updates variable value
-                    elem.style.left = left + "px"; // updates style property
-                    if (left < 20) {
-                        point = 2; // creates condition to update point variable value
-                    }
-                }
-                if (point == 2) {
-                    left++; // updates variable value
-                    top = top + 0.4 // updates variable value
-                    elem.style.left = left + "px" // updates style property
-                    elem.style.top = top + "px" // updates style property
-                    if (top > 480) {
-                        clearInterval(id)// clears the timer set with the setInterval() method. The parameter given is the variable name used in the setInterval statement
-                    }
-                }
-                
+                    break;
+            }
             }
             var id = setInterval(doMove, 10) // Timer Handler that calls the doMove function every 10 milliseconds until the clearInterval() Timer Handler is called in the finish condition.
         }

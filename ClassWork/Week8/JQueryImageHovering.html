@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Index Page</title>
+<script type="text/javascript" src="jquery.js"></script>
+
+<style type="text/css">
+#largeImage {
+position: absolute;
+padding: .5em;
+background: #e3e3e3;
+border: 1px solid #BFBFBF;
+}
+
+a img {
+border: 1px red solid;
+}
+</style>
+
+
+<script type="text/javascript">
+
+$(function() {
+
+	var offsetX = 20;
+	var offsetY = 10;
+	
+	$('a').hover(function(e) {
+		var href = $(this).attr('href');
+		$('<img id="largeImage" src="' + href + '" alt="big image" />')
+		.css('top', e.pageY + offsetY)
+		.css('left', e.pageX + offsetX)
+		.appendTo('body');
+	}, function() {
+		$('#largeImage').remove();
+	});
+	
+	$('a').mousemove(function(e) {
+		$("#largeImage").css('top', e.pageY + offsetY).css('left', e.pageX + offsetX);
+	});
+
+});	
+
+</script>
+
+</head>
+
+<body>
+<a href="../../Images/JQueryHover/large1.jpg"><img src="../../Images/JQueryHover/small1.jpg" alt="image" /></a>
+<a href="../../Images/JQueryHover/large2.jpg"><img src="../../Images/JQueryHover/small2.jpg" alt="image" /></a>
+<a href="../../Images/JQueryHover/large3.jpg"><img src="../../Images/JQueryHover/small3.jpg" alt="image" /></a>
+<a href="../../Images/JQueryHover/large4.jpg"><img src="../../Images/JQueryHover/small4.jpg" alt="image" /></a>
+<a href="../../Images/JQueryHover/large5.jpg"><img src="../../Images/JQueryHover/small5.jpg" alt="image" /></a>
+</body>
+</html>

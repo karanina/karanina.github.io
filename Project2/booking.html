@@ -6,6 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="Css/style.css">
     <title>Piha Holiday Lodges</title>
+    <script>
+       
+
+        function lodge(availability, maxCapacity, nightlyRate, checkInTime, checkOutTime, imageX, imageY, imageWidth, imageHeight) {
+            this.availability = availability;
+            this.maxCapacity = maxCapacity;
+            this.nightlyRate = nightlyRate;
+            this.checkInTime = checkInTime;
+            this.checkOutTime = checkOutTime;
+            this.imageX = imageX;
+            this.imageY = imageY;
+            this.imageWidth = imageWidth;
+            this.imageHeight = imageHeight;
+        }
+        function searchBookings(){
+            var lodge1 = new lodge("Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 100, 100, 100);
+            var lodge2 = new lodge("Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 220, 100, 100);
+            var lodge3 = new lodge("Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 340, 100, 100);
+            var lodge4 = new lodge("Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 460, 100, 100);
+            var lodge5 = new lodge("Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 580, 100, 100);
+            var lodge6 = new lodge("No", 6, "$225.00", "3:00pm", "10:00am", 240, 540, 100, 150);
+            var lodge7 = new lodge("Yes", 6, "$225.00", "3:00pm", "10:00am", 360, 540, 100, 150);
+            var lodge8 = new lodge("Yes", 8, "$300.00", "3:00pm", "10:00am", 580, 450, 100, 200);
+            var lodge9 = new lodge("Yes", 2, "$75.00", "3:00pm", "10:00am", 580, 380, 100, 50);
+            var lodge10 = new lodge("Yes", 2, "$75.00", "3:00pm", "10:00am", 580, 310, 100, 50);
+            var lodge11 = new lodge("No", 2, "$75.00", "3:00pm", "10:00am", 580, 240, 100, 50);
+            var lodge12 = new lodge("Yes", 2, "$75.00", "3:00pm", "10:00am", 580, 170, 100, 50);
+            var lodge13 = new lodge("No", 2, "$75.00", "3:00pm", "10:00am", 580, 100, 100, 50);
+
+            var lodges = [lodge1, lodge2, lodge3, lodge4, lodge5, lodge6, lodge7, lodge8, lodge9, lodge10, lodge11, lodge12, lodge13];
+
+            var canvas = document.getElementById("mapCanvas");
+            var ctx = canvas.getContext("2d");
+
+            var numberGuests = Number(document.getElementById("numberOfGuests").value);
+            for (var i = 0; i < lodges.length; i++) {
+                if (lodges[i].availability == "Yes" && lodges[i].maxCapacity >= numberGuests) {
+                    ctx.fillStyle="rgba(0,255,0,0.25)";
+                    ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
+                }
+                else {
+                    ctx.fillStyle="rgba(255,0,0,0.25)";
+                    ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);;
+                }
+            }
+        }
+    </script>
 </head>
 <body>
     <!--Responsive images-->
@@ -57,11 +104,13 @@
             <label for = "numberOfGuests"><h3>Capacity</h3></label>
             <input type = "number" id = "numberOfGuests" name = "numberOfGuests" min = "1" max = "8" value = "1" size="1">
 
-            <input class = "submit" type = "submit" value = "Search" style="width: 150px;">
+            <input class = "submit" type = "submit" value = "Search" onclick = "searchBookings()" style="width: 150px;">
         </form>
     </div>
     <div class = "col-7 main">
-        <img src = "Images/map.jpg" alt = "Map of Grounds">
+        <canvas id = "mapCanvas" width=700 height="700">
+            You're browser doesn't support canvas. Please try another.
+        </canvas>
     </div>
 </div>
 </body>

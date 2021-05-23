@@ -119,3 +119,8 @@ input {
 input.submit {
     margin-top: 25px;
 }
+
+#mapCanvas {
+    background-image: url("../Images/map.jpg");
+    background-repeat: no-repeat;
+}
