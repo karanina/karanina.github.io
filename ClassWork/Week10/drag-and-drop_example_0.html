@@ -50,14 +50,28 @@ float:left;
 margin-left:10px;
 margin-top:10px;
 }
-</style> 
+</style>
+<script>
+
+  // the default action that belongs to the event will not happen. In this case the default is that the
+  // element being dragged will bounce back to its original position and not where you drop it.
+  function allowDrop(ev) {
+    ev.preventDefault();
+  }
+
+  // sets the data type as "Text" and the value of the dragged data, which in this case is the id of the draggable element
+  function drag(ev) {
+    ev.dataTransfer.setData("Text", ev.target.id);
+  }
+
+</script> 
 </head> 
 <body> 
 <h1>Drag and Drop </h1> 
 <div id="shelf">
   <div  id="apple1" class="fruit" ><img src="../../Images/apple.gif" alt="apple" /"></div>
   <div  id="apple2" class="fruit" ><img src="../../Images/apple.gif" alt="apple" /"></div>
-   <div  id="banana1" class="fruit" ><img src="../../Images/banana.gif" alt="banana" /"></div>
+   <div id="banana1" class="fruit" ><img src="../../Images/banana.gif" alt="banana" /"></div>
   <div  id="banana2" class="fruit" ><img src="../../Images/banana.gif" alt="banana" /"></div>
  </div>
 <br><br><br>
