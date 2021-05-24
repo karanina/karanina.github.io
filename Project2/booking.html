@@ -45,10 +45,12 @@
             var numberGuests = Number(document.getElementById("numberOfGuests").value);
             for (var i = 0; i < lodges.length; i++) {
                 if (lodges[i].availability == "Yes" && lodges[i].maxCapacity >= numberGuests) {
+                    ctx.clearRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
                     ctx.fillStyle="rgba(0,255,0,0.25)";
                     ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
                 }
                 else {
+                    ctx.clearRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
                     ctx.fillStyle="rgba(255,0,0,0.25)";
                     ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
                 }
@@ -107,7 +109,7 @@
             <label for = "numberOfGuests"><h3>Capacity</h3></label>
             <input type = "number" id = "numberOfGuests" name = "numberOfGuests" min = "1" max = "8" value = "1" size="1">
 
-            <input class = "submit" type = "submit" value = "Search" onclick = "searchBookings()" style="width: 150px;">
+            <input type = "button" value = "Search" onclick = "searchBookings()" style="width: 150px;">
         </form>
     </div>
     <div class = "col-7 main">
