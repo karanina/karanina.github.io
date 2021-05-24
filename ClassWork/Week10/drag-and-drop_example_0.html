@@ -1,0 +1,75 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"> 
+<title>HTML5 Drag and Drop</title> 
+<style> 
+#shelf {
+width:500px;
+height:100px;
+background-color:#eeeeee;
+border-style:solid;
+border-width:thin;
+}
+#shoppingcartcenter {
+position:absolute;
+width:180px;
+height:180px;
+top:220px;
+left:75px;
+}
+#boxapple {
+position:absolute;
+width:180px;
+height:180px;
+top:220px;
+left:25px;
+border:15px solid green;
+}
+#boxbanana{
+position:absolute;
+width:180px;
+height:180px;
+top:220px;
+left:375px;
+border:15px solid yellow;
+}
+.fruit {
+width:75px;
+height:30px;
+float:left;
+margin-left:10px;
+margin-top:10px;
+}
+
+.box{
+width:250px;
+height:250px;
+float:left;
+margin-left:10px;
+margin-top:10px;
+}
+</style> 
+</head> 
+<body> 
+<h1>Drag and Drop </h1> 
+<div id="shelf">
+  <div  id="apple1" class="fruit" ><img src="../../Images/apple.gif" alt="apple" /"></div>
+  <div  id="apple2" class="fruit" ><img src="../../Images/apple.gif" alt="apple" /"></div>
+   <div  id="banana1" class="fruit" ><img src="../../Images/banana.gif" alt="banana" /"></div>
+  <div  id="banana2" class="fruit" ><img src="../../Images/banana.gif" alt="banana" /"></div>
+ </div>
+<br><br><br>
+<div id="boxbanana_cont" class="box">
+ <div id="boxbanana" ></div> 
+</div>
+<div id="boxapple_cont" class="box">
+ <div id="boxapple" ></div> 
+</div>
+
+<script>
+
+</script> 
+</body> 
+</html>

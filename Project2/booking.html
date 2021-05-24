@@ -8,6 +8,8 @@
     <title>Piha Holiday Lodges</title>
     <script>
        
+       var canvas;
+            var ctx;
 
         function lodge(availability, maxCapacity, nightlyRate, checkInTime, checkOutTime, imageX, imageY, imageWidth, imageHeight) {
             this.availability = availability;
@@ -37,8 +39,8 @@
 
             var lodges = [lodge1, lodge2, lodge3, lodge4, lodge5, lodge6, lodge7, lodge8, lodge9, lodge10, lodge11, lodge12, lodge13];
 
-            var canvas = document.getElementById("mapCanvas");
-            var ctx = canvas.getContext("2d");
+            canvas = document.getElementById("mapCanvas");
+            ctx = canvas.getContext("2d");
 
             var numberGuests = Number(document.getElementById("numberOfGuests").value);
             for (var i = 0; i < lodges.length; i++) {
@@ -48,9 +50,10 @@
                 }
                 else {
                     ctx.fillStyle="rgba(255,0,0,0.25)";
-                    ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);;
+                    ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
                 }
             }
+            console.log("Finished Drawing");
         }
     </script>
 </head>

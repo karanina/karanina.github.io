@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+<style>
+#div1 {
+    width: 300px;
+    height: 250px;
+    padding: 10px;
+    border: 3px solid #FF00FF;
+}
+#div2 {
+    width: 300px;
+    height: 250px;
+    padding: 10px;
+    border: 3px solid blue;
+    position: absolute;
+    left: 400px;
+    top: 50px;
+}
+#divMsg1, #divMsg2 {
+    color: red;
+    visibility: hidden;
+}
+</style>
+<script>
+function allowDrop(ev){
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("Text", ev.target.id);
+    document.getElementById("divMsg2").style.visibility = "hidden";
+    document.getElementById("divMsg1").style.visibility = "hidden";
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("Text");
+    ev.target.appendChild(document.getElementById(data));
+    // displays upon entering the area where you can drop the element
+    document.getElementById("divMsg2").style.visibility = "visible";
+}
+
+// displays upon entering the area where you can drop the element
+function enter(ev) {
+    document.getElementById("divMsg1").style.visibility = "visible";
+    return true;
+}
+</script>
+</head>
+<body>
+    <p>Drag the image into the rectangle</p>
+    <div id="div1" ondrop="drop(event)"  ondragenter="enter(event)"></div>
+    <div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)" ondragenter="enter(event)"></div>
+    <br>
+    <img id="drag1" src="../../Images/unitecLogo.jpg" draggable="true" ondragstart="drag(event)" width="200" height="169"></img>
+    <p id="drag2" draggable="true" ondragstart="drag(event)">This is a draggable paragraph. Drag this element into the rectangle.</p>
+    <div id="divMsg1">I appear on enter</div>
+    <div id="divMsg2">I appear on drop</div>
+</body> 
+</html>
