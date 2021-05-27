@@ -64,6 +64,11 @@ margin-top:10px;
     ev.dataTransfer.setData("Text", ev.target.id);
   }
 
+  function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("Text"); 
+  }
+
 </script> 
 </head> 
 <body> 

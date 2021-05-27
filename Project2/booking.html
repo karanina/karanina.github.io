@@ -8,10 +8,13 @@
     <title>Piha Holiday Lodges</title>
     <script>
        
-       var canvas;
-            var ctx;
+        var canvas;
+        var ctx;
+        var mouseX;
+        var mouseY;
+        var lodges;
 
-        function lodge(availability, maxCapacity, nightlyRate, checkInTime, checkOutTime, imageX, imageY, imageWidth, imageHeight) {
+        function lodge(name, availability, maxCapacity, nightlyRate, checkInTime, checkOutTime, imageX, imageY, imageWidth, imageHeight) {
             this.availability = availability;
             this.maxCapacity = maxCapacity;
             this.nightlyRate = nightlyRate;
@@ -23,21 +26,21 @@
             this.imageHeight = imageHeight;
         }
         function searchBookings(){
-            var lodge1 = new lodge("Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 100, 100, 100);
-            var lodge2 = new lodge("Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 220, 100, 100);
-            var lodge3 = new lodge("Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 340, 100, 100);
-            var lodge4 = new lodge("Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 460, 100, 100);
-            var lodge5 = new lodge("Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 580, 100, 100);
-            var lodge6 = new lodge("No", 6, "$225.00", "3:00pm", "10:00am", 240, 540, 100, 150);
-            var lodge7 = new lodge("Yes", 6, "$225.00", "3:00pm", "10:00am", 360, 540, 100, 150);
-            var lodge8 = new lodge("Yes", 8, "$300.00", "3:00pm", "10:00am", 580, 450, 100, 200);
-            var lodge9 = new lodge("Yes", 2, "$75.00", "3:00pm", "10:00am", 580, 380, 100, 50);
-            var lodge10 = new lodge("Yes", 2, "$75.00", "3:00pm", "10:00am", 580, 310, 100, 50);
-            var lodge11 = new lodge("No", 2, "$75.00", "3:00pm", "10:00am", 580, 240, 100, 50);
-            var lodge12 = new lodge("Yes", 2, "$75.00", "3:00pm", "10:00am", 580, 170, 100, 50);
-            var lodge13 = new lodge("No", 2, "$75.00", "3:00pm", "10:00am", 580, 100, 100, 50);
+            var lodge1 = new lodge(1, "Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 100, 100, 100);
+            var lodge2 = new lodge(2, "Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 220, 100, 100);
+            var lodge3 = new lodge(3, "Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 340, 100, 100);
+            var lodge4 = new lodge(4, "Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 460, 100, 100);
+            var lodge5 = new lodge(5, "Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 580, 100, 100);
+            var lodge6 = new lodge(6, "No", 6, "$225.00", "3:00pm", "10:00am", 240, 540, 100, 150);
+            var lodge7 = new lodge(7, "Yes", 6, "$225.00", "3:00pm", "10:00am", 360, 540, 100, 150);
+            var lodge8 = new lodge(8, "Yes", 8, "$300.00", "3:00pm", "10:00am", 580, 450, 100, 200);
+            var lodge9 = new lodge(9, "Yes", 2, "$75.00", "3:00pm", "10:00am", 580, 380, 100, 50);
+            var lodge10 = new lodge(10, "Yes", 2, "$75.00", "3:00pm", "10:00am", 580, 310, 100, 50);
+            var lodge11 = new lodge(11, "No", 2, "$75.00", "3:00pm", "10:00am", 580, 240, 100, 50);
+            var lodge12 = new lodge(12, "Yes", 2, "$75.00", "3:00pm", "10:00am", 580, 170, 100, 50);
+            var lodge13 = new lodge(13, "No", 2, "$75.00", "3:00pm", "10:00am", 580, 100, 100, 50);
 
-            var lodges = [lodge1, lodge2, lodge3, lodge4, lodge5, lodge6, lodge7, lodge8, lodge9, lodge10, lodge11, lodge12, lodge13];
+            lodges = [lodge1, lodge2, lodge3, lodge4, lodge5, lodge6, lodge7, lodge8, lodge9, lodge10, lodge11, lodge12, lodge13];
 
             canvas = document.getElementById("mapCanvas");
             ctx = canvas.getContext("2d");
@@ -54,9 +57,54 @@
                     ctx.fillStyle="rgba(255,0,0,0.25)";
                     ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
                 }
+                
             }
-            console.log("Finished Drawing");
+            canvas.addEventListener("mousemove", getPosition, false);
         }
+// Creates variables for the getting the position of the mouse on the canvas
+
+        function getPosition(event) {
+            mouseX = event.clientX - canvas.offsetLeft;
+            mouseY = event.clientY - canvas.offsetTop;
+            intersects(mouseX, mouseY, lodges);
+        }
+// Does the mouse position intersect with any of the available lodges
+        function intersects(mouseX, mouseY, lodges) {
+            for (var i = 0; i < lodges.length; i++) {
+                var imageX2 = lodges[i].imageX + lodges[i].imageWidth;
+                var imageY2 = lodges[i].imageY + lodges[i].imageHeight;
+                if (mouseX > lodges[i].imageX && mouseX < imageX2 && lodges[i].availability == "Yes") {
+                    popUpWindow(i);
+                }
+            }
+        }
+// The pop up window that appears when the mouse moves over any of the available lodges.
+        function popUpWindow(ind) {
+            var popUp = window.open("", "Lodge Number: " + lodges[ind].name, "width = 400, height = 400");
+            
+            var title = document.createElement("TITLE");
+            var lodgeName = document.createTextNode("Lodge Number" + lodges[ind].name);
+            title.appendChild(lodgeName);
+            document.appendChild(title);
+            
+            var table = document.createElement("TABLE");
+            table.setAttribute("id", "lodgeInfo");
+
+            document.body.appendChild(table);
+
+            var lodgeTable = document.getElementById('lodeInfo');
+
+            var row = lodgeTable.insertRow(0);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+
+        }
+// Closes the pop up window.
+        function close(window) {
+            window.close();
+        }
+        
+        
     </script>
 </head>
 <body>
