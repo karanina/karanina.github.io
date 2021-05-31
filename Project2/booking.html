@@ -13,7 +13,10 @@
         var mouseX;
         var mouseY;
         var lodges;
+        var popUp;
+        var numberGuests;
 
+        // constructor function to create a lodge object
         function lodge(name, availability, maxCapacity, nightlyRate, checkInTime, checkOutTime, imageX, imageY, imageWidth, imageHeight) {
             this.availability = availability;
             this.maxCapacity = maxCapacity;
@@ -25,6 +28,7 @@
             this.imageWidth = imageWidth;
             this.imageHeight = imageHeight;
         }
+        // creates lodge objects and searches the canvas for avaiable lodges
         function searchBookings(){
             var lodge1 = new lodge(1, "Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 100, 100, 100);
             var lodge2 = new lodge(2, "Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 220, 100, 100);
@@ -43,9 +47,11 @@
             lodges = [lodge1, lodge2, lodge3, lodge4, lodge5, lodge6, lodge7, lodge8, lodge9, lodge10, lodge11, lodge12, lodge13];
 
             canvas = document.getElementById("mapCanvas");
+            canvas.addEventListener("click", checkPosition, false);
             ctx = canvas.getContext("2d");
 
-            var numberGuests = Number(document.getElementById("numberOfGuests").value);
+            numberGuests = Number(document.getElementById("numberOfGuests").value);
+            
             for (var i = 0; i < lodges.length; i++) {
                 if (lodges[i].availability == "Yes" && lodges[i].maxCapacity >= numberGuests) {
                     ctx.clearRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
@@ -56,52 +62,66 @@
                     ctx.clearRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
                     ctx.fillStyle="rgba(255,0,0,0.25)";
                     ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
-                }
-                
+                }    
             }
-            canvas.addEventListener("mousemove", getPosition, false);
         }
 // Creates variables for the getting the position of the mouse on the canvas
 
-        function getPosition(event) {
-            mouseX = event.clientX - canvas.offsetLeft;
-            mouseY = event.clientY - canvas.offsetTop;
-            intersects(mouseX, mouseY, lodges);
-        }
-// Does the mouse position intersect with any of the available lodges
-        function intersects(mouseX, mouseY, lodges) {
+        function checkPosition(event) {
+            var rect = canvas.getBoundingClientRect();
+            mouseX = Math.round(event.clientX - rect.left);
+            mouseY = Math.round(event.clientY - rect.top);
             for (var i = 0; i < lodges.length; i++) {
-                var imageX2 = lodges[i].imageX + lodges[i].imageWidth;
-                var imageY2 = lodges[i].imageY + lodges[i].imageHeight;
-                if (mouseX > lodges[i].imageX && mouseX < imageX2 && lodges[i].availability == "Yes") {
+                var lodgeX = lodges[i].imageX;
+                var lodgeY = lodges[i].imageY;
+                var lodgeW = lodges[i].imageWidth;
+                var lodgeH = lodges[i].imageHeight;
+                var lodgeA = lodges[i].availability;
+                
+                if (intersects(mouseX, mouseY, lodgeX, lodgeY, lodgeW, lodgeH, lodgeA))
+                {
                     popUpWindow(i);
                 }
             }
         }
+// Does the mouse position intersect with any of the available lodges
+        function intersects(mouseX, mouseY, lodgeX, lodgeY, lodgeW, lodgeH, lodgeA) {
+            var imageX2 = lodgeX + lodgeW;
+            var imageY2 = lodgeY + lodgeH;
+            if (mouseX > lodgeX && mouseX < imageX2 && lodgeA) {
+                    if (mouseY > lodgeY && mouseY < imageY2) {
+                        if (lodgeA == "Yes") {
+                            return true;
+                        }
+                        
+                }
+            }
+        }
+        
 // The pop up window that appears when the mouse moves over any of the available lodges.
-        function popUpWindow(ind) {
-            var popUp = window.open("", "Lodge Number: " + lodges[ind].name, "width = 400, height = 400");
+        function popUpWindow(i) {
+            popUp = window.open("", "LodgeNumber" + lodges[i].name, "width = 400, height = 400, left = 400, top = 400");
             
-            var title = document.createElement("TITLE");
-            var lodgeName = document.createTextNode("Lodge Number" + lodges[ind].name);
-            title.appendChild(lodgeName);
-            document.appendChild(title);
+            popUp.document.write("This is the lodge information<br>");
+            var titleText = "Lodge Number: " + lodges[i].name;
+            popUp.document.title = titleText;
             
-            var table = document.createElement("TABLE");
-            table.setAttribute("id", "lodgeInfo");
+            
+            //var table = document.createElement("TABLE");
+            //table.setAttribute("id", "lodgeInfo");
 
-            document.body.appendChild(table);
+            //document.body.appendChild(table);
 
-            var lodgeTable = document.getElementById('lodeInfo');
+            //var lodgeTable = document.getElementById('lodeInfo');
 
-            var row = lodgeTable.insertRow(0);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
+            //var row = lodgeTable.insertRow(0);
+            //var cell1 = row.insertCell(0);
+            //var cell2 = row.insertCell(1);
 
         }
 // Closes the pop up window.
         function close(window) {
-            window.close();
+            popUp.close();
         }
         
         
@@ -161,7 +181,7 @@
         </form>
     </div>
     <div class = "col-7 main">
-        <canvas id = "mapCanvas" width=700 height="700">
+        <canvas id = "mapCanvas" width="700" height="700">
             You're browser doesn't support canvas. Please try another.
         </canvas>
     </div>
