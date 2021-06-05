@@ -1,60 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CurrentBookings>
-    <Booking reference="6-2021-07-05">
-        <lodgeNumber>
+    <Booking>
+        <Reference>
+            6-2021-07-05
+        </Reference>
+        <LodgeNumber>
             6
-        </lodgeNumber>
-        <checkInDate>
-            2021-07-05
-        </checkInDate>
-        <checkOutDate>
-            2021-07-10
-        </checkOutDate>
+        </LodgeNumber>
+        <CheckInDate>
+            Sun Jul 05 2021 15:00:00 GMT+1200 (New Zealand Standard Time)
+        </CheckInDate>
+        <CheckOutDate>
+            Sun Jul 10 2021 10:00:00 GMT+1200 (New Zealand Standard Time)
+        </CheckOutDate>
         <AgreedNightlyRate>
-            $225.00
+            225.00
         </AgreedNightlyRate>
         <TotalCost>
-            $1125.00
+            1125.00
         </TotalCost>
         <NumberOfGuests>
             5
         </NumberOfGuests>
     </Booking>
-    <Booking reference="11-2021-07-04">
-        <lodgeNumber>
+    <Booking>
+        <Reference>
+            11-2021-07-04
+        </Reference>
+        <LodgeNumber>
             11
-        </lodgeNumber>
-        <checkInDate>
-            2021-07-04
-        </checkInDate>
-        <checkOutDate>
-            2021-07-07
-        </checkOutDate>
+        </LodgeNumber>
+        <CheckInDate>
+            Sun Jul 04 2021 15:00:00 GMT+1200 (New Zealand Standard Time)
+        </CheckInDate>
+        <CheckOutDate>
+            Sun Jul 07 2021 10:00:00 GMT+1200 (New Zealand Standard Time)
+        </CheckOutDate>
         <AgreedNightlyRate>
-            $75.00
+            75.00
         </AgreedNightlyRate>
         <TotalCost>
-            $225.00
+            225.00
         </TotalCost>
         <NumberOfGuests>
             2
         </NumberOfGuests>
     </Booking>
-    <Booking reference="13-2021-07-03">
-        <lodgeNumber>
+    <Booking>
+        <Reference>
+            13-2021-07-03
+        </Reference>
+        <LodgeNumber>
             11
-        </lodgeNumber>
-        <checkInDate>
-            2021-07-03
-        </checkInDate>
-        <checkOutDate>
-            2021-07-07
-        </checkOutDate>
+        </LodgeNumber>
+        <CheckInDate>
+            Sun Jul 03 2021 15:00:00 GMT+1200 (New Zealand Standard Time)
+        </CheckInDate>
+        <CheckOutDate>
+            Sun Jul 07 2021 10:00:00 GMT+1200 (New Zealand Standard Time)
+        </CheckOutDate>
         <AgreedNightlyRate>
-            $75.00
+            75.00
         </AgreedNightlyRate>
         <TotalCost>
-            $300.00
+            300.00
         </TotalCost>
         <NumberOfGuests>
             1
