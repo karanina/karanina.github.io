@@ -103,7 +103,7 @@
             if (this.readyState == 4 && this.status == 200) {
             var xmlDoc = xmlhttp.responseXML;
             var x = xmlDoc.getElementsByTagName("Lodge");
-            }
+            };
         }
         xmlhttp.open("GET","Xml/lodgeInformation.xml", true); 
         xmlhttp.send();
@@ -169,6 +169,7 @@
 
             // XMLHttpRequest object
             var xmlhttp;
+            
             // code for IE7+, Firefox, Opera, Safari, Chrome
             if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
@@ -179,9 +180,9 @@
         }
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-            var xmlDoc = xmlhttp.responseXML;
-            var x = xmlDoc.getElementsByTagName("Booking");
-            }
+                var xmlDoc = xmlhttp.responseXML;
+                var x = xmlDoc.getElementsByTagName("Booking");
+            };
         }
         xmlhttp.open("GET","Xml/currentBookings.xml", true); 
         xmlhttp.send();
