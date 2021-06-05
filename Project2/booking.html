@@ -99,7 +99,7 @@
             else {
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
-        xmlhttp.open("GET","Xml/lodgeInformation.xml", false); 
+        xmlhttp.open("GET","Xml/lodgeInformation.xml", true); 
         xmlhttp.send();
         xmlDoc = xmlhttp.responseXML;
         var x = xmlDoc.getElementsByTagName("Lodge"); 
@@ -173,7 +173,7 @@
             else {
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
-        xmlhttp.open("GET","Xml/currentBookings.xml", false); 
+        xmlhttp.open("GET","Xml/currentBookings.xml", true); 
         xmlhttp.send();
         xmlDoc = xmlhttp.responseXML;
         var x = xmlDoc.getElementsByTagName("Booking"); 
