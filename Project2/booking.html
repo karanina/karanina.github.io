@@ -127,7 +127,7 @@
             imageWidth=Number(x[i].getElementsByTagName("ImageWidth")[0].childNodes[0].nodeValue);            
             imageHeight = Number(x[i].getElementsByTagName("ImageHeight")[0].childNodes[0].nodeValue);
             // creates a new lodge object with the variables
-            var lodge = new product(name, maxCapacity, nightlyRate, checkInTime, checkOutTime, image, imageX, imageY, imageWidth, imageHeight);
+            var lodge = new Lodge(name, maxCapacity, nightlyRate, checkInTime, checkOutTime, image, imageX, imageY, imageWidth, imageHeight);
             // adds the lodge object to the lodges array
             lodges[i] = lodge;
         }
