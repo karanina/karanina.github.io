@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CurrentBookings>
+<Lodges>
     <Lodge number="1">
         <Availability>
             Yes
@@ -377,4 +377,4 @@
             100
         </ImageHeight>
     </Lodge>
-</CurrentBookings>
+</Lodges>

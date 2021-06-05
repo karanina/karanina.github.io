@@ -7,51 +7,133 @@
     <link rel="stylesheet" type="text/css" href="Css/style.css">
     <title>Piha Holiday Lodges</title>
     <script>
-       
+        // Global variables to keep track of.
         var canvas;
         var ctx;
         var mouseX;
         var mouseY;
         var lodges;
         var popUp;
+        var newQuery;
         var numberGuests;
 
-        // constructor function to create a lodge object
-        function lodge(name, availability, maxCapacity, nightlyRate, checkInTime, checkOutTime, imageX, imageY, imageWidth, imageHeight) {
+        // Initialisation function which sets the minimum date on the checkInDate date picker to today's date
+        function init(){
+            var currentDate = new Date();
+            var todaysDate = setTheDate(currentDate);             
+            document.getElementById("checkInDate").min = todaysDate;
+            document.getElementById("checkInDate").value = todaysDate;
+            updateDate();
+        }
+        
+        // Converts a Date object to a format that can be passed in to a date picker or an XML file.
+        function setTheDate(date){
+            var currentYear = date.getFullYear();
+            var currentMonth = date.getMonth();
+            var currentDay = date.getDate();
+            if (currentMonth < 10) {
+                currentMonth = "0" + (currentMonth + 1);
+            }
+            if (currentDay < 10) {
+                currentDay = "0" + currentDay;
+            }
+            var thisDate = currentYear + "-" + currentMonth +"-" + currentDay;
+            return thisDate;
+        }
+
+        // Increments the Date by one day and returns the date in a format that can be passed into a date picker.
+        function incrementTheDate(date) {
+            var currentYear = date.getFullYear();
+            var currentMonth = date.getMonth();
+            var currentDay = date.getDate();
+            currentDay++;
+            if (currentMonth < 10) {
+                currentMonth = "0" + (currentMonth + 1);
+            }
+            if (currentDay < 10) {
+                currentDay = "0" + currentDay;
+            }
+            var thisDate = currentYear + "-" + currentMonth +"-" + currentDay;
+            return thisDate;
+        }
+
+        // Updates the checkOutDate date picker to the day after the day chosen in the checkInDate date picker and sets it as the minimum date.
+        function updateDate(){
+            var checkIn = document.getElementById("checkInDate").value;
+            var dateCheckIn = new Date(checkIn);
+            var theDate = setTheDate(dateCheckIn);
+            var defaultDate = new Date(theDate);
+            var defaultCheckOutDate = incrementTheDate(defaultDate);
+            document.getElementById("checkOutDate").value = defaultCheckOutDate;
+            document.getElementById("checkOutDate").min = defaultCheckOutDate;
+        }
+
+        // Constructor to create a lodge object.
+        function lodge(name, availability, maxCapacity, nightlyRate, checkInTime, checkOutTime, image, imageX, imageY, imageWidth, imageHeight) {
+            this.name = name;
             this.availability = availability;
             this.maxCapacity = maxCapacity;
             this.nightlyRate = nightlyRate;
             this.checkInTime = checkInTime;
             this.checkOutTime = checkOutTime;
+            this.image = image;
             this.imageX = imageX;
             this.imageY = imageY;
             this.imageWidth = imageWidth;
             this.imageHeight = imageHeight;
         }
+        
+        // Constructor to create a query object
+        function query(name, dateIn, dateOut, availability, nightlyRate, numberGuests, maxCapacity, checkInTime, checkOutTime, image) {
+            this.lodgeNumber = name;
+            this.dateIn = new Date(dateIn);
+            this.dateOut = new Date(dateOut);
+            this.availability = availability;
+            this.nightlyRate = "$" + nightlyRate;
+            this.totalCost = "$" + calculateNights(this.dateIn, this.dateOut) * nightlyRate + ".00";
+            this.numberGuests = numberGuests;
+            this.maximumCapacity = maxCapacity;
+            this.checkInTime = checkInTime;
+            this.checkOutTime = checkOutTime;
+            this.image = "Images/" + image;
+        }
+
+        // Constructor to create a booking object
+        function booking(lodgeNumber, checkInDate, checkOutDate, numberGuests, nightlyRate, totalCost) {
+            this.LodgeNumber = lodgeNumber;
+            this.CheckInDate = setTheDate(checkInDate);
+            this.CheckOutDate = setTheDate(checkOutDate);
+            this.NumberOfGuests = numberGuests;
+            this.AgreedNightlyRate = nightlyRate;
+            this.TotalCost = totalCost;
+            this.reference = this.LodgeNumber + "-" + this.CheckInDate;
+        }
+
+        
         // creates lodge objects and searches the canvas for avaiable lodges
         function searchBookings(){
-            var lodge1 = new lodge(1, "Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 100, 100, 100);
-            var lodge2 = new lodge(2, "Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 220, 100, 100);
-            var lodge3 = new lodge(3, "Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 340, 100, 100);
-            var lodge4 = new lodge(4, "Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 460, 100, 100);
-            var lodge5 = new lodge(5, "Yes", 4, "$150.00", "3:00pm", "10:00am", 20, 580, 100, 100);
-            var lodge6 = new lodge(6, "No", 6, "$225.00", "3:00pm", "10:00am", 240, 540, 100, 150);
-            var lodge7 = new lodge(7, "Yes", 6, "$225.00", "3:00pm", "10:00am", 360, 540, 100, 150);
-            var lodge8 = new lodge(8, "Yes", 8, "$300.00", "3:00pm", "10:00am", 580, 450, 100, 200);
-            var lodge9 = new lodge(9, "Yes", 2, "$75.00", "3:00pm", "10:00am", 580, 380, 100, 50);
-            var lodge10 = new lodge(10, "Yes", 2, "$75.00", "3:00pm", "10:00am", 580, 310, 100, 50);
-            var lodge11 = new lodge(11, "No", 2, "$75.00", "3:00pm", "10:00am", 580, 240, 100, 50);
-            var lodge12 = new lodge(12, "Yes", 2, "$75.00", "3:00pm", "10:00am", 580, 170, 100, 50);
-            var lodge13 = new lodge(13, "No", 2, "$75.00", "3:00pm", "10:00am", 580, 100, 100, 50);
+            var lodge1 = new lodge(1, "Yes", 4, "150.00", "3:00pm", "10:00am", "lodgeCapacity4.jpg", 20, 100, 100, 100);
+            var lodge2 = new lodge(2, "Yes", 4, "150.00", "3:00pm", "10:00am", "lodgeCapacity4.jpg", 20, 220, 100, 100);
+            var lodge3 = new lodge(3, "Yes", 4, "150.00", "3:00pm", "10:00am", "lodgeCapacity4.jpg", 20, 340, 100, 100);
+            var lodge4 = new lodge(4, "Yes", 4, "150.00", "3:00pm", "10:00am", "lodgeCapacity4.jpg", 20, 460, 100, 100);
+            var lodge5 = new lodge(5, "Yes", 4, "150.00", "3:00pm", "10:00am", "lodgeCapacity4.jpg", 20, 580, 100, 100);
+            var lodge6 = new lodge(6, "No", 6, "225.00", "3:00pm", "10:00am", "lodgeCapacity6.jpg", 240, 540, 100, 150);
+            var lodge7 = new lodge(7, "Yes", 6, "225.00", "3:00pm", "10:00am", "lodgeCapacity6.jpg", 360, 540, 100, 150);
+            var lodge8 = new lodge(8, "Yes", 8, "300.00", "3:00pm", "10:00am", "lodgeCapacity8.jpg", 580, 450, 100, 200);
+            var lodge9 = new lodge(9, "Yes", 2, "75.00", "3:00pm", "10:00am", "lodgeCapacity2.jpg", 580, 380, 100, 50);
+            var lodge10 = new lodge(10, "Yes", 2, "75.00", "3:00pm", "10:00am", "lodgeCapacity2.jpg", 580, 310, 100, 50);
+            var lodge11 = new lodge(11, "No", 2, "75.00", "3:00pm", "10:00am", "lodgeCapacity2.jpg", 580, 240, 100, 50);
+            var lodge12 = new lodge(12, "Yes", 2, "75.00", "3:00pm", "10:00am", "lodgeCapacity2.jpg", 580, 170, 100, 50);
+            var lodge13 = new lodge(13, "No", 2, "75.00", "3:00pm", "10:00am", "lodgeCapacity2.jpg", 580, 100, 100, 50);
 
             lodges = [lodge1, lodge2, lodge3, lodge4, lodge5, lodge6, lodge7, lodge8, lodge9, lodge10, lodge11, lodge12, lodge13];
 
             canvas = document.getElementById("mapCanvas");
-            canvas.addEventListener("click", checkPosition, false);
+            canvas.addEventListener("mousemove", checkPosition, false);
             ctx = canvas.getContext("2d");
 
             numberGuests = Number(document.getElementById("numberOfGuests").value);
-            
+        
             for (var i = 0; i < lodges.length; i++) {
                 if (lodges[i].availability == "Yes" && lodges[i].maxCapacity >= numberGuests) {
                     ctx.clearRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
@@ -65,8 +147,8 @@
                 }    
             }
         }
-// Creates variables for the getting the position of the mouse on the canvas
 
+        // Creates variables for the getting the position of the mouse on the canvas
         function checkPosition(event) {
             var rect = canvas.getBoundingClientRect();
             mouseX = Math.round(event.clientX - rect.left);
@@ -78,67 +160,237 @@
                 var lodgeH = lodges[i].imageHeight;
                 var lodgeA = lodges[i].availability;
                 
-                if (intersects(mouseX, mouseY, lodgeX, lodgeY, lodgeW, lodgeH, lodgeA))
-                {
-                    popUpWindow(i);
+                if (intersects(mouseX, mouseY, lodgeX, lodgeY, lodgeW, lodgeH, lodgeA) && hasCapacity(i)) {
+                    newQuery = new query(lodges[i].name, 
+                    document.getElementById("checkInDate").value,
+                    document.getElementById("checkOutDate").value,
+                    lodges[i].availability,
+                    lodges[i].nightlyRate, 
+                    numberGuests, 
+                    lodges[i].maxCapacity, 
+                    lodges[i].checkInTime,
+                    lodges[i].checkOutTime,
+                    lodges[i].image)
+                    openModal(newQuery);
                 }
             }
         }
-// Does the mouse position intersect with any of the available lodges
+
+        // Checks that the lodge being hovered over has the capacity to take the number of guests requested.
+        function hasCapacity(i){
+            if (numberGuests <= lodges[i].maxCapacity) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+
+        // Checks if the mouse position intersects with any of the available lodges.
         function intersects(mouseX, mouseY, lodgeX, lodgeY, lodgeW, lodgeH, lodgeA) {
             var imageX2 = lodgeX + lodgeW;
             var imageY2 = lodgeY + lodgeH;
             if (mouseX > lodgeX && mouseX < imageX2 && lodgeA) {
-                    if (mouseY > lodgeY && mouseY < imageY2) {
-                        if (lodgeA == "Yes") {
-                            return true;
-                        }
-                        
+                if (mouseY > lodgeY && mouseY < imageY2) {
+                    if (lodgeA == "Yes") {
+                        return true;
+                    }        
                 }
             }
         }
-        
-// The pop up window that appears when the mouse moves over any of the available lodges.
-        function popUpWindow(i) {
-            popUp = window.open("", "LodgeNumber" + lodges[i].name, "width = 400, height = 400, left = 400, top = 400");
+
+        function openModal(newQuery) {
             
-            popUp.document.write("This is the lodge information<br>");
-            var titleText = "Lodge Number: " + lodges[i].name;
-            popUp.document.title = titleText;
+            canvas.removeEventListener("mousemove", checkPosition, false);
+            var modal = document.getElementById("lodgeDetailsModal");
+            modal.style.display = "block";
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];           
+
+            var mHeader = document.getElementById("modalHeader");
+            mHeader.innerHTML="Lodge Number: " + newQuery.lodgeNumber;
+
+            var lodgeTable = document.getElementById("lodgeInfo");
+
+            var row1 = lodgeTable.insertRow(0);
+            var cell1 = row1.insertCell(0);
+            cell1.setAttribute("rowspan", "9");
+            var interiorImage = document.createElement("IMG");
+            interiorImage.setAttribute("src", newQuery.image);
+            interiorImage.setAttribute("height", "250");
+            cell1.appendChild(interiorImage);
+            var cell2 = row1.insertCell(1);
+            var dateIn = new Date(newQuery.dateIn);
+            cell2.innerHTML = "<strong>Check In Date: </strong>" + dateIn.toDateString();
             
+            var row2 = lodgeTable.insertRow(1);
+            var cell3 = row2.insertCell(0);
+            var dateOut = new Date(newQuery.dateOut);
+            cell3.innerHTML = "<strong>Check Out Date: </strong>" + dateOut.toDateString();
+
+            var row3 = lodgeTable.insertRow(2);
+            var cell4 = row3.insertCell(0);
+            cell4.innerHTML = "<strong>Availability: </strong>" + newQuery.availability;
+
+            var row4 = lodgeTable.insertRow(3);
+            var cell5 = row4.insertCell(0);
+            cell5.innerHTML = "<strong>Cost Per Night: </strong>" + newQuery.nightlyRate;
+
+            var row5 = lodgeTable.insertRow(4);
+            var cell6 = row5.insertCell(0);
+            cell6.innerHTML =  "<strong>Total Cost of Stay: </strong>" + newQuery.totalCost;
+
+            var row6 = lodgeTable.insertRow(5);
+            var cell7 = row6.insertCell(0);
+            cell7.innerHTML = "<strong>Number of Guests: </strong>" + newQuery.numberGuests;
+
+            var row7 = lodgeTable.insertRow(6);
+            var cell8 = row7.insertCell(0);
+            cell8.innerHTML = "<strong>Maximum Capacity: </strong>" + newQuery.maximumCapacity;
+
+            var row8 = lodgeTable.insertRow(7);
+            var cell9 = row8.insertCell(0);
+            cell9.innerHTML = "<strong>Check In Time: </strong>" + newQuery.checkInTime;
+
+            var row9 = lodgeTable.insertRow(8);
+            var cell10 = row9.insertCell(0);
+            cell10.innerHTML = "<strong>Check Out Time: </strong>" + newQuery.checkOutTime;
             
-            //var table = document.createElement("TABLE");
-            //table.setAttribute("id", "lodgeInfo");
+            var row10 = lodgeTable.insertRow(9);
+            var cell11= row10.insertCell(0);
+            var btnKeepLooking = document.createElement("input");
+            btnKeepLooking.setAttribute("type", "button");
+            btnKeepLooking.onclick = function() {
+                close();
+            }
+            btnKeepLooking.setAttribute("value", "Keep Looking");
+            cell11.appendChild(btnKeepLooking);
 
-            //document.body.appendChild(table);
+            var cell12 = row10.insertCell(1);
+            var btnBookLodge = document.createElement("input");
+            btnBookLodge.setAttribute("type", "button");
+            btnBookLodge.setAttribute("id", "newQuery.lodgeNumber");
+            btnBookLodge.onclick = function() {
+                close();
+                bookLodge(newQuery);
+                canvas.removeEventListener("mousemove", checkPosition, false);
+            }
+            btnBookLodge.setAttribute("value", "Book Lodge");
+            cell12.appendChild(btnBookLodge);
 
-            //var lodgeTable = document.getElementById('lodeInfo');
+            span.onclick = function() {
+                close();
+            }
 
-            //var row = lodgeTable.insertRow(0);
-            //var cell1 = row.insertCell(0);
-            //var cell2 = row.insertCell(1);
-
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    close();
+                }
+            }
         }
-// Closes the pop up window.
-        function close(window) {
-            popUp.close();
+
+         // Closes the Modal
+        function close() {
+            var modal = document.getElementById("lodgeDetailsModal");
+            modal.style.display = "none";
+            var x = document.getElementById("lodgeInfo").rows.length;
+            for (var i = x - 1; i >= 0; i--) {
+                document.getElementById("lodgeInfo").deleteRow(i);
+            }
+            canvas.addEventListener("mousemove", checkPosition, false);
         }
-        
-        
+
+        function updateGuests() {
+            newQuery.numberGuests = Number(document.getElementById("numberOfGuests").value);
+        }
+
+        function bookLodge(newQuery) {
+            var bookingSummary = document.getElementById("bookingSummary");
+            bookingSummary.style.display = "block";
+
+            var detailsTable = document.getElementById("bookingDetails");
+    
+            var row1 = detailsTable.insertRow(0);
+            var cell1 = row1.insertCell(0);
+            cell1.innerHTML = "<strong>Check In Date:</strong>";
+            var cell2 = row1.insertCell(1);
+            cell2.innerHTML = newQuery.dateIn.toDateString();
+
+            var row2 = detailsTable.insertRow(1);
+            var cell3 = row2.insertCell(0);
+            cell3.innerHTML = "<strong>Check In Time</strong>";
+            var cell4 = row2.insertCell(1);
+            cell4.innerHTML = newQuery.checkInTime;
+
+            var row3 = detailsTable.insertRow(2);
+            var cell5 = row3.insertCell(0);
+            cell5.innerHTML = "<strong>Check Out Date</strong>";
+            var cell6 = row3.insertCell(1);
+            cell6.innerHTML = newQuery.dateOut.toDateString();
+
+            var row4 = detailsTable.insertRow(3);
+            var cell7 = row4.insertCell(0);
+            cell7.innerHTML = "<strong>Check Out Time</strong>";
+            var cell8 = row4.insertCell(1);
+            cell8.innerHTML = newQuery.checkOutTime;
+
+            var row5 = detailsTable.insertRow(4);
+            var cell9 = row5.insertCell(0);
+            cell9.innerHTML = "<strong>Number of Guests:</strong>";
+            var cell10 = row5.insertCell(1);
+            cell10.innerHTML = newQuery.numberGuests;
+
+            var row6 = detailsTable.insertRow(5);
+            var cell11 = row6.insertCell(0);
+            cell11.innerHTML = "<strong>Lodge Number Booked:</strong>";
+            var cell12 = row6.insertCell(1);
+            cell12.innerHTML = newQuery.lodgeNumber;
+
+            var row7 = detailsTable.insertRow(6);
+            var cell13 = row7.insertCell(0);
+            cell13.innerHTML = "<strong>Cost Per Night:</strong>";
+            var cell14 = row7.insertCell(1);
+            cell14.innerHTML = newQuery.nightlyRate;
+
+            var row8 = detailsTable.insertRow(7);
+            var cell15 = row8.insertCell(0);
+            cell15.innerHTML = "<strong>Total Cost of Stay:</strong>"
+            var cell16 = row8.insertCell(1);
+            cell16.innerHTML = newQuery.totalCost;;
+
+            var row9 = detailsTable.insertRow(8);
+            var cell17 = row9.insertCell(0);
+            var btnConfirmBooking = document.createElement("input");
+            btnConfirmBooking.setAttribute("type", "button");
+            btnConfirmBooking.setAttribute("value","Confirm Booking");
+            btnConfirmBooking.setAttribute("onclick", "booked(newQuery)");  
+            cell17.appendChild(btnConfirmBooking);    
+        }
+
+        // Calculates the difference in dates and returns a value in milliseconds, which must then be converted into days.
+        function calculateNights(dateIn, dateOut){
+            var numberNights = dateOut - dateIn;
+            return numberNights / (1000 * 60 * 60 * 24); // 1000 milliseconds in a second, 60 seconds in a minute, 60 minutes in an hour, 24 hours in a day
+        }
+
+        function booked(newQuery){
+            var bookingSummary = document.getElementById("bookingSummary");
+            bookingSummary.style.display = "none";
+            var bookingConfirmed = document.getElementById("confirmed");
+            bookingConfirmed.style.display = "block";
+            var Booking = new booking(newQuery.lodgeNumber, newQuery.dateIn, newQuery.dateOut, newQuery.numberGuests, newQuery.nightlyRate, newQuery.totalCost);
+        }        
     </script>
 </head>
-<body>
-    <!--Responsive images-->
-    <!--<img src="img_girl.jpg" style="max-width:100%;height:auto;">-->
-    <!--<picture>
-  <source srcset="img_smallflower.jpg" media="(max-width: 600px)">
-  <source srcset="img_flowers.jpg" media="(max-width: 1500px)">
-  <source srcset="flowers.jpg">
-  <img src="img_smallflower.jpg" alt="Flowers">
-</picture>-->
-
-<!--Responsive text-->
-<!--<h1 style="font-size:10vw">Hello World</h1>-->
+<body onload = "init()">
+    <!--Interior lodge images taken on 5th June 2021
+        "lodgeCapacity2" source: https://pihabeach.co.nz/wp-content/uploads/2020/11/123140875_819459685550538_4929609190632868471_n-6.jpg
+        "lodgeCapacity4" source: https://twomonkeystravelgroup.com/best-hostels-new-zealand/
+        "lodgeCapacity6" source: https://www.pinewood.co.nz/accommodation/backpackers/shared-rooms
+        "lodgeCapacity8" source: https://hostelgeeks.com/best-hostels-in-wellington-new-zealand/-->
 <div class = "header main">
     <h1>Piha Holiday Lodges</h1>
 </div>
@@ -159,7 +411,7 @@
             <li>Select your check out date.</li>
             <li>Choose the required capacity of your lodge.</li>
             <li>Click Search to see the available lodges that meet your requirements.</li>
-            <li>Hover over lodges over lodges to see their details.</li>
+            <li>Hover over lodges to see their details and availability</li>
             <li>Click the Book Lodge button to book a lodge, or the Keep Looking button to see other options.
             </li>
             <li>View your Booking Summary below.</li>
@@ -168,14 +420,14 @@
     </div>
     <div class = "col-2 topAlign">
         <form>
-            <label for = "checkInDate"><h3>Check In</h3></label>
-            <input type = "date" id = "checkInDate" name = "checkInDate">
+            <label for = "checkInDate" ><h3>Check In</h3></label>
+            <input type = "date" id = "checkInDate" onchange="updateDate()" name = "checkInDate">
 
             <label for = "checkOutDate"><h3>Check Out</h3></label>
             <input type = "date" id = "checkOutDate" name = "checkOutDate">
 
             <label for = "numberOfGuests"><h3>Capacity</h3></label>
-            <input type = "number" id = "numberOfGuests" name = "numberOfGuests" min = "1" max = "8" value = "1" size="1">
+            <input type = "number" id = "numberOfGuests" name = "numberOfGuests" min = "1" max = "8" value = "1" size="1" onchange="updateGuests()">
 
             <input type = "button" value = "Search" onclick = "searchBookings()" style="width: 150px;">
         </form>
@@ -184,6 +436,29 @@
         <canvas id = "mapCanvas" width="700" height="700">
             You're browser doesn't support canvas. Please try another.
         </canvas>
+            <div id="lodgeDetailsModal" class="modalContainer">
+                <div class="modalContent">
+                <span class="close">&times;</span>
+                <h1 id="modalHeader"></h1>
+                <table id = "lodgeInfo">
+                </table>
+                </div>
+            </div>
+    </div>
+    <div class="row">
+    <div class = "col-5 midAlign" id = "bookingSummary">
+        <h2>Booking Summary</h2>
+        <table id="bookingDetails">
+        </table>
+    </div>
+    <div class = "col-5 midAlign" id="confirmed">
+        <h2>
+            Booking Confirmed
+        </h2>
+        <p>
+            Your booking has been successful.
+        </p>
+    </div>
     </div>
 </div>
 </body>

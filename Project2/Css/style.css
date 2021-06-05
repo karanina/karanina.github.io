@@ -112,6 +112,11 @@ img {
     padding-top: 0px;
 }
 
+.midAlign {
+    position: relative;
+    margin-top: -350px;
+}
+
 /*CSS to space out the form elements*/
 input {
     margin-bottom: 15px;
@@ -124,3 +129,49 @@ input.submit {
     background-image: url("../Images/map.jpg");
     background-repeat: no-repeat;
 }
+
+/*Modal Styling*/
+/* The Modal (background) */
+.modalContainer {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /*Container covers the whole screen width*/
+    height: 100%; /*Container covers the whole screen width*/
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modalContent {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 55%; /*modal covers half the screen width*/
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+  }
+
+  #confirmed {
+      display: none;
+  }
+  #bookingSummary {
+      display:none;
+  }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CurrentBookings>
+    <Booking reference="6-2021-07-05">
+        <lodgeNumber>
+            6
+        </lodgeNumber>
+        <checkInDate>
+            2021-07-05
+        </checkInDate>
+        <checkOutDate>
+            2021-07-10
+        </checkOutDate>
+        <AgreedNightlyRate>
+            $225.00
+        </AgreedNightlyRate>
+        <TotalCost>
+            $1125.00
+        </TotalCost>
+        <NumberOfGuests>
+            5
+        </NumberOfGuests>
+    </Booking>
+    <Booking reference="11-2021-07-04">
+        <lodgeNumber>
+            11
+        </lodgeNumber>
+        <checkInDate>
+            2021-07-04
+        </checkInDate>
+        <checkOutDate>
+            2021-07-07
+        </checkOutDate>
+        <AgreedNightlyRate>
+            $75.00
+        </AgreedNightlyRate>
+        <TotalCost>
+            $225.00
+        </TotalCost>
+        <NumberOfGuests>
+            2
+        </NumberOfGuests>
+    </Booking>
+    <Booking reference="13-2021-07-03">
+        <lodgeNumber>
+            11
+        </lodgeNumber>
+        <checkInDate>
+            2021-07-03
+        </checkInDate>
+        <checkOutDate>
+            2021-07-07
+        </checkOutDate>
+        <AgreedNightlyRate>
+            $75.00
+        </AgreedNightlyRate>
+        <TotalCost>
+            $300.00
+        </TotalCost>
+        <NumberOfGuests>
+            1
+        </NumberOfGuests>
+        </Booking>
+</CurrentBookings>
