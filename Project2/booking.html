@@ -90,7 +90,7 @@
             lodges = [];
 
             // XMLHttpRequest object
-
+            var xmlhttp;
             // code for IE7+, Firefox, Opera, Safari, Chrome
             if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
@@ -99,10 +99,14 @@
             else {
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            var xmlDoc = xmlhttp.responseXML;
+            var x = xmlDoc.getElementsByTagName("Lodge");
+            }
+        }
         xmlhttp.open("GET","Xml/lodgeInformation.xml", true); 
         xmlhttp.send();
-        xmlDoc = xmlhttp.responseXML;
-        var x = xmlDoc.getElementsByTagName("Lodge"); 
 
         var name = "";
         var maxCapacity = 0;
@@ -164,7 +168,7 @@
             bookings = [];
 
             // XMLHttpRequest object
-
+            var xmlhttp;
             // code for IE7+, Firefox, Opera, Safari, Chrome
             if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
@@ -173,10 +177,14 @@
             else {
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            var xmlDoc = xmlhttp.responseXML;
+            var x = xmlDoc.getElementsByTagName("Booking");
+            }
+        }
         xmlhttp.open("GET","Xml/currentBookings.xml", true); 
         xmlhttp.send();
-        xmlDoc = xmlhttp.responseXML;
-        var x = xmlDoc.getElementsByTagName("Booking"); 
 
         var reference = "";
         var lodgeNumber = "";
