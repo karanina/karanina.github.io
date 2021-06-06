@@ -153,7 +153,7 @@
 
        // Constructor to create a Booking object
        function Booking(reference, lodgeNumber, checkInDate, checkOutDate, numberGuests, nightlyRate, totalCost) {
-            this.reference = reference
+            this.Reference = reference
             this.LodgeNumber = lodgeNumber;
             this.CheckInDate = new Date(checkInDate);
             this.CheckOutDate = new Date(checkOutDate);
@@ -208,7 +208,7 @@ for (i = 0; i < x.length; i++) {
         
         // Do the newQuery dates cross over with any current bookings. 
         function DateIntersection(i, j){
-            if (lodges[i].name == bookings[j].lodgeNumber) {
+            if (lodges[i].name == bookings[j].LodgeNumber) {
                 if (check_In_Date.getTime() > bookings[j].CheckInDate.getTime() && check_In_date.getTime() < bookings[j].CheckOutDate.getTime()) {
                     return true;
                     }
