@@ -170,9 +170,9 @@ input.submit {
   }
   #bookingConfirmed {
       display: none;
-      margin-top:-50px;
+      margin-top: -50px;
   }
   #bookingSummary {
-      display:none;
-      margin-top:-50px;
+      display: none;
+      margin-top: -50px;
   }

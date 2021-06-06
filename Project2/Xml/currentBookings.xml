@@ -9,10 +9,10 @@
             6
         </LodgeNumber>
         <CheckInDate>
-            Sun Jul 05 2021 15:00:00 GMT+1200 (New Zealand Standard Time)
+            Mon Jul 05 2021 15:00:00 GMT+1200 (New Zealand Standard Time)
         </CheckInDate>
         <CheckOutDate>
-            Sun Jul 10 2021 10:00:00 GMT+1200 (New Zealand Standard Time)
+            Sat Jul 10 2021 10:00:00 GMT+1200 (New Zealand Standard Time)
         </CheckOutDate>
         <AgreedNightlyRate>
             225.00
@@ -35,7 +35,7 @@
             Sun Jul 04 2021 15:00:00 GMT+1200 (New Zealand Standard Time)
         </CheckInDate>
         <CheckOutDate>
-            Sun Jul 07 2021 10:00:00 GMT+1200 (New Zealand Standard Time)
+            Wed Jul 07 2021 10:00:00 GMT+1200 (New Zealand Standard Time)
         </CheckOutDate>
         <AgreedNightlyRate>
             75.00
@@ -52,13 +52,13 @@
             13-2021-07-03
         </Reference>
         <LodgeNumber>
-            11
+            13
         </LodgeNumber>
         <CheckInDate>
-            Sun Jul 03 2021 15:00:00 GMT+1200 (New Zealand Standard Time)
+            Sat Jul 03 2021 15:00:00 GMT+1200 (New Zealand Standard Time)
         </CheckInDate>
         <CheckOutDate>
-            Sun Jul 07 2021 10:00:00 GMT+1200 (New Zealand Standard Time)
+            Wed Jul 07 2021 10:00:00 GMT+1200 (New Zealand Standard Time)
         </CheckOutDate>
         <AgreedNightlyRate>
             75.00
