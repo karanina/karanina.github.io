@@ -196,7 +196,8 @@
         xmlhttp.send(); // sends the request
         xmlDoc = xmlhttp.responseXML; // the response data as XML data
 
-        
+        var x = xmlDoc.getElementsByTagName("Booking"); // gets a node list of "Product" elements in the XML file
+
             // code for IE7+, Firefox, Opera, Safari, Chrome
          //   if (window.XMLHttpRequest) {
            // xmlhttp = new XMLHttpRequest();
