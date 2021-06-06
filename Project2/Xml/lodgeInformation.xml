@@ -154,7 +154,7 @@
         <Image>lodgeCapacity2.jpg</Image>
         <ImageX>580</ImageX>
         <ImageY>100</ImageY>
-        <ImageWidth>50</ImageWidth>
-        <ImageHeight>100</ImageHeight>
+        <ImageWidth>100</ImageWidth>
+        <ImageHeight>50</ImageHeight>
     </Lodge>
 </Buildings>
