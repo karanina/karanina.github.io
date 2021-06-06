@@ -207,10 +207,13 @@ for (i = 0; i < x.length; i++) {
         }
         
         // Do the newQuery dates cross over with any current bookings. 
-        function DateIntersection(i, j){
-            if ((check_In_Date > bookings[j].checkInDate && check_In_date < bookings[j].checkOutDate) || (check_Out_Date > bookings[j].checkInDate && check_Out_Date < bookings[j].checkOutDate) ){
+        function DateIntersection(j){
+            if (check_In_Date > bookings[j].checkInDate && check_In_date < bookings[j].checkOutDate) {
                 return true;
                 }
+            else if (check_Out_Date > bookings[j].checkInDate && check_Out_Date < bookings[j].checkOutDate) {
+                return true;
+            }
             else {
                 return false;
             }
@@ -233,7 +236,7 @@ for (i = 0; i < x.length; i++) {
             for (var i = 0; i < lodges.length; i++) {
                 if (lodges[i].maxCapacity >= number_Guests) {
                     for (var j = 0; j < bookings.length; j++) {
-                        if(!DateIntersection(i, j)) {
+                        if(!DateIntersection(j)) {
                             ctx.clearRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
                             ctx.fillStyle="rgba(0,255,0,0.25)";
                             ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
