@@ -221,12 +221,12 @@
             check_In_Date = new Date(document.getElementById("checkInDate").value);
             check_Out_Date = new Date(document.getElementById("checkOutDate").value);
 
-            PopulateLodges();
-            PopulateBookings();
-            
             canvas = document.getElementById("mapCanvas");
             canvas.addEventListener("mousemove", CheckPosition, false);
             ctx = canvas.getContext("2d");
+
+            PopulateLodges();
+            PopulateBookings();
         
             for (var i = 0; i < lodges.length; i++) {
                 if (lodges[i].maxCapacity >= number_Guests) {

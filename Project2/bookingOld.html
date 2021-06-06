@@ -281,7 +281,16 @@
             btnBookLodge.setAttribute("value", "Book Lodge");
             cell12.appendChild(btnBookLodge);
 
-           
+            span.onclick = function() {
+                close();
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    close();
+                }
+            }
         }
 
          // Closes the Modal
@@ -303,7 +312,6 @@
 
         function updateGuests() {
             newQuery.numberGuests = Number(document.getElementById("numberOfGuests").value);
-            searchBookings();
         }
 
         function bookLodge(newQuery) {
