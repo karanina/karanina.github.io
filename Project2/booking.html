@@ -207,12 +207,17 @@ for (i = 0; i < x.length; i++) {
         }
         
         // Do the newQuery dates cross over with any current bookings. 
-        function DateIntersection(j){
-            if (check_In_Date > bookings[j].checkInDate && check_In_date < bookings[j].checkOutDate) {
-                return true;
+        function DateIntersection(i, j){
+            if (lodges[i].name == bookings[j].lodgeNumber) {
+                if (check_In_Date.getTime() > bookings[j].checkInDate.getTime() && check_In_date.getTime() < bookings[j].checkOutDate.getTime()) {
+                    return true;
+                    }
+                else if (check_Out_Date.getTime() > bookings[j].checkInDate.getTime() && check_Out_Date.getTime() < bookings[j].checkOutDate.getTime()) {
+                    return true;
                 }
-            else if (check_Out_Date > bookings[j].checkInDate && check_Out_Date < bookings[j].checkOutDate) {
-                return true;
+                else {
+                    return false;
+                }
             }
             else {
                 return false;
@@ -236,7 +241,7 @@ for (i = 0; i < x.length; i++) {
             for (var i = 0; i < lodges.length; i++) {
                 if (lodges[i].maxCapacity >= number_Guests) {
                     for (var j = 0; j < bookings.length; j++) {
-                        if(!DateIntersection(j)) {
+                        if(!DateIntersection(i, j)) {
                             ctx.clearRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
                             ctx.fillStyle="rgba(0,255,0,0.25)";
                             ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
