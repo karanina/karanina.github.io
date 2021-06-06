@@ -107,7 +107,7 @@
             xmlDoc = xmlhttp.responseXML; // the response data as XML data
             var x = xmlDoc.getElementsByTagName("Lodge"); // gets a node list of "Product" elements in the XML file
 
-            var name = "";
+            var name = 0;
             var maxCapacity = 0;
             var nightlyRate = 0;
             var checkInTime = "";
@@ -119,7 +119,7 @@
             var imageHeight = 0;
 
             for (i = 0; i < x.length; i++) {
-                name = x[i].getElementsByTagName("Name")[0].childNodes[0].nodeValue;
+                name = Number(x[i].getElementsByTagName("Name")[0].childNodes[0].nodeValue);
                 maxCapacity = Number(x[i].getElementsByTagName("MaxCapacity")[0].childNodes[0].nodeValue);
                 nightlyRate = Number(x[i].getElementsByTagName("NightlyRate")[0].childNodes[0].nodeValue);
                 checkInTime = x[i].getElementsByTagName("CheckInTime")[0].childNodes[0].nodeValue;
@@ -184,7 +184,7 @@ xmlDoc = xmlhttp.responseXML; // the response data as XML data
 var x = xmlDoc.getElementsByTagName("Booking"); // gets a node list of "Product" elements in the XML file
 
 var reference = "";
-var lodgeNumber = "";
+var lodgeNumber = 0;
 var checkInDate = "";
 var checkOutDate = "";
 var numberOfGuests = 0;
@@ -193,7 +193,7 @@ var totalCost = 0;
 
 for (i = 0; i < x.length; i++) {
     reference = x[i].getElementsByTagName("Reference")[0].childNodes[0].nodeValue;
-    lodgeNumber = x[i].getElementsByTagName("LodgeNumber")[0].childNodes[0].nodeValue;
+    lodgeNumber = Number(x[i].getElementsByTagName("LodgeNumber")[0].childNodes[0].nodeValue);
     checkInDate = new Date(x[i].getElementsByTagName("CheckInDate")[0].childNodes[0].nodeValue);
     checkOutDate = new Date(x[i].getElementsByTagName("CheckOutDate")[0].childNodes[0].nodeValue);
     numberOfGuests = Number(x[i].getElementsByTagName("NumberOfGuests")[0].childNodes[0].nodeValue);
@@ -208,7 +208,7 @@ for (i = 0; i < x.length; i++) {
         
         // Do the newQuery dates cross over with any current bookings. 
         function DateIntersection(i, j){
-            if (lodges[i].name == bookings[j].LodgeNumber) {
+            if (lodges[i].name == bookings[j].lodgeNumber) {
                 if (check_In_Date.getTime() > bookings[j].CheckInDate.getTime() && check_In_date.getTime() < bookings[j].CheckOutDate.getTime()) {
                     return true;
                     }
