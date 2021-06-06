@@ -236,20 +236,20 @@
                             ctx.fillStyle="rgba(0,255,0,0.25)";
                             ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
                         }
-                        else {
-                            ctx.clearRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
-                            ctx.fillStyle="rgba(255,0,0,0.25)";
-                            ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
+                        //else {
+                          //  ctx.clearRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
+                          //  ctx.fillStyle="rgba(255,0,0,0.25)";
+                            //ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].//imageHeight);
                         //}
                     //}
-                }
+               // }
                 else {
                     ctx.clearRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
                     ctx.fillStyle="rgba(255,0,0,0.25)";
                     ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
             }
+            }
         }
-    }
 
         // Creates variables for the getting the position of the mouse on the canvas
         function CheckPosition(event) {
