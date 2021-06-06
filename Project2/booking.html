@@ -98,7 +98,7 @@
             // code for IE6, IE5
           //  else {
             //xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
+       // }
        // xmlhttp.open("GET","Xml/lodgeInformation.xml", true); 
         //xmlhttp.onreadystatechange = function() {
           //  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -149,7 +149,8 @@
             // adds the lodge object to the lodges array
             lodges[i] = lodge;
         }
-        }
+    }
+    
         
         // Constructor to create a Query object
         function Query(name, dateIn, dateOut, availability, nightlyRate, numberGuests, maxCapacity, checkInTime, checkOutTime, image) {
