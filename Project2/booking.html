@@ -92,22 +92,35 @@
             // XMLHttpRequest object
             var xmlhttp;
             // code for IE7+, Firefox, Opera, Safari, Chrome
-            if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
-        }
+            //if (window.XMLHttpRequest) {
+            //xmlhttp = new XMLHttpRequest();
+        //}
             // code for IE6, IE5
-            else {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+          //  else {
+            //xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
-        xmlhttp.open("GET","Xml/lodgeInformation.xml", true); 
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                var xmlDoc = xmlhttp.responseXML;
-                var x = xmlDoc.getElementsByTagName("Lodge");
-            };
-        }
+       // xmlhttp.open("GET","Xml/lodgeInformation.xml", true); 
+        //xmlhttp.onreadystatechange = function() {
+          //  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            //    var xmlDoc = xmlhttp.responseXML;
+              //  var x = xmlDoc.getElementsByTagName("Lodge");
+            //};
+        //}
 
-        xmlhttp.send();
+        //xmlhttp.send();
+
+        if (window.XMLHttpRequest) { // checks to see if the browser supports the XMLHttpRequest object
+            xmlhttp = new XMLHttpRequest(); // creates the XMLHttpRequest object
+        }
+        // code for IE6, IE5
+        else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); // creates an ActiveXObject as old IE versions do not support XMLHTTPRequest objects
+        }
+        xmlhttp.open("GET","Xml/lodgeInformation.xml", false); // specifies the type of request (ie GET or POST), the file location for the request, and whether it is an asynchronous request or not (bool value) (ie whether you can do multiple tasks at once - true, or need to wait for one task to finish before starting the new one - false)
+        xmlhttp.send(); // sends the request
+        xmlDoc = xmlhttp.responseXML; // the response data as XML data
+        var x = xmlDoc.getElementsByTagName("Lodge"); // gets a node list of "Product" elements in the XML file
+
 
         var name = "";
         var maxCapacity = 0;
