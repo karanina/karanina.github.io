@@ -4,7 +4,7 @@
     <Lodge>
         <Name>1</Name>
         <MaxCapacity>4</MaxCapacity>
-        <NightlyRate>150.00</NightlyRate>
+        <NightlyRate>150</NightlyRate>
         <CheckInTime>3:00pm</CheckInTime>
         <CheckOutTime>10:00am</CheckOutTime>
         <Image>lodgeCapacity4.jpg</Image>
@@ -16,7 +16,7 @@
     <Lodge>
         <Name>2</Name>
         <MaxCapacity>4</MaxCapacity>
-        <NightlyRate>150.00</NightlyRate>
+        <NightlyRate>150</NightlyRate>
         <CheckInTime>3:00pm</CheckInTime>
         <CheckOutTime>10:00am</CheckOutTime>
         <Image>lodgeCapacity4.jpg</Image>
@@ -28,7 +28,7 @@
     <Lodge>
         <Name>3</Name>
         <MaxCapacity>4</MaxCapacity>
-        <NightlyRate>150.00</NightlyRate>
+        <NightlyRate>150</NightlyRate>
         <CheckInTime>3:00pm</CheckInTime>
         <CheckOutTime>10:00am</CheckOutTime>
         <Image>lodgeCapacity4.jpg</Image>
@@ -40,7 +40,7 @@
     <Lodge>
         <Name>4</Name>
         <MaxCapacity>4</MaxCapacity>
-        <NightlyRate>150.00</NightlyRate>
+        <NightlyRate>150</NightlyRate>
         <CheckInTime>3:00pm</CheckInTime>
         <CheckOutTime>10:00am</CheckOutTime>
         <Image>lodgeCapacity4.jpg</Image>
@@ -52,7 +52,7 @@
     <Lodge>
         <Name>5</Name>
         <MaxCapacity>4</MaxCapacity>
-        <NightlyRate>150.00</NightlyRate>
+        <NightlyRate>150</NightlyRate>
         <CheckInTime>3:00pm</CheckInTime>
         <CheckOutTime>10:00am</CheckOutTime>
         <Image>lodgeCapacity4.jpg</Image>
@@ -64,7 +64,7 @@
     <Lodge>
         <Name>6</Name>
         <MaxCapacity>6</MaxCapacity>
-        <NightlyRate>225.00</NightlyRate>
+        <NightlyRate>225</NightlyRate>
         <CheckInTime>3:00pm</CheckInTime>
         <CheckOutTime>10:00am</CheckOutTime>
         <Image>lodgeCapacity6.jpg</Image>
@@ -76,7 +76,7 @@
     <Lodge>
         <Name>7</Name>
         <MaxCapacity>6</MaxCapacity>
-        <NightlyRate>225.00</NightlyRate>
+        <NightlyRate>225</NightlyRate>
         <CheckInTime>3:00pm</CheckInTime>
         <CheckOutTime>10:00am</CheckOutTime>
         <Image>lodgeCapacity6.jpg</Image>
@@ -88,7 +88,7 @@
     <Lodge>
         <Name>8</Name>
         <MaxCapacity>8</MaxCapacity>
-        <NightlyRate>300.00</NightlyRate>
+        <NightlyRate>300</NightlyRate>
         <CheckInTime>3:00pm</CheckInTime>
         <CheckOutTime>10:00am</CheckOutTime>
         <Image>lodgeCapacity8.jpg</Image>
@@ -100,7 +100,7 @@
     <Lodge>
         <Name>9</Name>
         <MaxCapacity>2</MaxCapacity>
-        <NightlyRate>75.00</NightlyRate>
+        <NightlyRate>75</NightlyRate>
         <CheckInTime>3:00pm</CheckInTime>
         <CheckOutTime>10:00am</CheckOutTime>
         <Image>lodgeCapacity2.jpg</Image>
@@ -112,7 +112,7 @@
     <Lodge>
         <Name>10</Name>
         <MaxCapacity>2</MaxCapacity>
-        <NightlyRate>75.00</NightlyRate>
+        <NightlyRate>75</NightlyRate>
         <CheckInTime>3:00pm</CheckInTime>
         <CheckOutTime>10:00am</CheckOutTime>
         <Image>lodgeCapacity2.jpg</Image>
@@ -124,7 +124,7 @@
     <Lodge>
         <Name>11</Name>
         <MaxCapacity>2</MaxCapacity>
-        <NightlyRate>75.00</NightlyRate>
+        <NightlyRate>75</NightlyRate>
         <CheckInTime>3:00pm</CheckInTime>
         <CheckOutTime>10:00am</CheckOutTime>
         <Image>lodgeCapacity2.jpg</Image>
@@ -136,7 +136,7 @@
     <Lodge>
         <Name>12</Name>
         <MaxCapacity>2</MaxCapacity>
-        <NightlyRate>75.00</NightlyRate>
+        <NightlyRate>75</NightlyRate>
         <CheckInTime>3:00pm</CheckInTime>
         <CheckOutTime>10:00am</CheckOutTime>
         <Image>lodgeCapacity2.jpg</Image>
@@ -148,7 +148,7 @@
     <Lodge>
         <Name>13</Name>
         <MaxCapacity>2</MaxCapacity>
-        <NightlyRate>75.00</NightlyRate>
+        <NightlyRate>75</NightlyRate>
         <CheckInTime>3:00pm</CheckInTime>
         <CheckOutTime>10:00am</CheckOutTime>
         <Image>lodgeCapacity2.jpg</Image>
