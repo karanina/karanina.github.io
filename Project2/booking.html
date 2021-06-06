@@ -224,7 +224,9 @@
             canvas = document.getElementById("mapCanvas");
             canvas.addEventListener("mousemove", CheckPosition, false);
             ctx = canvas.getContext("2d");
-            console.log(getEventListeners(document.querySelector("canvas")));
+            var listen =getEventListeners(document.querySelector("canvas")); 
+            console.log('testing');
+            console.log(listen);
             PopulateLodges();
             PopulateBookings();
         
