@@ -88,7 +88,7 @@
         function PopulateLodges() {
             // lodgeInformation.xml will load into this array.
             lodges = [];
-
+            var x;
             // XMLHttpRequest object
             var xmlhttp;
             // code for IE7+, Firefox, Opera, Safari, Chrome
@@ -101,8 +101,8 @@
         }
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-            var xmlDoc = xmlhttp.responseXML;
-            var x = xmlDoc.getElementsByTagName("Lodge");
+                var xmlDoc = xmlhttp.responseXML;
+                x = xmlDoc.getElementsByTagName("Lodge");
             };
         }
         xmlhttp.open("GET","Xml/lodgeInformation.xml", true); 
