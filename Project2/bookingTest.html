@@ -144,13 +144,22 @@
         
         // Do the newQuery dates cross over with any current bookings. 
         function DateIntersection(i, j){
-            if ((check_In_Date > bookings[j].checkInDate && check_In_date < bookings[j].checkOutDate) || (check_Out_Date > bookings[j].checkInDate && check_Out_Date < bookings[j].checkOutDate) ){
-                return true;
+            var bookingTime = bookings[j].CheckInDate;
+            console.log(check_In_Date.getTime());
+                console.log(bookingTime.getTime());
+            if (Number(lodges[i].name) == Number(bookings[j].LodgeNumber)) {
+                if (check_In_Date.getTime() > bookings[j].checkInDate.getTime() && check_In_date.getTime() < bookings[j].checkOutDate.getTime()) {
+                    return true;
+                    }
+                else if (check_Out_Date.getTime() > bookings[j].checkInDate.getTime() && check_Out_Date.getTime() < bookings[j].checkOutDate.getTime()) {
+                    return true;
                 }
-            else {
-                return false;
+                else {
+                    return false;
+                }
             }
         }
+
 
         // creates lodge objects and searches the canvas for available lodges
         function SearchBookings(){
