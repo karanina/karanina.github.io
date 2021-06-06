@@ -379,7 +379,6 @@
             btnBookLodge.setAttribute("type", "button");
             btnBookLodge.setAttribute("id", "newQuery.lodgeNumber");
             btnBookLodge.onclick = function() {
-                CloseModal();
                 BookLodge(newQuery);
                 canvas.removeEventListener("mousemove", CheckPosition, false);
             }
@@ -406,7 +405,14 @@
             for (var i = x - 1; i >= 0; i--) {
                 document.getElementById("lodgeInfo").deleteRow(i);
             }
+            var y = document.getElementById("bookingDetails").rows.length;
+            for (var j = y - 1; j >= 0; j--)
+            {
+                document.getElementById("bookingDetails").deleteRow(j);
+            }
             canvas.addEventListener("mousemove", CheckPosition, false);
+
+            var y = document
         }
 
         function UpdateGuests() {
@@ -414,6 +420,9 @@
         }
 
         function BookLodge(newQuery) {
+            var lodgeInformation = document.getElementById("lodgeInformation");
+            lodgeInformation.style.display = "none";
+
             var bookingSummary = document.getElementById("bookingSummary");
             bookingSummary.style.display = "block";
 
@@ -473,7 +482,7 @@
             btnConfirmBooking.setAttribute("type", "button");
             btnConfirmBooking.setAttribute("value","Confirm Booking");
             btnConfirmBooking.setAttribute("onclick", "Booked(newQuery)");  
-            cell17.appendChild(btnConfirmBooking);    
+            cell17.appendChild(btnConfirmBooking);            
         }
 
         // Calculates the difference in dates and returns a value in milliseconds, which must then be converted into days.
@@ -485,10 +494,21 @@
         function Booked(newQuery){
             var bookingSummary = document.getElementById("bookingSummary");
             bookingSummary.style.display = "none";
-            var bookingConfirmed = document.getElementById("confirmed");
+            var bookingConfirmed = document.getElementById("bookingConfirmed");
             bookingConfirmed.style.display = "block";
-            var Booking = new booking(newQuery.lodgeNumber, newQuery.dateIn, newQuery.dateOut, newQuery.numberGuests, newQuery.nightlyRate, newQuery.totalCost);
-        }        
+            var Booking = new Booking(newQuery.lodgeNumber, newQuery.dateIn, newQuery.dateOut, newQuery.numberGuests, newQuery.nightlyRate, newQuery.totalCost);
+        }
+        
+        function NewSearch() {
+            var bookingConfirmed = document.getElementById("bookingConfirmed");
+            bookingConfirmed.style.display = "none";
+            Init();
+            CloseModal();
+            document.getElementById("numberOfGuests").value = 1;
+            ctx.clearRect(0,0,700,700);
+            canvas.removeEventListener("mousemove", CheckPosition, false);
+            document.getElementById("lodgeInformation").style.display = "block";
+        }
     </script>
 </head>
 <body onload = "Init()">
@@ -542,29 +562,33 @@
         <canvas id = "mapCanvas" width="700" height="700">
             You're browser doesn't support canvas. Please try another.
         </canvas>
-            <div id="lodgeDetailsModal" class="modalContainer">
-                <div class="modalContent">
+        <div id="lodgeDetailsModal" class="modalContainer">
+            <div class="modalContent" id="lodgeInformation">
                 <span class="close">&times;</span>
                 <h1 id="modalHeader"></h1>
                 <table id = "lodgeInfo">
                 </table>
-                </div>
             </div>
-    </div>
-    <div class="row">
-    <div class = "col-5 midAlign" id = "bookingSummary">
-        <h2>Booking Summary</h2>
-        <table id="bookingDetails">
-        </table>
-    </div>
-    <div class = "col-5 midAlign" id="confirmed">
-        <h2>
-            Booking Confirmed
-        </h2>
-        <p>
-            Your booking has been successful.
-        </p>
-    </div>
+            <div class = "modalContent" id = "bookingSummary">
+                <h2>
+                    Booking Summary
+                </h2>
+                <table id="bookingDetails">
+                </table>
+            </div>
+            <input class = "modalContent" id="bookingConfirmed">
+                <h2>
+                    Booking Confirmed
+                </h2>
+                <p>
+                    Your booking has been successful.
+                </p>
+                <p>
+                    Would you like to make another booking?
+                </p>
+                <input type="button" id="makeNewBooking" onclick="NewSearch()" value="Make another booking">
+            </div>
+        </div>
     </div>
 </div>
 </body>

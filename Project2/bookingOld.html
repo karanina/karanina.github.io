@@ -16,6 +16,7 @@
         var popUp;
         var newQuery;
         var numberGuests;
+        
 
         // Initialisation function which sets the minimum date on the checkInDate date picker to today's date
         function init(){
@@ -273,23 +274,14 @@
             btnBookLodge.setAttribute("type", "button");
             btnBookLodge.setAttribute("id", "newQuery.lodgeNumber");
             btnBookLodge.onclick = function() {
-                close();
+                //close();
                 bookLodge(newQuery);
                 canvas.removeEventListener("mousemove", checkPosition, false);
             }
             btnBookLodge.setAttribute("value", "Book Lodge");
             cell12.appendChild(btnBookLodge);
 
-            span.onclick = function() {
-                close();
-            }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    close();
-                }
-            }
+           
         }
 
          // Closes the Modal
@@ -300,14 +292,28 @@
             for (var i = x - 1; i >= 0; i--) {
                 document.getElementById("lodgeInfo").deleteRow(i);
             }
+            newQuery = null;
+            var y = document.getElementById("bookingDetails").rows.length;
+            for (var j = y - 1; j >= 0; j--)
+            {
+                document.getElementById("bookingDetails").deleteRow(j);
+            }
             canvas.addEventListener("mousemove", checkPosition, false);
         }
 
         function updateGuests() {
             newQuery.numberGuests = Number(document.getElementById("numberOfGuests").value);
+            searchBookings();
         }
 
         function bookLodge(newQuery) {
+            
+            
+           // var span = document.getElementsByClassName("close")[0];
+
+            var lodgeInformation = document.getElementById("lodgeInformation");
+            lodgeInformation.style.display = "none";
+
             var bookingSummary = document.getElementById("bookingSummary");
             bookingSummary.style.display = "block";
 
@@ -368,6 +374,17 @@
             btnConfirmBooking.setAttribute("value","Confirm Booking");
             btnConfirmBooking.setAttribute("onclick", "booked(newQuery)");  
             cell17.appendChild(btnConfirmBooking);    
+            
+            span.onclick = function() {
+                close();
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    close();
+                }
+            }
         }
 
         // Calculates the difference in dates and returns a value in milliseconds, which must then be converted into days.
@@ -377,12 +394,39 @@
         }
 
         function booked(newQuery){
+            //var span = document.getElementsByClassName("close")[0];
+            
             var bookingSummary = document.getElementById("bookingSummary");
             bookingSummary.style.display = "none";
-            var bookingConfirmed = document.getElementById("confirmed");
+            var bookingConfirmed = document.getElementById("bookingConfirmed");
             bookingConfirmed.style.display = "block";
             var Booking = new booking(newQuery.lodgeNumber, newQuery.dateIn, newQuery.dateOut, newQuery.numberGuests, newQuery.nightlyRate, newQuery.totalCost);
-        }        
+            
+            span.onclick = function() {
+                close();
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    close();
+                }
+            }
+        }
+        
+        function NewSearch() {
+            var bookingConfirmed = document.getElementById("bookingConfirmed");
+            bookingConfirmed.style.display = "none";
+            init();
+            close();
+            document.getElementById("numberOfGuests").value = 1;
+            ctx.clearRect(0,0,700,700);
+            canvas.removeEventListener("mousemove", checkPosition, false);
+            document.getElementById("lodgeInformation").style.display = "block";
+
+
+
+        }
     </script>
 </head>
 <body onload = "init()">
@@ -436,29 +480,33 @@
         <canvas id = "mapCanvas" width="700" height="700">
             You're browser doesn't support canvas. Please try another.
         </canvas>
-            <div id="lodgeDetailsModal" class="modalContainer">
-                <div class="modalContent">
+        <div id="lodgeDetailsModal" class="modalContainer">
+            <div class="modalContent">
                 <span class="close">&times;</span>
-                <h1 id="modalHeader"></h1>
+                <div id="lodgeInformation">
+                <h2 id="modalHeader"></h2>
                 <table id = "lodgeInfo">
                 </table>
                 </div>
             </div>
-    </div>
-    <div class="row">
-    <div class = "col-5 midAlign" id = "bookingSummary">
-        <h2>Booking Summary</h2>
-        <table id="bookingDetails">
-        </table>
-    </div>
-    <div class = "col-5 midAlign" id="confirmed">
-        <h2>
-            Booking Confirmed
-        </h2>
-        <p>
-            Your booking has been successful.
-        </p>
-    </div>
+            <div class = "modalContent" id = "bookingSummary">
+                <h2>
+                    Booking Summary
+                </h2>
+                <table id="bookingDetails">
+                </table>
+            </div>
+            <div class = "modalContent" id="bookingConfirmed">
+                <h2>
+                    Booking Confirmed
+                </h2>
+                <p>
+                    Your booking has been successful.
+                </p>
+                <p>Would you like to make another booking?</p>
+                <input type="button" id="makeNewBooking" onclick="NewSearch()" value="Make another booking">
+            </div>
+        </div>
     </div>
 </div>
 </body>
