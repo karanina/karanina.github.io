@@ -73,7 +73,7 @@
         }
 
         // Constructor to create a Lodge object.
-        function Lodge(name, maxCapacity, nightlyRate, checkInTime, checkOutTime, image, imageX, imageY, imageWidth, imageHeight) {
+        function Lodge(name, maxCapacity, nightlyRate, checkInTime, checkOutTime, image, imageX, imageY, imageWidth, imageHeight, availability){
             this.name = name;
             this.maxCapacity = maxCapacity;
             this.nightlyRate = nightlyRate;
@@ -84,6 +84,7 @@
             this.imageY = imageY;
             this.imageWidth = imageWidth;
             this.imageHeight = imageHeight;
+            this.availability = availability;
         }
 
         // Pulls the Lodge information from lodgeInformation.xml and populates the lodges array.
@@ -117,6 +118,7 @@
             var imageY = 0;
             var imageWidth = 0;
             var imageHeight = 0;
+            var availability = "Yes";
 
             for (i = 0; i < x.length; i++) {
                 name = Number(x[i].getElementsByTagName("Name")[0].childNodes[0].nodeValue);
@@ -130,7 +132,7 @@
                 imageWidth=Number(x[i].getElementsByTagName("ImageWidth")[0].childNodes[0].nodeValue);            
                 imageHeight = Number(x[i].getElementsByTagName("ImageHeight")[0].childNodes[0].nodeValue);
                 // creates a new lodge object with the variables
-                var lodge = new Lodge(name, maxCapacity, nightlyRate, checkInTime, checkOutTime, image, imageX, imageY, imageWidth, imageHeight);
+                var lodge = new Lodge(name, maxCapacity, nightlyRate, checkInTime, checkOutTime, image, imageX, imageY, imageWidth, imageHeight, availability);
                 // adds the lodge object to the lodges array
                 lodges[i] = lodge;
             }
@@ -245,7 +247,6 @@ for (i = 0; i < x.length; i++) {
                             ctx.clearRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
                             ctx.fillStyle="rgba(0,255,0,0.25)";
                             ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
-                            var availability = "Yes";
                         }
                         else {
                             ctx.clearRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
@@ -274,7 +275,7 @@ for (i = 0; i < x.length; i++) {
                 var lodgeY = lodges[i].imageY;
                 var lodgeW = lodges[i].imageWidth;
                 var lodgeH = lodges[i].imageHeight;
-                
+                var availability = lodges[i].availability;
                 
                 if (Intersects(mouseX, mouseY, lodgeX, lodgeY, lodgeW, lodgeH, availability) && HasCapacity(i)) {
                     newQuery = new Query(lodges[i].name, 
