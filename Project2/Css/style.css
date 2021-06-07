@@ -70,11 +70,12 @@ ul.topnav {
     margin: 0px;
     padding: 0px;
     overflow: hidden;
-    background-color:#d38e31;
+    background-color:#dd9434;
 }
 
 ul.topnav li {
     float: left;
+
 }
 
 ul.topnav li a, ul.topnav li.dropdown a.dropdownHead {
@@ -90,7 +91,7 @@ ul.topnav li:last-child {
     border-right: none;
 }
 ul.topnav li a:hover:not(.active), ul.topnav li a:hover, ul.topnav li.dropdown:hover, ul.topnav li.dropdown a.dropdownHead {
-    background-color: #f0df99;
+    background-color: #d38e31;
 }
 
 ul.topnav li a.active {
@@ -104,8 +105,8 @@ ul.topnav li.dropdown {
 ul.topnav li.dropdown div.dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f0df99;
-    min-width: 200px;
+    background-color: #d49f59;
+    min-width: 300px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }
