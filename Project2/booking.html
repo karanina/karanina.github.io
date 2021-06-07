@@ -484,13 +484,13 @@
             var cell13 = row7.insertCell(0);
             cell13.innerHTML = "<strong>Cost Per Night:</strong>";
             var cell14 = row7.insertCell(1);
-            cell14.innerHTML = newQuery.nightlyRate;
+            cell14.innerHTML = "$" + newQuery.nightlyRate + ".00";
 
             var row8 = detailsTable.insertRow(7);
             var cell15 = row8.insertCell(0);
             cell15.innerHTML = "<strong>Total Cost of Stay:</strong>"
             var cell16 = row8.insertCell(1);
-            cell16.innerHTML = newQuery.totalCost;;
+            cell16.innerHTML = "$" + newQuery.totalCost + ".00";
 
             var row9 = detailsTable.insertRow(8);
             var cell17 = row9.insertCell(0);
