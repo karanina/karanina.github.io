@@ -118,7 +118,7 @@
             var imageY = 0;
             var imageWidth = 0;
             var imageHeight = 0;
-            var availability = "Yes";
+            var availability = "";
 
             // gets each variable per Lodge record in the xml document.
             for (i = 0; i < x.length; i++) {
@@ -132,6 +132,7 @@
                 imageY = Number(x[i].getElementsByTagName("ImageY")[0].childNodes[0].nodeValue);
                 imageWidth=Number(x[i].getElementsByTagName("ImageWidth")[0].childNodes[0].nodeValue);            
                 imageHeight = Number(x[i].getElementsByTagName("ImageHeight")[0].childNodes[0].nodeValue);
+                availability = "Yes";
                 // creates a new lodge object with the variables.
                 var lodge = new Lodge(name, maxCapacity, nightlyRate, checkInTime, checkOutTime, image, imageX, imageY, imageWidth, imageHeight, availability);
                 // adds the lodge object to the lodges array.
@@ -251,7 +252,7 @@
                             ctx.clearRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
                             ctx.fillStyle="rgba(255,0,0,0.25)";
                             ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
-                            var availability = "No";
+                            lodges[i].availability = "No";
                             break;
                         }
                     }
