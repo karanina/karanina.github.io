@@ -528,6 +528,7 @@
             // creates the reference variable for the booking entry.
             var reference = newQuery.lodgeNumber + "-" + newQuery.dateIn;
 
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
             // creates the booking entry for the xml document.
             var booking = "<?xml version='1.0'?><query><Booking><Reference>reference</Reference><LodgeNumber>newQuery.lodgeNumber</LodgeNumber><CheckInDate>newQuery.dateIn</CheckInDate><CheckOutDate>newQuery.dateOut</CheckOutDate><AgreedNightlyRate>newQuery.nightlyRate</AgreedNightlyRate><TotalCost>newQuery.totalCost</TotalCost><NumberOfGuests>newQuery.numberGuests</NumberOfGuests></Booking></query>"
             xmlhttp.send(booking);
