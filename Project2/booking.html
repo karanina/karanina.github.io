@@ -208,7 +208,7 @@ for (i = 0; i < x.length; i++) {
         
         // Do the newQuery dates cross over with any current bookings. 
         function DateIntersection(i, j){
-           // if (lodges[i].name == bookings[j].LodgeNumber) {
+           if (lodges[i].name == bookings[j].LodgeNumber) {
                 if (check_In_Date.getTime() > bookings[j].CheckInDate.getTime() && check_In_Date.getTime() < bookings[j].CheckOutDate.getTime()) {
                     return true;
                     }
@@ -218,10 +218,10 @@ for (i = 0; i < x.length; i++) {
                 else {
                     return false;
                 }
-            //}
-            //else {
-              //  return false;
-            //}
+            }
+            else {
+              return false;
+            }
         }
 
         // creates lodge objects and searches the canvas for available lodges
