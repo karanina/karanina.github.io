@@ -144,10 +144,7 @@
         
         // Do the newQuery dates cross over with any current bookings. 
         function DateIntersection(i, j){
-            var bookingTime = bookings[j].CheckInDate;
-            console.log(check_In_Date.getTime());
-                console.log(bookingTime.getTime());
-            if (Number(lodges[i].name) == Number(bookings[j].LodgeNumber)) {
+            if (lodges[i].name == bookings[j].lodgeNumber) {
                 if (check_In_Date.getTime() > bookings[j].checkInDate.getTime() && check_In_date.getTime() < bookings[j].checkOutDate.getTime()) {
                     return true;
                     }
@@ -157,6 +154,9 @@
                 else {
                     return false;
                 }
+            }
+            else {
+                return false;
             }
         }
 
