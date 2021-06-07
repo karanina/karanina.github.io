@@ -144,8 +144,8 @@
             this.dateIn = new Date(dateIn);
             this.dateOut = new Date(dateOut);
             this.availability = availability;
-            this.nightlyRate = "$" + nightlyRate;
-            this.totalCost = "$" + CalculateNights(this.dateIn, this.dateOut) * nightlyRate + ".00";
+            this.nightlyRate = nightlyRate;
+            this.totalCost = CalculateNights(this.dateIn, this.dateOut) * nightlyRate;
             this.numberGuests = numberGuests;
             this.maximumCapacity = maxCapacity;
             this.checkInTime = checkInTime;
@@ -352,11 +352,11 @@ for (i = 0; i < x.length; i++) {
 
             var row4 = lodgeTable.insertRow(3);
             var cell5 = row4.insertCell(0);
-            cell5.innerHTML = "<strong>Cost Per Night: </strong>" + newQuery.nightlyRate;
+            cell5.innerHTML = "<strong>Cost Per Night: </strong>$" + newQuery.nightlyRate + ".00";
 
             var row5 = lodgeTable.insertRow(4);
             var cell6 = row5.insertCell(0);
-            cell6.innerHTML =  "<strong>Total Cost of Stay: </strong>" + newQuery.totalCost;
+            cell6.innerHTML =  "<strong>Total Cost of Stay: $</strong>" + newQuery.totalCost + ".00";
 
             var row6 = lodgeTable.insertRow(5);
             var cell7 = row6.insertCell(0);
@@ -588,7 +588,8 @@ for (i = 0; i < x.length; i++) {
 
             <label for = "numberOfGuests"><h3>Capacity</h3></label>
             <input type = "number" id = "numberOfGuests" name = "numberOfGuests" min = "1" max = "8" value = "1" size="1" onchange="UpdateGuests()">
-
+            <br>
+            <br>
             <input type = "button" value = "Search" class="Search" onclick = "SearchBookings()" style="width: 150px;">
         </form>
     </div>
