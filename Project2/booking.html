@@ -95,18 +95,18 @@
             // XMLHttpRequest object
             var xmlhttp;
             
-            if (window.XMLHttpRequest) { // checks to see if the browser supports the XMLHttpRequest object
-                xmlhttp = new XMLHttpRequest(); // creates the XMLHttpRequest object
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest(); 
             }
         
             // code for IE6, IE5
             else {
-                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); // creates an ActiveXObject as old IE versions do not support XMLHTTPRequest objects
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); 
             }
-            xmlhttp.open("GET","Xml/lodgeInformation.xml", false); // specifies the type of request (ie GET or POST), the file location for the request, and whether it is an asynchronous request or not (bool value) (ie whether you can do multiple tasks at once - true, or need to wait for one task to finish before starting the new one - false)
-            xmlhttp.send(); // sends the request
-            xmlDoc = xmlhttp.responseXML; // the response data as XML data
-            var x = xmlDoc.getElementsByTagName("Lodge"); // gets a node list of "Product" elements in the XML file
+            xmlhttp.open("GET","Xml/lodgeInformation.xml", false); 
+            xmlhttp.send(); 
+            xmlDoc = xmlhttp.responseXML; 
+            var x = xmlDoc.getElementsByTagName("Lodge"); 
 
             var name = 0;
             var maxCapacity = 0;
@@ -120,6 +120,7 @@
             var imageHeight = 0;
             var availability = "Yes";
 
+            // gets each variable per Lodge record in the xml document.
             for (i = 0; i < x.length; i++) {
                 name = Number(x[i].getElementsByTagName("Name")[0].childNodes[0].nodeValue);
                 maxCapacity = Number(x[i].getElementsByTagName("MaxCapacity")[0].childNodes[0].nodeValue);
@@ -131,14 +132,14 @@
                 imageY = Number(x[i].getElementsByTagName("ImageY")[0].childNodes[0].nodeValue);
                 imageWidth=Number(x[i].getElementsByTagName("ImageWidth")[0].childNodes[0].nodeValue);            
                 imageHeight = Number(x[i].getElementsByTagName("ImageHeight")[0].childNodes[0].nodeValue);
-                // creates a new lodge object with the variables
+                // creates a new lodge object with the variables.
                 var lodge = new Lodge(name, maxCapacity, nightlyRate, checkInTime, checkOutTime, image, imageX, imageY, imageWidth, imageHeight, availability);
-                // adds the lodge object to the lodges array
+                // adds the lodge object to the lodges array.
                 lodges[i] = lodge;
             }
         }
     
-        // Constructor to create a Query object
+        // Constructor to create a Query object. A Query object combines the data of the Lodge object and the data from the booking query form.
         function Query(name, dateIn, dateOut, nightlyRate, numberGuests, maxCapacity, availability, checkInTime, checkOutTime, image) {
             this.lodgeNumber = name;
             this.dateIn = new Date(dateIn);
@@ -153,7 +154,7 @@
             this.image = "Images/" + image;
         }
 
-       // Constructor to create a Booking object
+       // Constructor to create a Booking object. This will eventually go to the currentBookings.xml document if the booking is confirmed.
        function Booking(reference, lodgeNumber, checkInDate, checkOutDate, numberGuests, nightlyRate, totalCost) {
             this.Reference = reference
             this.LodgeNumber = lodgeNumber;
@@ -166,51 +167,50 @@
 
         // Pulls the Booking information from currentBookings.xml and populates the bookings array.
         function PopulateBookings() {
-           // lodgeInformation.xml will load into this array.
-           bookings = [];
+           // currentBookings.xml will load into this array.
+            bookings = [];
 
-// XMLHttpRequest object
-var xmlhttp;
+            var xmlhttp;
 
-if (window.XMLHttpRequest) { // checks to see if the browser supports the XMLHttpRequest object
-xmlhttp = new XMLHttpRequest(); // creates the XMLHttpRequest object
-}
-// code for IE6, IE5
-else {
-    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); // creates an ActiveXObject as old IE versions do not support XMLHTTPRequest objects
-}
-xmlhttp.open("GET","Xml/currentBookings.xml", false); // specifies the type of request (ie GET or POST), the file location for the request, and whether it is an asynchronous request or not (bool value) (ie whether you can do multiple tasks at once - true, or need to wait for one task to finish before starting the new one - false)
-xmlhttp.send(); // sends the request
-xmlDoc = xmlhttp.responseXML; // the response data as XML data
+            if (window.XMLHttpRequest) { 
+            xmlhttp = new XMLHttpRequest(); 
+            }
+            // code for IE6, IE5
+            else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); 
+            }
+            xmlhttp.open("GET","Xml/currentBookings.xml", false); 
+            xmlhttp.send(); // sends the request
+            xmlDoc = xmlhttp.responseXML; // the response data as XML data
 
-var x = xmlDoc.getElementsByTagName("Booking"); // gets a node list of "Product" elements in the XML file
+            var x = xmlDoc.getElementsByTagName("Booking"); // gets a node list of "Product" elements in the XML file
 
-var reference = "";
-var lodgeNumber = 0;
-var checkInDate = "";
-var checkOutDate = "";
-var numberOfGuests = 0;
-var agreedNightlyRate = 0;
-var totalCost = 0;
+            var reference = "";
+            var lodgeNumber = 0;
+            var checkInDate = "";
+            var checkOutDate = "";
+            var numberOfGuests = 0;
+            var agreedNightlyRate = 0;
+            var totalCost = 0;
 
-for (i = 0; i < x.length; i++) {
-    reference = x[i].getElementsByTagName("Reference")[0].childNodes[0].nodeValue;
-    lodgeNumber = Number(x[i].getElementsByTagName("LodgeNumber")[0].childNodes[0].nodeValue);
-    checkInDate = new Date(x[i].getElementsByTagName("CheckInDate")[0].childNodes[0].nodeValue);
-    checkOutDate = new Date(x[i].getElementsByTagName("CheckOutDate")[0].childNodes[0].nodeValue);
-    numberOfGuests = Number(x[i].getElementsByTagName("NumberOfGuests")[0].childNodes[0].nodeValue);
-    agreedNightlyRate = Number(x[i].getElementsByTagName("AgreedNightlyRate")[0].childNodes[0].nodeValue);
-    totalCost = Number(x[i].getElementsByTagName("TotalCost")[0].childNodes[0].nodeValue);
-    // creates a new booking object with the variables
-    var booking = new Booking(reference, lodgeNumber, checkInDate, checkOutDate, numberOfGuests, agreedNightlyRate, totalCost);
-    // adds the booking object to the bookings array
-    bookings[i] = booking;
-}
+            for (i = 0; i < x.length; i++) {
+                reference = x[i].getElementsByTagName("Reference")[0].childNodes[0].nodeValue;
+                lodgeNumber = Number(x[i].getElementsByTagName("LodgeNumber")[0].childNodes[0].nodeValue);
+                checkInDate = new Date(x[i].getElementsByTagName("CheckInDate")[0].childNodes[0].nodeValue);
+                checkOutDate = new Date(x[i].getElementsByTagName("CheckOutDate")[0].childNodes[0].nodeValue);
+                numberOfGuests = Number(x[i].getElementsByTagName("NumberOfGuests")[0].childNodes[0].nodeValue);
+                agreedNightlyRate = Number(x[i].getElementsByTagName("AgreedNightlyRate")[0].childNodes[0].nodeValue);
+                totalCost = Number(x[i].getElementsByTagName("TotalCost")[0].childNodes[0].nodeValue);
+                // creates a new booking object with the variables
+                var booking = new Booking(reference, lodgeNumber, checkInDate, checkOutDate, numberOfGuests, agreedNightlyRate, totalCost);
+                // adds the booking object to the bookings array
+                bookings[i] = booking;
+            }
         }
         
-        // Do the newQuery dates cross over with any current bookings. 
+        // Do the newQuery dates cross over with any current bookings for any of the lodges. 
         function DateIntersection(i, j){
-           if (lodges[i].name == bookings[j].LodgeNumber) {
+            if (lodges[i].name == bookings[j].LodgeNumber) {
                 if (check_In_Date.getTime() > bookings[j].CheckInDate.getTime() && check_In_Date.getTime() < bookings[j].CheckOutDate.getTime()) {
                     return true;
                     }
@@ -226,9 +226,8 @@ for (i = 0; i < x.length; i++) {
             }
         }
 
-        // creates lodge objects and searches the canvas for available lodges
+        // Searches the canvas for available lodges and colours them green (available) and red (not available) accordingly. Adds an event listener for when users mouse over the lodges to see their details.
         function SearchBookings(){
-            
             canvas = document.getElementById("mapCanvas");
             canvas.addEventListener("mousemove", CheckPosition, false);
             ctx = canvas.getContext("2d");
@@ -265,7 +264,7 @@ for (i = 0; i < x.length; i++) {
             }
         }
 
-        // Creates variables for the getting the position of the mouse on the canvas
+        // Creates variables for the getting the position of the mouse on the canvas.
         function CheckPosition(event) {
             var rect = canvas.getBoundingClientRect();
             mouseX = Math.round(event.clientX - rect.left);
@@ -316,13 +315,13 @@ for (i = 0; i < x.length; i++) {
             }
         }
         }
-
+        // Opens the Modal to display lodge details and make bookings.
         function OpenModal(newQuery) {            
             canvas.removeEventListener("mousemove", CheckPosition, false);
             var modal = document.getElementById("lodgeDetailsModal");
             modal.style.display = "block";
 
-            // Get the <span> element that closes the modal
+            // Get the element with a class name of "close"
             var span = document.getElementsByClassName("close")[0];           
 
             var mHeader = document.getElementById("modalHeader");
@@ -399,7 +398,7 @@ for (i = 0; i < x.length; i++) {
                 CloseModal();
             }
 
-            // When the user clicks anywhere outside of the modal, close it
+            // When the user clicks anywhere outside of the modal, it closes.
             window.onclick = function(event) {
                 if (event.target == modal) {
                     CloseModal();
@@ -407,7 +406,7 @@ for (i = 0; i < x.length; i++) {
             }
         }
 
-         // Closes the Modal
+         // Closes the Modal and resets the display attributes.
         function CloseModal() {
             var modal = document.getElementById("lodgeDetailsModal");
             modal.style.display = "none";
@@ -427,14 +426,14 @@ for (i = 0; i < x.length; i++) {
             var bookingConfirmed= document.getElementById("bookingConfirmed");
             bookingConfirmed.style.display = "none";
             canvas.addEventListener("mousemove", CheckPosition, false);
-
-            var y = document
         }
-
+        
+        // Updates the newQuery object when the number of guests is increased in the form.
         function UpdateGuests() {
             newQuery.numberGuests = Number(document.getElementById("numberOfGuests").value);
         }
 
+        // Hides the lodgeInformation portion of the modal and populates the booking summary.
         function BookLodge(newQuery) {
             var lodgeInformation = document.getElementById("lodgeInformation");
             lodgeInformation.style.display = "none";
@@ -507,32 +506,34 @@ for (i = 0; i < x.length; i++) {
             return numberNights / (1000 * 60 * 60 * 24); // 1000 milliseconds in a second, 60 seconds in a minute, 60 minutes in an hour, 24 hours in a day
         }
 
+        // Hides the bookingSummary portion of the modal, posts the booking data to the xml file and gives a confirmation message that the booking has been successful.
         function Booked(newQuery){
             var bookingSummary = document.getElementById("bookingSummary");
             bookingSummary.style.display = "none";
             var bookingConfirmed = document.getElementById("bookingConfirmed");
             bookingConfirmed.style.display = "block";
             var booking = new Booking(newQuery.lodgeNumber, newQuery.dateIn, newQuery.dateOut, newQuery.numberGuests, newQuery.nightlyRate, newQuery.totalCost);
-            
-            // XMLHttpRequest object
             var xmlhttp;
 
-            if (window.XMLHttpRequest) { // checks to see if the browser supports the XMLHttpRequest object
-            xmlhttp = new XMLHttpRequest(); // creates the XMLHttpRequest object
+            if (window.XMLHttpRequest) { 
+            xmlhttp = new XMLHttpRequest(); 
             }
             // code for IE6, IE5
             else {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); // creates an ActiveXObject as old IE versions do not support XMLHTTPRequest objects
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); 
             }
-            xmlhttp.open("POST","Xml/currentBookings.xml", false); // specifies the type of request (ie GET or POST), the file location for the request, and whether it is an asynchronous request or not (bool value) (ie whether you can do multiple tasks at once - true, or need to wait for one task to finish before starting the new one - false)
+            xmlhttp.open("POST","Xml/currentBookings.xml", false); 
 
-            var x = xmlDoc.getElementsByTagName("Booking"); // gets a node list of "Product" elements in the XML file
+            // creates the reference variable for the booking entry.
             var reference = newQuery.lodgeNumber + "-" + newQuery.dateIn;
+
+            // creates the booking entry for the xml document.
             var booking = "<?xml version='1.0'?><query><Booking><Reference>reference</Reference><LodgeNumber>newQuery.lodgeNumber</LodgeNumber><CheckInDate>newQuery.dateIn</CheckInDate><CheckOutDate>newQuery.dateOut</CheckOutDate><AgreedNightlyRate>newQuery.nightlyRate</AgreedNightlyRate><TotalCost>newQuery.totalCost</TotalCost><NumberOfGuests>newQuery.numberGuests</NumberOfGuests></Booking></query>"
-            xmlhttp.send(booking); // sends the request
-            xmlDoc = xmlhttp.responseXML; // the response data as XML data
-            }
+            xmlhttp.send(booking);
+            xmlDoc = xmlhttp.responseXML; 
+        }
         
+        // Resets the booking query form for a new search and closes the modal.
         function NewSearch() {
             var bookingConfirmed = document.getElementById("bookingConfirmed");
             bookingConfirmed.style.display = "none";
@@ -570,12 +571,12 @@ for (i = 0; i < x.length; i++) {
             <li>Select your check in date.</li>
             <li>Select your check out date.</li>
             <li>Choose the required capacity of your lodge.</li>
-            <li>Click Search to see the available lodges that meet your requirements.</li>
-            <li>Hover over lodges to see their details and availability</li>
-            <li>Click the Book Lodge button to book a lodge, or the Keep Looking button to see other options.
+            <li>Click <em>Search</em> to see the available lodges that meet your requirements.</li>
+            <li>Hover over the lodges to see their details and availability (available lodges will be shaded green, unavailable lodges will be shaded red).</li>
+            <li>Click the <em>Book Lodge</em> button to book a lodge, or the <em>Keep Looking</em> button to see other options.
             </li>
-            <li>View your Booking Summary below.</li>
-            <li>Confirm your booking by clicking the Submit Booking button, or continue looking at other lodges.</li>
+            <li>View your Booking Summary.</li>
+            <li>Confirm your booking by clicking the <em>Confirm Booking</em> button, or continue looking at other lodges.</li>
         </ol>
     </div>
     <div class = "col-2 topAlign">
