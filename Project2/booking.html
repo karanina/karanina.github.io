@@ -245,11 +245,14 @@ for (i = 0; i < x.length; i++) {
                             ctx.clearRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
                             ctx.fillStyle="rgba(0,255,0,0.25)";
                             ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
+                            var availability = "Yes";
                         }
                         else {
                             ctx.clearRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
                             ctx.fillStyle="rgba(255,0,0,0.25)";
                             ctx.fillRect(lodges[i].imageX, lodges[i].imageY, lodges[i].imageWidth, lodges[i].imageHeight);
+                            var availability = "No";
+                            break;
                         }
                     }
                 }
@@ -271,7 +274,7 @@ for (i = 0; i < x.length; i++) {
                 var lodgeY = lodges[i].imageY;
                 var lodgeW = lodges[i].imageWidth;
                 var lodgeH = lodges[i].imageHeight;
-                var availability = "Yes";
+                
                 
                 if (Intersects(mouseX, mouseY, lodgeX, lodgeY, lodgeW, lodgeH, availability) && HasCapacity(i)) {
                     newQuery = new Query(lodges[i].name, 
@@ -300,14 +303,17 @@ for (i = 0; i < x.length; i++) {
         }
 
         // Checks if the mouse position intersects with any of the available lodges.
-        function Intersects(mouseX, mouseY, lodgeX, lodgeY, lodgeW, lodgeH) {
+        function Intersects(mouseX, mouseY, lodgeX, lodgeY, lodgeW, lodgeH, availability)
+        {
             var imageX2 = lodgeX + lodgeW;
             var imageY2 = lodgeY + lodgeH;
+            if (availability == "Yes"){
             if (mouseX > lodgeX && mouseX < imageX2) {
                 if (mouseY > lodgeY && mouseY < imageY2) {
                         return true;
                 }
             }
+        }
         }
 
         function OpenModal(newQuery) {            
