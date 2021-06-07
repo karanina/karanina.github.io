@@ -208,7 +208,7 @@ for (i = 0; i < x.length; i++) {
         
         // Do the newQuery dates cross over with any current bookings. 
         function DateIntersection(i, j){
-            //if (lodges[i].name == bookings[j].LodgeNumber) {
+            if (lodges[i].name == bookings[j].LodgeNumber) {
                 if (check_In_Date.getTime() > bookings[j].CheckInDate.getTime() && check_In_date.getTime() < bookings[j].CheckOutDate.getTime()) {
                     return true;
                     }
@@ -218,10 +218,10 @@ for (i = 0; i < x.length; i++) {
                 else {
                     return false;
                 }
-           // }
-            //else {
-              //  return false;
-            //}
+            }
+            else {
+                return false;
+            }
         }
 
         // creates lodge objects and searches the canvas for available lodges
@@ -506,7 +506,25 @@ for (i = 0; i < x.length; i++) {
             var bookingConfirmed = document.getElementById("bookingConfirmed");
             bookingConfirmed.style.display = "block";
             var booking = new Booking(newQuery.lodgeNumber, newQuery.dateIn, newQuery.dateOut, newQuery.numberGuests, newQuery.nightlyRate, newQuery.totalCost);
-        }
+            
+            // XMLHttpRequest object
+            var xmlhttp;
+
+            if (window.XMLHttpRequest) { // checks to see if the browser supports the XMLHttpRequest object
+            xmlhttp = new XMLHttpRequest(); // creates the XMLHttpRequest object
+            }
+            // code for IE6, IE5
+            else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); // creates an ActiveXObject as old IE versions do not support XMLHTTPRequest objects
+            }
+            xmlhttp.open("POST","Xml/currentBookings.xml", false); // specifies the type of request (ie GET or POST), the file location for the request, and whether it is an asynchronous request or not (bool value) (ie whether you can do multiple tasks at once - true, or need to wait for one task to finish before starting the new one - false)
+
+            var x = xmlDoc.getElementsByTagName("Booking"); // gets a node list of "Product" elements in the XML file
+            var reference = newQuery.lodgeNumber + "-" + newQuery.dateIn;
+            var booking = "<?xml version='1.0'?><query><Booking><Reference>reference</Reference><LodgeNumber>newQuery.lodgeNumber</LodgeNumber><CheckInDate>newQuery.dateIn</CheckInDate><CheckOutDate>newQuery.dateOut</CheckOutDate><AgreedNightlyRate>newQuery.nightlyRate</AgreedNightlyRate><TotalCost>newQuery.totalCost</TotalCost><NumberOfGuests>newQuery.numberGuests</NumberOfGuests></Booking></query>"
+            xmlhttp.send(booking); // sends the request
+            xmlDoc = xmlhttp.responseXML; // the response data as XML data
+            }
         
         function NewSearch() {
             var bookingConfirmed = document.getElementById("bookingConfirmed");
