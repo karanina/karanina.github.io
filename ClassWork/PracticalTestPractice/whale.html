@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part A - Whale</title>
+</head>
+<style>
+    #myCanvas {
+        border: chocolate 10px solid;
+        background-color: #D9B3FF;
+    }
+    </style>
+    <script>
+
+        var myCanvas;
+        var ctx;
+        var myMove;
+
+        // cloud animation variables.
+        var x = 250; // x co-ord to draw
+        var y = 150; // y co-ord to draw
+        var cx = 200; // x co-ord to clear. Hint: x - radius + margin
+        var cy = 100; // y co-ord to clear. Hint: y - radius + margin
+        var cw = 100; // width to clear. Hint: (radius + margin) * 2
+        var ch = 100; // height to clear. Hint: (radius + margin) *2
+        var dx = 10; // x decrement
+        var dy = 10; // u decrement
+        var r = 40; // radius
+
+        function init(){
+            myCanvas = document.getElementById("myCanvas");
+            ctx = myCanvas.getContext('2d');
+
+            // The Whale
+
+            ctx.beginPath();
+            ctx.arc(400, 400, 200, 0, Math.PI*1, true);
+            ctx.closePath();
+            ctx.fillStyle = "#999966";
+            ctx.fill();
+            ctx.lineWidth = "4";
+            ctx.strokeStyle = "#663300";
+            ctx.stroke();
+        
+            // The sea
+            ctx.fillStyle = "#0099FF"
+            ctx.fillRect(0,400,800,100);
+
+            // Yellow Eyes x 2
+
+            ctx.beginPath();
+            ctx.arc(250, 365, 15, 0, Math.PI*2);
+            ctx.closePath();
+            ctx.fillStyle = "#FFFF00";
+            ctx.fill();
+            ctx.lineWidth = "4";
+            ctx.strokeStyle = "#663300";
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(300, 365, 15, 0, Math.PI*2);
+            ctx.closePath();
+            ctx.fillStyle = "#FFFF00";
+            ctx.fill();
+            ctx.lineWidth = "4";
+            ctx.strokeStyle = "#663300";
+            ctx.stroke();
+
+            // The Smoke
+
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI*1, false);
+            ctx.closePath();
+            ctx.lineWidth = "10";
+            ctx.strokeStyle = "white";
+            ctx.stroke();
+
+            // The tail
+
+            ctx.beginPath();
+            ctx.fillStyle = "#663300";
+            ctx.fillRect(600,300,50,100);
+
+            // Smoke animation
+
+            myMove = setInterval(draw, 180);
+        }
+
+        function draw(){
+
+            ctx.clearRect(cx, cy, cw, ch);
+            ctx.beginPath();
+            cx -= dx;
+            cy -= dy;
+            x -= dx;
+            y -= dy;
+            ctx.arc(x, y, r, 0, Math.PI*1, false);
+            
+            ctx.closePath();
+            ctx.lineWidth = "10";
+            ctx.strokeStyle = "white";
+            ctx.stroke();
+            
+
+            if (x < 0) {
+                clearInterval(myMove);
+            }
+
+        }
+    </script>
+<body onload="init()">
+    <canvas id="myCanvas" width="800px" height="500px"></canvas>
+</body>
+</html>

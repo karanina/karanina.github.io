@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>Marks</title>
+
+</head>
+<body >
+<script>
+// Global variables
+var cells = [1,2,3,4,5,6,7];
+
+    function display_inputs(){
+    var table = document.getElementById("dispMarks");
+
+    var row = table.insertRow(0);
+
+    for (var i = 0; i < cells.length; i++) {
+        var cell = row.insertCell(i);
+        cell.setAttribute("width", "50");
+        var textP = document.createElement("span");
+        var textT = document.createTextNode(cells[i]);
+        textP.appendChild(textT);
+        cell.appendChild(textP);
+
+        var checkbox = document.createElement("INPUT");
+        var cName = "check" + i;
+        checkbox.setAttribute("type", "checkbox");
+        checkbox.setAttribute("name", cName);
+        checkbox.setAttribute("id", cName);
+        checkbox.setAttribute("value", cells[i]);
+        checkbox.setAttribute("onclick", "display_score()");
+        checkbox.checked = false;
+        cell.appendChild(checkbox);   
+    }
+}
+
+function display_score() {
+    for (var i = 0; i < cells.length; i++){
+        var checkbox = document.getElementById("check" + i);
+        if (checkbox.checked == true) {
+            var text = document.getElementById("selectedScore");
+            text.innerHTML = "You Select " + cells[i];
+        }
+    }
+    }
+</script>
+<h1>Marks</h1>
+<button type="button" onclick="display_inputs()">Display Marks</button>
+<table border='1' id="dispMarks">
+</table>
+<p id = "selectedScore"></p>
+</body>
+</html>
