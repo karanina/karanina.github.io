@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"><head>
+<meta http-equiv="content-tutope" content="text/html; charset=UTF-8">
+<style>
+.mybackground {
+	position: relative;
+	overflow: hidden;
+	width: 800px;
+	height: 600px;
+	background-image: url(bgSky.jpg);
+}
+
+.mybackground .spaceship {
+	position: absolute;	
+	top: 250px;
+	left: 250px;
+	background-image: url(spaceship.gif);
+	width: 110px;
+	height: 90px;
+	padding-top: 0px;
+	text-align: center;	
+	
+	color:black;
+	white-space: nowrap;
+}
+.myButton
+{
+	background-color:#69ACE2;
+	color:white;
+	width: 100px;
+	height: 20px;
+	
+	border:5px solid blue;
+	font-size:14px;
+
+}	
+</style>
+<script >
+	function move(){
+		var left = 250;
+		var top = 250;
+		var point = 0;
+
+		function moveSpaceShip(){
+			var spaceship = document.getElementById("myspaceship");
+			
+			switch(point) {
+				case 0:
+					left -= 2;
+					top -= 2;
+					spaceship.style.left = left + "px";
+					spaceship.style.top = top + "px";
+					if (left == 30 && top == 30){
+						point = 1;
+					}
+					break;
+				case 1:
+					left += 2;
+					spaceship.style.left = left + "px";
+					if (left == 470 && top == 30) {
+						point = 2;
+					}
+					break;
+				case 2:
+					left -= 2;
+					top += 2;
+					spaceship.style.left = left + "px";
+					spaceship.style.top = top + "px";
+					if (left == 30 && top == 470) {
+						point = 3;
+					}
+					break;
+				case 3:
+				left += 2;
+					spaceship.style.left = left + "px";
+					if (left == 470 && top == 470) {
+						point = 4;
+					}
+					break;
+				case 4:
+					left -= 2;
+					top -= 2;
+					spaceship.style.left = left + "px";
+					spaceship.style.top = top + "px";
+					if (left == 250 && top == 250) {
+						clearInterval(timer);
+					}
+					break;
+			}
+		}
+		var timer = setInterval(moveSpaceShip, 30);
+	}
+</script>
+<meta charset="utf-8"></head>
+<body>
+
+<div class="mybackground">
+	<div class="myButton" id="start" onclick="javascript: move();">Move Spaceship</div><br />
+	<div style="left: 250px; top: 250px;" class="spaceship" id="myspaceship" ></div>
+</div>
+</body></html>
